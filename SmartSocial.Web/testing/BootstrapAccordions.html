@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <style>
+        #MainMenu .list-group-item {
+            color:white;
+            border: 0px;
+            background-color:#455264;
+        }      
+        #MainMenu .list-group-item-sub {
+            color:#858c94;
+            background-color:#303946;
+        }
+        #MainMenu .list-group-submenu > .list-group-item {
+            color:#858c94;
+            background-color:#1c2128;
+        }
+        #MainMenu a.list-group-item:hover {
+            color: white;
+            background-color: #1c2128;
+        }
+        #MainMenu a.list-group-item:focus {
+            color: black;
+            background-color: #ffa915;
+        }
+        #MainMenu .fa-caret-down {
+            float:right;
+        }
+        #MainMenu .fa-pie-chart {
+            margin-right:5px;
+        }
+        #MainMenu .fa-list-ul {
+            margin-right:10px;
+        }
+        #MainMenu .fa-folder-open {
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="MainMenu">
+        <a href="#demo3" class="list-group-item" data-toggle="collapse"><i class="fa fa-pie-chart"></i> Item 1 <i class="fa fa-caret-down"></i></a>
+        <div class="collapse" id="demo3">
+            <a href="#SubMenu1" class="list-group-item list-group-item-sub" data-toggle="collapse" data-parent="#SubMenu1"><i class="fa fa-list-ul"></i>  Subitem 1 <i class="fa fa-caret-down"></i></a>
+            <div class="collapse list-group-submenu" id="SubMenu1">
+                <a href="#" class="list-group-item" data-parent="#SubMenu1"><i class="fa fa-folder-open"></i>  Subitem 1 a</a>
+                <a href="#" class="list-group-item" data-parent="#SubMenu1"><i class="fa fa-folder-open"></i>  Subitem 2 b</a>
+                <a href="#" class="list-group-item" data-parent="#SubMenu1"><i class="fa fa-folder-open"></i> Subitem 3 c</a>  
+            </div>
+            <a href="#" class="list-group-item list-group-item-sub"> <i class="fa fa-list-ul"></i> Subitem 2</a>
+            <a href="#" class="list-group-item list-group-item-sub"> <i class="fa fa-list-ul"></i> Subitem 3</a>
+        </div>
+    </div>
+
+</body>
+</html>

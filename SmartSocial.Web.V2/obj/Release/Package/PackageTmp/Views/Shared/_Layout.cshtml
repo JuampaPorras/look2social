@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="smartSocialApp">
+<head>
+    <title>Smart Social</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Import google fonts - Heading first/ text second -->
+    <!-- Icons -->
+    @*<link href="~/Content/icons.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Customized -->
+    <link href="~/Content/bootstrapCustomized.css" rel="stylesheet" />
+    <!-- jquery UI-->
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/plugins.css" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="~/Content/smartsocialstyle.css" rel="stylesheet" />
+    <link href="~/Content/flags.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        @Styles.Render("~/Content/site")
+        <link href="~/Content/kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo.bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/kendo.common.min.css" rel="stylesheet" />*@
+    @*<link href="~/Content/kendo.default.min.css" rel="stylesheet" />*@
+
+
+</head>
+<body ng-controller="leftBarCtrl" ng-keydown="shiftPress($event)" ng-keyup="shiftUp($event)">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" style="height: 50px; border-bottom: solid 1px #d7d7d7; background-color: white; z-index: 9996; position: fixed; margin-left: 15px;">
+            <div id="Toogler" class="dropdown" style="float: left; padding: 13px">
+                <a id="toogleVisibility" role="button" ng-click="toggleSidebar()">
+                    <i class="fa fa-reorder" style="color: black; font-size: 20px; float: left;">
+                    </i>
+                </a>
+            </div>
+            <div class="dropdown" style="float: right; padding: 13px">
+                <a href="javascript:void(0)" ng-click="notificationsViewed()" role="button" data-toggle="dropdown" id="notificationMenu" data-target="#" style="float: left" aria-expanded="true">
+                    <i class="fa fa-bell-o" style="font-size: 20px; float: left; color: black">
+                    </i>
+                </a>
+                <span class="badge badge-danger" ng-if="notificationsNewCount>0" ng-bind="notificationsNewCount"></span>
+                <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="notificationMenu">
+                    <li role="presentation">
+                        <a href="#" class="dropdown-menu-header">Notifications</a>
+                    </li>
+                    <li>
+                        <ul class="timeline timeline-icons timeline-sm" id="notificationsContainer" style="margin:10px;overflow-x:hidden;height:calc(100vh - 84px); max-width:210px; background-attachment:scroll">
+                            <li ng-repeat="notification in notificationList track by $index">
+                                <div ng-bind-html="notification.Text"></div>
+                                @*<div>Your "Customer Report" PDF is ready <a href="/Reports/Pdf/Customer Report3184246.pdf" target="_blank">here</a></div>*@
+                                <span class="timeline-icon"><i class="fa fa-file-pdf-o" style="color:red"></i></span>
+                                <span class="timeline-date">{{normalizeDateTime(notification.CreatedDate)}}</span>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li role="presentation">
+                        <a href="#" class="dropdown-menu-header"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown" style="float: right; padding: 13px">
+                <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: right" aria-expanded="false">
+                    <i class="fa fa-cog" style="font-size: 20px; float: left; color: black">
+                    </i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a role="menuitem" tabindex="-1" ng-href="#/ManageAccount">
+                            &nbsp;&nbsp;Manage Settings
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a id="exportReportBut" style="display: none" data-toggle="modal" data-target="#exportWholeModal" role="menuitem" tabindex="-1">
+                            &nbsp;&nbsp;Export Report to PDF
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Modal -->
+            <div id="exportWholeModal" class="modal fade" role="dialog" style="top:150px">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Exporting Charts to PDF...</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <fieldset>
+                                    <!-- Multiple Checkboxes -->
+                                    <div class="col-sm-offset-1 form-inline">
+                                        <label for="ReportNamer">
+                                            PDF Name :
+                                        </label>
+                                        <input type="text" class="form-control" id="ReportNamer" ng-model="reportName" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-offset-1" for="chkIncludeInPDF">Include in the PDF file</label>
+                                        <div class="col-sm-offset-1">
+                                            <div class="toggle-custom">
+                                                <label class="toggle" data-on="YES" data-off="NO">
+                                                    <input type="checkbox" id="checkbox-ChartInsights" ng-model="withChartInsights" name="checkbox-toggle" checked="">
+                                                    <span class="button-checkbox"></span>
+                                                </label>
+                                                <label for="heckbox-ChartInsights">Per chart description / metadata</label>
+                                            </div>
+                                            <div class="toggle-custom">
+                                                <label class="toggle" data-on="YES" data-off="NO">
+                                                    <input type="checkbox" id="checkbox-Insights" ng-model="withInsights" name="checkbox-toggle" checked="">
+                                                    <span class="button-checkbox"></span>
+                                                </label>
+                                                <label for="checkbox-Insights">Report overview / insights</label>
+                                            </div>
+                                            <div class="toggle-custom">
+                                                <label class="toggle" data-on="YES" data-off="NO">
+                                                    <input type="checkbox" id="checkbox-Comments" ng-model="withComments" name="checkbox-toggle" checked="">
+                                                    <span class="button-checkbox"></span>
+                                                </label>
+                                                <label for="checkbox-Comments">Comments made by users</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            @* los $scope.withChartInsights $scope.withInsights $scope.withComments traen el valor de los parametros *@
+                            @*<a id="exportReportButton" href="/Home/UrlAsPDF?reportId=182&withInsights=true&withChartInsights=true&withComments=true&reportName=FinalTest" class="btn btn-primary">Export to PDF</a>*@
+                            <button id="exportReportButton" class="btn btn-primary" ng-click="getExportReport()">Export to PDF</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="trialEndModal" class="modal fade" role="dialog" style="top:150px">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Trial Ended</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col">
+                                Your Trial has ended. If you'd like to continue getting social listening information about your company, please sign up for a subscription.
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @* los $scope.withChartInsights $scope.withInsights $scope.withComments traen el valor de los parametros *@
+                            @*<a id="exportReportButton" href="/Home/UrlAsPDF?reportId=182&withInsights=true&withChartInsights=true&withComments=true&reportName=FinalTest" class="btn btn-primary">Export to PDF</a>*@
+                            <a class="btn btn-primary" target="_blank" ng-href="{{billingPortalLink}}">Subscribe</a>
+                            <button class="btn btn-default" >Ask me later</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="trialEndingModal" class="modal fade" role="dialog" style="top:150px">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Trial Ending</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col">
+                                Your Trial is ending. If you'd like to continue getting social listening information about your company, please sign up for a subscription.
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @* los $scope.withChartInsights $scope.withInsights $scope.withComments traen el valor de los parametros *@
+                            @*<a id="exportReportButton" href="/Home/UrlAsPDF?reportId=182&withInsights=true&withChartInsights=true&withComments=true&reportName=FinalTest" class="btn btn-primary">Export to PDF</a>*@
+                            <a class="btn btn-primary" target="_blank" ng-href="{{billingPortalLink}}">Subscribe</a>
+                            <button  class="btn btn-default">Ask me later</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="dropdown" style="float: right; padding: 13px">
+                <a role='button' href="@Url.Action("LogOff", "Account")" id="LogOut">
+                    <i class="fa fa-power-off" style="font-size: 20px; float: left; color: black">
+                    </i>
+                </a>
+            </div>
+            <div style="float: right; padding: 13px" ng-bind="currentUserName"></div>
+        </div>
+    </div>
+    <div class="row" style="height: 100%">
+        <div id="rightSideBar" class="hidden overflowSm maximumindex hidden-xs showSideBarOverflow" style="background-color: #303946;padding-right: 0px; margin-top: 50px;">
+            <div class="col-lg-12 col-md-12 sidebar-panel  col-sm-12 col-xs-12 p0">
+                <h5 class="sidebar-panel-title ">Company</h5>
+            </div>
+            <div class="col-lg-12 col-md-12  col-sm-12 col-xs-12 p0">
+                <div class="row-fluid">
+                    <div class="col-lg-4 col-md-5" style="padding-top: 10px;padding-bottom: 10px;">
+                        <img ng-src="../Images/CompanyImages/{{CompanyModel.IdCompany}}/{{CompanyModel.LogoFileName}}" alt="avatar" id="CompanyImage" style="width: 64px;" />
+                    </div>
+                    <div class="col-lg-8 col-md-7" style="padding-top: 10px;">
+                        <div class=" row">
+                            <div class="col-lg-12">
+                                <a  id="CompanyHomeLink" style="color: #ffffff; float: left; width: 80px;font-weight: normal;"><span class="name" id="CompanyName">{{CompanyModel.CompanyName}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 sidebar-panel col-sm-12 col-xs-12 p0" id="subscriptionsMenuContainer">
+                <div ng-if="subscriptionsModel.length==1">
+                    <h5 data-subscription-end ng-repeat-start="subscription in subscriptionsModel track by $index" class="sidebar-panel-title">{{"My Reports"}}</h5>
+                    <div ng-repeat-end class="mainMenu">
+                        <a onclick="return false;" ng-repeat-start="reportTemplate in subscription.Reports track by $index" href=" {{'#reportTemplate_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="list-group-item reportLabel" data-toggle="collapse"><i id="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="fa fa-folder"></i>{{reportTemplate.ReportName}}</a>
+                        <div ng-repeat-end class="collapse reportsContainer" data-iconid="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" id="{{'reportTemplate_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}">
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a href="jasvascript:void(0)" ng-if="reportTemplate.Items.length>3&&!showMoreReports" class="list-group-item reportDelivered" ng-click="showAllReports()" style="padding-left: 25px;"> Show More...</a>
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index>2&&!showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered hidden"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="subscriptionsModel.length>1">
+                    <h5 data-subscription-end ng-repeat-start="subscription in subscriptionsModel track by $index" class="sidebar-panel-title">{{"My Reports ("+subscription.ServiceSubscription.SubscriptionName +")"}}</h5>
+                    <div ng-repeat-end class="mainMenu">
+                        <a onclick="return false;" ng-repeat-start="reportTemplate in subscription.Reports track by $index" href="{{'#reportTemplate_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="list-group-item reportLabel" data-toggle="collapse"><i id="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="fa fa-folder"></i>{{reportTemplate.ReportName}}</a>
+                        <div ng-repeat-end data-iconid="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="collapse reportsContainer" id="{{'reportTemplate_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}">
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a href="jasvascript:void(0)" ng-if="reportTemplate.Items.length>3&&!showMoreReports" class="list-group-item reportDelivered" ng-click="showAllReports()" style="padding-left: 25px;"> Show More...</a>
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index>2&&!showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered hidden"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="sharedModel.length>0" id="sharedContainer">
+                    <h5 data-shared-end class="sidebar-panel-title">Shared With Me</h5>
+                    <div class="mainMenu">
+                        <a onclick="return false;" ng-repeat-start="reportTemplate in sharedModel track by $index" href="{{'#reportTemplate_'+$index}}" class="list-group-item reportLabel" data-toggle="collapse"><i id="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" class="fa fa-folder"></i>{{reportTemplate.ReportName}}</a>
+                        <div data-iconid="{{'icon_'+subscription.ServiceSubscription.idServiceSubscription+'_'+$index}}" ng-repeat-end class="collapse reportsContainer" id="{{'reportTemplate_'+$index}}">
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                            @*<a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index<3||showMoreReports" href="{{'#MainReport/'+report.ReportId}}" class="list-group-item reportDelivered"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>*@
+                            <a href="jasvascript:void(0)" ng-if="reportTemplate.Items.length>3&&!showMoreReports" class="list-group-item reportDelivered" ng-click="showAllReports()" style="padding-left: 25px;"> Show More...</a>
+                            <a id="{{'report'+report.ReportId}}" ng-repeat="report in reportTemplate.Items track by $index" ng-if="$index>2&&!showMoreReports" ng-click="getReports(report.ReportId,reportTemplate.Items,$event)" href="javascript:void(0)" class="list-group-item reportDelivered hidden"><i class="fa fa-calendar"></i>{{normalizeDate(report.DeliveryDate)}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="isGuest">
+                    <br />
+                    <br />
+                    <div id="trialButton" class="purchase-btn" style="text-align:center;">
+                        <a href="../../Home" class="badge"><i class="icon-shopping-cart"></i> Get your free trial report</a>
+                    </div>
+                    <div class="smallnote">We'll ask you about your product or service and we'll create an awesome report specific to your company.</div>
+                </div>
+            </div>
+        </div>
+        <div id="mainBody" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:50px">
+
+            <div ng-view></div>
+            @* MainBody *@
+            @RenderBody()
+        </div>
+    </div>
+
+</body>
+
+
+
+<script src="~/Scripts/JQuery/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/Angular-JS/angular.js"></script>
+<script src="~/Scripts/Angular-JS/angular-route.js"></script>
+<script src="~/Scripts/Angular-JS/angular-sanitize.js"></script>
+<script src="~/Scripts/JQuery/jquery-ui-1.11.4.min.js"></script>
+<script src="~/Scripts/Plugins/jquery.slimscroll.min.js"></script>
+<script src="~/Scripts/jRespond.min.js"></script>
+<script src="~/Scripts/Plugins/spin.min.js"></script>
+@Scripts.Render("~/bundles/pages")
+@Scripts.Render("~/bundles/plugins")
+<script src="~/Scripts/Highcharts/highcharts.js"></script>
+<script src="~/Scripts/Highcharts/highmaps.js"></script>
+<script src="~/Scripts/Highcharts/modules/exporting.js"></script>
+<script src="~/Scripts/Highcharts/world.js"></script>
+<script src="~/Scripts/JQCloud/jqcloud.js"></script>
+<script src="~/Scripts/JQuery/jquery.validate.js"></script>
+</html>

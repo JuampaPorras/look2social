@@ -1,0 +1,164 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="SmartSocial.Web.masterpages.Main" %>
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Smart Social</title>
+    <link href="../Content/bootstrapCustomized.css" rel="stylesheet" />
+    <link href="../Content/smartsocialstyle.css" rel="stylesheet" />
+    
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.dataviz.default.min.css" />
+    <script>
+        //Function that sets the User Name to display the currently logged in user's name
+        function LoggedInRadMenu_OnClientLoad(sender) {
+            sender.findItemByValue("MenuRoot").set_text(document.getElementById("idHiddenUserNameField").innerHTML);
+        }
+        
+    </script>
+</head>
+<body>
+<input type="text" id="freeText" name="freeText"/> 
+    <form id="frmMaster" runat="server">
+        <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server"></telerik:RadStyleSheetManager>
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"></telerik:RadAjaxManager>
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="false" Skin="Bootstrap"/>
+
+        <div id="HeadingDiv"> 
+            <div style="float:left;margin-right:5px;"><img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/48/Bar-chart-icon.png"/></div>
+            <div style="float:left;width:260px; margin-top:10px"><span style="font-size:22px;font-weight:bold;color:white;">Smart Social Reporting</span></div>
+            <div style="float:left"><img hspace="5" vspace="0" src="../images/separator.png"></div>
+            <div style="float:right; margin-top:10px">
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <telerik:RadMenu ID="LoggedOutRadMenu" runat="server" Skin="Glow">
+                                <Items>
+                                    <telerik:RadMenuItem  runat="server" Text="Register User" NavigateUrl="../Account/Register" ImageUrl="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-3/16/signup-icon.png">
+
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem  runat="server" Text="Log In" NavigateUrl="../Account/Login" ImageUrl="http://icons.iconarchive.com/icons/hopstarter/plastic-mini/16/User-Grey-icon.png">
+
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenu>   
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <span id="idHiddenUserNameField" style="display:none;"><%: Context.User.Identity.GetUserName() %></span>
+                            <telerik:RadMenu ID="LoggedInRadMenu" runat="server" OnItemClick="OnItemClick" OnClientLoad="LoggedInRadMenu_OnClientLoad"  Skin="Glow">
+                                <Items>
+                                    <telerik:RadMenuItem Value="MenuRoot" runat="server" Text="User Options"  ImageUrl="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/16/User-blue-icon.png">
+                                        <Items>
+                                            <telerik:RadMenuItem runat="server" NavigateUrl="../Account/Manage" Text="Manage Account" ImageUrl="http://icons.iconarchive.com/icons/treetog/i/16/Control-Panel-icon.png">
+                                            </telerik:RadMenuItem>
+                                            <telerik:RadMenuItem runat="server" Text="Logout" Value="AKLogout" ImageUrl="http://icons.iconarchive.com/icons/saki/nuoveXT-2/16/Apps-session-logout-icon.png">
+                                            </telerik:RadMenuItem>
+                                        </Items>
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenu>   
+                            
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+
+            </div>
+        </div>
+        <div id="MainDiv">
+            <telerik:RadSplitter ID="RadSplitter1" runat="server" Width="100%" Height="100%" EnableTheming="True"  ResizeWithParentPane="True" VisibleDuringInit="False">
+                <telerik:RadPane ID="LeftPane" runat="server" Width="22px" Scrolling="none" Visible="false">
+                <telerik:RadSlidingZone ID="SlidingZone1" runat="server" Width="22px" ClickToOpen="true">
+                    <telerik:RadSlidingPane ID="RadSlidingPane1" Title="Subscription #1" runat="server" Width="200px"
+                        MinWidth="130">
+
+                        <telerik:RadPanelBar ID="RadPanelBar1" Runat="server" Width="100%">
+                            <Items>
+                                <telerik:RadPanelItem runat="server" Text=" June, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                    <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                                <telerik:RadPanelItem runat="server" Text=" May, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                    <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                                <telerik:RadPanelItem runat="server" Text=" April, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                        <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                                <telerik:RadPanelItem runat="server" Text=" March, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                        <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                                    <telerik:RadPanelItem runat="server" Text=" February, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                        <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                                    <telerik:RadPanelItem runat="server" Text=" January, 2015" ImageUrl="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/24/Actions-view-calendar-icon.png">
+                                        <Items>
+                                        <telerik:RadPanelItem runat="server" Text="Customer Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Marketplace Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                        <telerik:RadPanelItem runat="server" Text="Competitors Report" ImageUrl="http://icons.iconarchive.com/icons/iconshock/real-vista-text/16/chart-icon.png">
+                                        </telerik:RadPanelItem>
+                                    </Items>
+                                </telerik:RadPanelItem>
+                            </Items>
+                        </telerik:RadPanelBar>
+                    
+
+                    </telerik:RadSlidingPane>
+                    <telerik:RadSlidingPane ID="Radslidingpane2" Title="Subscription #2" runat="server" Width="250px"
+                        MinWidth="130">
+                        Pane 2 Content
+                    </telerik:RadSlidingPane>
+                </telerik:RadSlidingZone>
+                </telerik:RadPane>
+        <telerik:RadSplitBar ID="Radsplitbar1" runat="server" Visible="false">
+        </telerik:RadSplitBar>
+        <telerik:RadPane ID="MainPane" runat="server" >
+            <asp:ContentPlaceHolder ID="MainContentPlaceholder" runat="server">
+            </asp:ContentPlaceHolder>
+        </telerik:RadPane>
+    </telerik:RadSplitter>
+            
+        </div>
+        
+    </form>
+    
+</body>
+</html>

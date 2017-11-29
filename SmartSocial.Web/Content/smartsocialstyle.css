@@ -1,0 +1,299 @@
+﻿html, body, form {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+canvas {
+    z-index: 6000 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/*#MainDiv {
+    width: 100%;
+    height: calc(100% - 76px);
+}*/
+
+#HeadingDiv {
+    background-color: grey;
+    text-align: left;
+    height: 76px;
+    color: #CCC;
+    padding: 10px;
+    background-image: url(../images/header1.png);
+    min-width: 560px;
+}
+
+.SmartChartDivContainer {
+    /*min-width: 475px;*/
+    margin-top: 15px;
+    top: 0px;
+    left: 0px;
+}
+
+ChartOutterDiv {
+    width: 100%;
+    height: 450px;
+    border: solid 1px black;
+}
+
+ChartHeaderDiv {
+    width: 100%;
+    height: 35px;
+    border-bottom: solid 1px black;
+}
+
+HeaderTextDiv {
+    float: left;
+    padding: 7px;
+    font-weight: bold;
+}
+
+HeaderMenuDiv {
+    float: right;
+    height: 35px;
+    width: 35px;
+    border-left: solid 1px black;
+}
+
+ChartInnerDiv {
+    width: 100%;
+    height: 415px;
+    padding: 10px;
+}
+
+.whiteSpace {
+    height: 30px;
+}
+
+.maximazed {
+    display: none;
+}
+
+.socialPostItem {
+    font: normal 11px arial;
+    color: black;
+}
+
+.socialPostUser {
+    float: left;
+    width: 50px;
+    height: auto;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+.socialPostNetwork {
+    width: 50px;
+    height: 18px;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 2px;
+    color: darkblue;
+}
+
+.socialViewBtn {
+    width: 100%;
+    height: 11px;
+    text-align: center;
+    color: darkblue;
+    background-color: #f0f0f0;
+    font: normal 11px arial;
+    position: relative;
+    display: none;
+    cursor: pointer;
+}
+
+.socialPostMessage {
+    width: auto;
+    margin-left: 5px;
+    margin-top: 10px;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: normal 12px arial;
+    color: #444444;
+    display: block;
+}
+
+.imagePanel {
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.socialPostDate {
+    float: right;
+    font: normal 11px arial;
+    color: green;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.socialPostUserName {
+    float: left;
+    font: bold 12px arial;
+    color: black;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.messageContainer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menuContainer {
+    float: right;
+    height: 35px;
+    width: 35px;
+    border-left: solid 1px black;
+}
+
+.mainPanel {
+    width: 100%;
+    height: 450px;
+    border: solid 1px black;
+    background-color: white;
+}
+
+.titleBar {
+    width: 100%;
+    height: 35px;
+    border-bottom: solid 1px black;
+}
+
+.chartPanel {
+    width: 100%;
+    height: 415px;
+    padding: 10px;
+}
+
+.chartNamePanel {
+    float: left;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.clipped {
+  overflow: hidden;
+  height:40px;
+  width:60%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#treeMap {
+    width: 100%;
+    height: 100%;
+}
+
+/* Social Log In */
+.social-buttons button {
+    width: 47%;
+    margin-bottom: 10px;
+}
+
+.rpRootGroup {
+    height: 100%!important;
+    overflow: auto!important;
+}
+
+.infoDiv{
+    width:100%
+}
+
+.rpLink,.rpText {
+    padding:0px!important;
+}
+
+.alingInMiddle{
+    display:block!important;
+    float:right!important
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+
+@media(max-width: 1248px) and (min-width: 768px){
+    .overflowSm {
+        overflow-y:visible!Important;
+        overflow-x:visible!Important;
+    }
+
+}
+
+.margin22{
+      margin-top: 12px;
+}
+
+.maximumindex{
+    z-index:9997!important
+}
+
+.panel-margin{
+    margin-top: 85px;
+}
+
+.overflowed{
+        overflow-y:visible!Important;
+        overflow-x:visible!Important;
+}
+
+.costumersContainer{
+      height: 427px;
+  overflow-x: auto;
+}
+
+.margin5{
+    margin:5px
+}

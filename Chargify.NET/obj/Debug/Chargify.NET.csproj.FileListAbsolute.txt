@@ -1,0 +1,10 @@
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\bin\Debug\ChargifyNET.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\bin\Debug\ChargifyNET.pdb
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Debug\Chargify.NET.csprojResolveAssemblyReference.cache
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Debug\ChargifyNET.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Debug\ChargifyNET.pdb
+D:\Projects\SmartSocial\backup\SmartSocialTeamProject\Chargify.NET\bin\Debug\ChargifyNET.dll
+D:\Projects\SmartSocial\backup\SmartSocialTeamProject\Chargify.NET\bin\Debug\ChargifyNET.pdb
+D:\Projects\SmartSocial\backup\SmartSocialTeamProject\Chargify.NET\obj\Debug\Chargify.NET.csprojResolveAssemblyReference.cache
+D:\Projects\SmartSocial\backup\SmartSocialTeamProject\Chargify.NET\obj\Debug\ChargifyNET.dll
+D:\Projects\SmartSocial\backup\SmartSocialTeamProject\Chargify.NET\obj\Debug\ChargifyNET.pdb

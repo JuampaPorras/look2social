@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="SmartSocial_QA" EntityNamespace="SmartSocial.Data" ContextNamespace="SmartSocial.Data" Class="SmartSocialdbDataContext" EntityBase="LinqEntityBase" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source='208.43.238.109, 780';Initial Catalog=espriella_SmartSocial;Persist Security Info=True;User ID=espri_admin;Password=SmartSocial00!" SettingsObjectName="Properties.Settings" SettingsPropertyName="EspriellaSmartSocialConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
+    <Type Name="AspNetRoles">
+      <Column Name="Id" Storage="_id" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Storage="_name" Type="System.String" DbType="nvarchar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="AspNetRoles_AspNetUserRoles" Member="RoleAspNetUserRolesList" Storage="_roleAspNetUserRolesList" OtherKey="RoleId" Type="AspNetUserRoles" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserClaims" Member="AspNetUserClaims">
+    <Type Name="AspNetUserClaims">
+      <Column Name="Id" Storage="_id" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Storage="_userId" Type="System.String" DbType="nvarchar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ClaimType" Storage="_claimType" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ClaimValue" Storage="_claimValue" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="AspNetUsers_AspNetUserClaims" Member="UserAspNetUsers" Storage="_userAspNetUsers" ThisKey="UserId" Type="AspNetUsers" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserLogins" Member="AspNetUserLogins">
+    <Type Name="AspNetUserLogins">
+      <Column Name="LoginProvider" Storage="_loginProvider" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderKey" Storage="_providerKey" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Storage="_userId" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetUsers_AspNetUserLogins" Member="UserAspNetUsers" Storage="_userAspNetUsers" ThisKey="UserId" Type="AspNetUsers" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserRoles" Member="AspNetUserRoles">
+    <Type Name="AspNetUserRoles">
+      <Column Name="UserId" Storage="_userId" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Storage="_roleId" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="AspNetRoles_AspNetUserRoles" Member="RoleAspNetRoles" Storage="_roleAspNetRoles" ThisKey="RoleId" Type="AspNetRoles" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="false" />
+      <Association Name="AspNetUsers_AspNetUserRoles" Member="UserAspNetUsers" Storage="_userAspNetUsers" ThisKey="UserId" Type="AspNetUsers" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUsers" Member="AspNetUsers">
+    <Type Name="AspNetUsers">
+      <Column Name="Id" Storage="_id" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Storage="_email" Type="System.String" DbType="nvarchar(256)" CanBeNull="true" />
+      <Column Name="EmailConfirmed" Storage="_emailConfirmed" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Storage="_passwordHash" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SecurityStamp" Storage="_securityStamp" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Storage="_phoneNumber" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="PhoneNumberConfirmed" Storage="_phoneNumberConfirmed" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="TwoFactorEnabled" Storage="_twoFactorEnabled" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="LockoutEndDateUtc" Storage="_lockoutEndDateUtc" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="LockoutEnabled" Storage="_lockoutEnabled" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="AccessFailedCount" Storage="_accessFailedCount" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Storage="_userName" Type="System.String" DbType="nvarchar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Storage="_firstName" Type="System.String" DbType="nvarchar(256)" CanBeNull="true" />
+      <Column Name="LastName" Storage="_lastName" Type="System.String" DbType="nvarchar(256)" CanBeNull="true" />
+      <Column Name="Company" Storage="_company" Type="System.String" DbType="nvarchar(256)" CanBeNull="true" />
+      <Column Name="IdCompany" Storage="_idCompany" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="IdLastReport" Storage="_idLastReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Association Name="AspNetUsers_AspNetUserClaims" Member="UserAspNetUserClaimsList" Storage="_userAspNetUserClaimsList" OtherKey="UserId" Type="AspNetUserClaims" DeleteOnNull="false" />
+      <Association Name="AspNetUsers_AspNetUserLogins" Member="UserAspNetUserLoginsList" Storage="_userAspNetUserLoginsList" OtherKey="UserId" Type="AspNetUserLogins" DeleteOnNull="false" />
+      <Association Name="AspNetUsers_AspNetUserRoles" Member="UserAspNetUserRolesList" Storage="_userAspNetUserRolesList" OtherKey="UserId" Type="AspNetUserRoles" DeleteOnNull="false" />
+      <Association Name="Company_AspNetUsers" Member="Company1" Storage="_company1" ThisKey="IdCompany" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChartComment" Member="ChartComment">
+    <Type Name="ChartComment">
+      <Column Name="IdComment" Storage="_idComment" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Storage="_idUser" Type="System.String" DbType="nvarchar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="IdSmartChart" Storage="_idSmartChart" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="DatePosted" Storage="_datePosted" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="Message" Storage="_message" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="SmartChart_ChartComment" Member="SmartChart" Storage="_smartChart" ThisKey="IdSmartChart" OtherKey="IdSmartChart" Type="SmartChart" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChartSeries" Member="ChartSeries">
+    <Type Name="ChartSeries">
+      <Column Name="idChartSeries" Member="IdChartSeries" Storage="_idChartSeries" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idSmartChart" Member="IdSmartChart" Storage="_idSmartChart" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SeriesName" Storage="_seriesName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="SmartChart_ChartSeries" Member="SmartChart" Storage="_smartChart" ThisKey="IdSmartChart" OtherKey="IdSmartChart" Type="SmartChart" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="ChartSeries_SeriesValue" Member="SeriesValueList" Storage="_seriesValueList" ThisKey="IdChartSeries" OtherKey="IdChartSeries" Type="SeriesValue" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChartType" Member="ChartType">
+    <Type Name="ChartType">
+      <Column Name="idChartType" Member="IdChartType" Storage="_idChartType" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChartTypeName" Storage="_chartTypeName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="StoredProcedureName" Storage="_storedProcedureName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Storage="_description" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="ChartType_SmartChart" Member="SmartChartList" Storage="_smartChartList" ThisKey="IdChartType" OtherKey="IdChartType" Type="SmartChart" DeleteOnNull="false" />
+      <Association Name="ChartType_DataProviderXChartType" Member="DataProviderXChartTypeList" Storage="_dataProviderXChartTypeList" ThisKey="IdChartType" OtherKey="IdChartType" Type="DataProviderXChartType" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Company">
+    <Type Name="Company">
+      <Column Name="IdCompany" Storage="_idCompany" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Storage="_companyName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="LogoFileName" Storage="_logoFileName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="Company_AspNetUsers" Member="AspNetUsersList" Storage="_aspNetUsersList" OtherKey="IdCompany" Type="AspNetUsers" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country" Member="Country">
+    <Type Name="Country">
+      <Column Name="IdCountry" Storage="_idCountry" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ISO2" Member="Iso2" Storage="_iso2" Type="System.String" DbType="char(2)" CanBeNull="true" />
+      <Column Name="CountryName" Storage="_countryName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="LongCountryName" Storage="_longCountryName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ISO3" Member="Iso3" Storage="_iso3" Type="System.String" DbType="char(3)" CanBeNull="true" />
+      <Column Name="NumCode" Storage="_numCode" Type="System.String" DbType="nvarchar(6)" CanBeNull="true" />
+      <Column Name="UNMemberState" Storage="_uNMemberState" Type="System.String" DbType="nvarchar(12)" CanBeNull="true" />
+      <Column Name="CallingCode" Storage="_callingCode" Type="System.String" DbType="nvarchar(8)" CanBeNull="true" />
+      <Column Name="CCTLD" Member="Cctld" Storage="_cctld" Type="System.String" DbType="nvarchar(5)" CanBeNull="true" />
+      <Column Name="FlagImageFilename" Storage="_flagImageFilename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataProvider" Member="DataProvider">
+    <Type Name="DataProvider">
+      <Column Name="idDataProvider" Member="IdDataProvider" Storage="_idDataProvider" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataProviderName" Storage="_dataProviderName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="DataProvider_DataProviderXChartType" Member="DataProviderXChartTypeList" Storage="_dataProviderXChartTypeList" ThisKey="IdDataProvider" OtherKey="IdDataProvider" Type="DataProviderXChartType" DeleteOnNull="false" />
+      <Association Name="DataProvider_SmartChart" Member="SmartChartList" Storage="_smartChartList" ThisKey="IdDataProvider" OtherKey="IdDataProvider" Type="SmartChart" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataProviderXChartType" Member="DataProviderXChartType">
+    <Type Name="DataProviderXChartType">
+      <Column Name="idDataProvider" Member="IdDataProvider" Storage="_idDataProvider" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idChartType" Member="IdChartType" Storage="_idChartType" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FileLoadFunctionName" Storage="_fileLoadFunctionName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="ChartType_DataProviderXChartType" Member="ChartType" Storage="_chartType" ThisKey="IdChartType" OtherKey="IdChartType" Type="ChartType" IsForeignKey="true" />
+      <Association Name="DataProvider_DataProviderXChartType" Member="DataProvider" Storage="_dataProvider" ThisKey="IdDataProvider" OtherKey="IdDataProvider" Type="DataProvider" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataType" Member="DataType">
+    <Type Name="DataType">
+      <Column Name="idDataType" Member="IdDataType" Storage="_idDataType" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataTypeName" Storage="_dataTypeName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="DataType_SeriesValue" Member="SeriesValueList" Storage="_seriesValueList" ThisKey="IdDataType" OtherKey="IdDataType" Type="SeriesValue" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Leads" Member="Leads">
+    <Type Name="Leads">
+      <Column Name="idLead" Member="IdLead" Storage="_idLead" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Storage="_firstName" Type="System.String" DbType="varchar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Storage="_lastName" Type="System.String" DbType="varchar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Storage="_email" Type="System.String" DbType="varchar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Storage="_phoneNumber" Type="System.String" DbType="varchar(15)" CanBeNull="true" />
+      <Column Name="CompanyName" Storage="_companyName" Type="System.String" DbType="varchar(50)" CanBeNull="true" />
+      <Column Name="ServicesDescription" Storage="_servicesDescription" Type="System.String" DbType="varchar(300)" CanBeNull="true" />
+      <Column Name="Keywords" Storage="_keywords" Type="System.String" DbType="varchar(250)" CanBeNull="true" />
+      <Column Name="MainCompetitors" Storage="_mainCompetitors" Type="System.String" DbType="varchar(300)" CanBeNull="true" />
+      <Column Name="Nickname" Storage="_nickname" Type="System.String" DbType="varchar(50)" CanBeNull="true" />
+      <Column Name="MarketPlaceName" Storage="_marketPlaceName" Type="System.String" DbType="varchar(100)" CanBeNull="true" />
+      <Column Name="DesireReportName" Storage="_desireReportName" Type="System.String" DbType="varchar(100)" CanBeNull="true" />
+      <Column Name="CompanyWebSite" Storage="_companyWebSite" Type="System.String" DbType="varchar(1000)" CanBeNull="true" />
+      <Column Name="Notes" Storage="_notes" Type="System.String" DbType="varchar(500)" CanBeNull="true" />
+      <Column Name="IntakeToken" Storage="_intakeToken" Type="System.String" DbType="varchar(100)" CanBeNull="true" />
+      <Column Name="IntakeUrl" Storage="_intakeUrl" Type="System.String" DbType="varchar(200)" CanBeNull="true" />
+      <Column Name="DateCreated" Storage="_dateCreated" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="DateUpdated" Storage="_dateUpdated" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="IntakeEmailSentDate" Storage="_intakeEmailSentDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="IsActive" Storage="_isActive" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsIntakeAnswered" Storage="_isIntakeAnswered" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SeriesValue" Member="SeriesValue">
+    <Type Name="SeriesValue">
+      <Column Name="idSeriesValue" Member="IdSeriesValue" Storage="_idSeriesValue" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idChartSeries" Member="IdChartSeries" Storage="_idChartSeries" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="idDataType" Member="IdDataType" Storage="_idDataType" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="Value" Storage="_value" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="RowPosition" Storage="_rowPosition" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Association Name="ChartSeries_SeriesValue" Member="ChartSeries" Storage="_chartSeries" ThisKey="IdChartSeries" OtherKey="IdChartSeries" Type="ChartSeries" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="DataType_SeriesValue" Member="DataType" Storage="_dataType" ThisKey="IdDataType" OtherKey="IdDataType" Type="DataType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceDelivery" Member="ServiceDelivery">
+    <Type Name="ServiceDelivery">
+      <Column Name="idServiceDelivery" Member="IdServiceDelivery" Storage="_idServiceDelivery" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateDelivered" Storage="_dateDelivered" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="IdServiceSubscription" Storage="_idServiceSubscription" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="DeliveryDateTo" Storage="_deliveryDateTo" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Association Name="ServiceDelivery_SmartReport" Member="SmartReportList" Storage="_smartReportList" ThisKey="IdServiceDelivery" OtherKey="IdServiceDelivery" Type="SmartReport" DeleteOnNull="false" />
+      <Association Name="ServiceSubscription_ServiceDelivery" Member="ServiceSubscription" Storage="_serviceSubscription" ThisKey="IdServiceSubscription" OtherKey="IdServiceSubscription" Type="ServiceSubscription" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ServiceSubscription" Member="ServiceSubscription">
+    <Type Name="ServiceSubscription">
+      <Column Name="idServiceSubscription" Member="IdServiceSubscription" Storage="_idServiceSubscription" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SubscriptionName" Storage="_subscriptionName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Storage="_startDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="EndDate" Storage="_endDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="IsActive" Storage="_isActive" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Association Name="ServiceSubscription_ServiceDelivery" Member="ServiceDeliveryList" Storage="_serviceDeliveryList" ThisKey="IdServiceSubscription" OtherKey="IdServiceSubscription" Type="ServiceDelivery" DeleteOnNull="false" />
+      <Association Name="ServiceSubscription_UsersXSubscription" Member="IdSubscriptionUsersXSubscriptionList" Storage="_idSubscriptionUsersXSubscriptionList" ThisKey="IdServiceSubscription" OtherKey="IdSubscription" Type="UsersXSubscription" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SharedReports" Member="SharedReports">
+    <Type Name="SharedReports">
+      <Column Name="IdSharedReports" Storage="_idSharedReports" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CreatedBy" Storage="_createdBy" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="SmartReportId" Storage="_smartReportId" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="SharedWith" Storage="_sharedWith" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="URL" Member="Url" Storage="_url" Type="System.String" DbType="varchar(200)" CanBeNull="true" />
+      <Column Name="TinyUrl" Storage="_tinyUrl" Type="System.String" DbType="varchar(100)" CanBeNull="true" />
+      <Column Name="Comments" Storage="_comments" Type="System.String" DbType="varchar(250)" CanBeNull="true" />
+      <Column Name="Token" Storage="_token" Type="System.String" DbType="varchar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Storage="_createdDate" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="ExpiredDate" Storage="_expiredDate" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Storage="_isActive" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Association Name="SmartReport_SharedReports" Member="SmartReport" Storage="_smartReport" ThisKey="SmartReportId" OtherKey="IdSmartReport" Type="SmartReport" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmartChart" Member="SmartChart">
+    <Type Name="SmartChart">
+      <Column Name="idSmartChart" Member="IdSmartChart" Storage="_idSmartChart" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="ChartName" Storage="_chartName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="FileName" Storage="_fileName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="IdChartType" Storage="_idChartType" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="AxisSeriesTitle" Storage="_axisSeriesTitle" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="AxisValuesTitle" Storage="_axisValuesTitle" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ChartOrder" Storage="_chartOrder" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SocialPostFilter" Storage="_socialPostFilter" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="CssClasses" Storage="_cssClasses" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="IdDataProvider" Storage="_idDataProvider" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="HtmlStyles" Storage="_htmlStyles" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Association Name="SmartChart_ChartComment" Member="ChartCommentList" Storage="_chartCommentList" ThisKey="IdSmartChart" OtherKey="IdSmartChart" Type="ChartComment" DeleteOnNull="false" />
+      <Association Name="SmartChart_ChartSeries" Member="ChartSeriesList" Storage="_chartSeriesList" ThisKey="IdSmartChart" OtherKey="IdSmartChart" Type="ChartSeries" DeleteOnNull="false" />
+      <Association Name="ChartType_SmartChart" Member="ChartType" Storage="_chartType" ThisKey="IdChartType" OtherKey="IdChartType" Type="ChartType" IsForeignKey="true" />
+      <Association Name="SmartReport_SmartChart" Member="SmartReport" Storage="_smartReport" ThisKey="IdSmartReport" OtherKey="IdSmartReport" Type="SmartReport" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="DataProvider_SmartChart" Member="DataProvider" Storage="_dataProvider" ThisKey="IdDataProvider" OtherKey="IdDataProvider" Type="DataProvider" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmartReport" Member="SmartReport">
+    <Type Name="SmartReport">
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idServiceDelivery" Member="IdServiceDelivery" Storage="_idServiceDelivery" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="ReportName" Storage="_reportName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Storage="_dateCreated" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="isTemplate" Member="IsTemplate" Storage="_isTemplate" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Association Name="SmartReport_SmartChart" Member="SmartChartList" Storage="_smartChartList" ThisKey="IdSmartReport" OtherKey="IdSmartReport" Type="SmartChart" DeleteOnNull="false" />
+      <Association Name="SmartReport_SocialPost" Member="SocialPostList" Storage="_socialPostList" ThisKey="IdSmartReport" OtherKey="IdSmartReport" Type="SocialPost" DeleteOnNull="false" />
+      <Association Name="ServiceDelivery_SmartReport" Member="ServiceDelivery" Storage="_serviceDelivery" ThisKey="IdServiceDelivery" OtherKey="IdServiceDelivery" Type="ServiceDelivery" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="SmartReport_SharedReports" Member="SharedReportsList" Storage="_sharedReportsList" ThisKey="IdSmartReport" OtherKey="SmartReportId" Type="SharedReports" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocialPost" Member="SocialPost">
+    <Type Name="SocialPost">
+      <Column Name="idSocialPost" Member="IdSocialPost" Storage="_idSocialPost" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SocialNetwork" Storage="_socialNetwork" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderScreenName" Storage="_senderScreenName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderProfileImgUrl" Storage="_senderProfileImgUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderFollowersCount" Storage="_senderFollowersCount" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="Message" Storage="_message" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="MessageCreatedDate" Storage="_messageCreatedDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="Permalink" Storage="_permalink" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Storage="_country" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Product" Storage="_product" Type="System.String" DbType="nvarchar(100)" CanBeNull="true" />
+      <Association Name="SmartReport_SocialPost" Member="SmartReport" Storage="_smartReport" ThisKey="IdSmartReport" OtherKey="IdSmartReport" Type="SmartReport" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocialPostTMP" Member="SocialPostTMP">
+    <Type Name="SocialPostTMP">
+      <Column Name="idSocialPost" Member="IdSocialPost" Storage="_idSocialPost" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SocialNetwork" Storage="_socialNetwork" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderScreenName" Storage="_senderScreenName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderProfileImgUrl" Storage="_senderProfileImgUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderFollowersCount" Storage="_senderFollowersCount" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Message" Storage="_message" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="MessageCreatedDate" Storage="_messageCreatedDate" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Permalink" Storage="_permalink" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Storage="_country" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Completed" Storage="_completed" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Column Name="Product" Storage="_product" Type="System.String" DbType="varchar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProfile" Member="UserProfile">
+    <Type Name="UserProfile">
+      <Column Name="UserId" Storage="_userId" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Storage="_userName" Type="System.String" DbType="nvarchar(56) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyId" Storage="_companyId" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="LasrReportId" Storage="_lasrReportId" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Association Name="UserProfile_WebpagesUsersInRoles" Member="WebpagesUsersInRolesList" Storage="_webpagesUsersInRolesList" OtherKey="UserId" Type="WebpagesUsersInRoles" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsersXSubscription" Member="UsersXSubscription">
+    <Type Name="UsersXSubscription">
+      <Column Name="idSubscription" Member="IdSubscription" Storage="_idSubscription" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="idUser" Member="IdUser" Storage="_idUser" Type="System.String" DbType="nvarchar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateCreated" Storage="_dateCreated" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Association Name="ServiceSubscription_UsersXSubscription" Member="IdSubscriptionServiceSubscription" Storage="_idSubscriptionServiceSubscription" ThisKey="IdSubscription" OtherKey="IdServiceSubscription" Type="ServiceSubscription" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.webpages_Membership" Member="WebpagesMembership">
+    <Type Name="WebpagesMembership">
+      <Column Name="UserId" Storage="_userId" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreateDate" Storage="_createDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="ConfirmationToken" Storage="_confirmationToken" Type="System.String" DbType="nvarchar(128)" CanBeNull="true" />
+      <Column Name="IsConfirmed" Storage="_isConfirmed" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Column Name="LastPasswordFailureDate" Storage="_lastPasswordFailureDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="PasswordFailuresSinceLastSuccess" Storage="_passwordFailuresSinceLastSuccess" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Storage="_password" Type="System.String" DbType="nvarchar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordChangedDate" Storage="_passwordChangedDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="PasswordSalt" Storage="_passwordSalt" Type="System.String" DbType="nvarchar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordVerificationToken" Storage="_passwordVerificationToken" Type="System.String" DbType="nvarchar(128)" CanBeNull="true" />
+      <Column Name="PasswordVerificationTokenExpirationDate" Storage="_passwordVerificationTokenExpirationDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.webpages_OAuthMembership" Member="WebpagesOAuthMembership">
+    <Type Name="WebpagesOAuthMembership">
+      <Column Name="Provider" Storage="_provider" Type="System.String" DbType="nvarchar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderUserId" Storage="_providerUserId" Type="System.String" DbType="nvarchar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Storage="_userId" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.webpages_Roles" Member="WebpagesRoles">
+    <Type Name="WebpagesRoles">
+      <Column Name="RoleId" Storage="_roleId" Type="System.Int32" DbType="int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Storage="_roleName" Type="System.String" DbType="nvarchar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="WebpagesRoles_WebpagesUsersInRoles" Member="WebpagesUsersInRolesList" Storage="_webpagesUsersInRolesList" OtherKey="RoleId" Type="WebpagesUsersInRoles" DeleteOnNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.webpages_UsersInRoles" Member="WebpagesUsersInRoles">
+    <Type Name="WebpagesUsersInRoles">
+      <Column Name="UserId" Storage="_userId" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Storage="_roleId" Type="System.Int32" DbType="int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="WebpagesRoles_WebpagesUsersInRoles" Member="WebpagesRoles" Storage="_webpagesRoles" ThisKey="RoleId" Type="WebpagesRoles" IsForeignKey="true" DeleteOnNull="false" />
+      <Association Name="UserProfile_WebpagesUsersInRoles" Member="UserProfile" Storage="_userProfile" ThisKey="UserId" Type="UserProfile" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.CreateChartFromTemplate" Method="CreateChartFromTemplate">
+    <Parameter Name="@IdReport" Parameter="idReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@NEWIdReport" Parameter="nEWIdReport" Type="System.Int32" DbType="int" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.CreateReportFromTemplate" Method="CreateReportFromTemplate">
+    <Parameter Name="@IdReport" Parameter="idReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@idServiceDelivery" Parameter="idServiceDelivery" Type="System.Int32" DbType="int" />
+    <Parameter Name="@IdReportOut" Parameter="idReportOut" Type="System.Int32" DbType="int" Direction="InOut" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.GetChardIdInfo" Method="GetChardIdInfo">
+    <Parameter Name="@IdReport" Parameter="idReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@IdFileName" Parameter="idFileName" Type="System.String" DbType="varchar(200)" />
+    <Parameter Name="@IdChartOut" Parameter="idChartOut" Type="System.Int32" DbType="int" Direction="InOut" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.GetChartInfo" Method="GetChartInfo">
+    <Parameter Name="@filename" Parameter="filename" Type="System.String" DbType="varchar(MAX)" />
+    <Parameter Name="@colamount" Parameter="colamount" Type="System.Int32" DbType="int" />
+    <ElementType Name="GetChartInfoResult1">
+      <Column Name="CHARTNAME" Member="Chartname" Storage="_chartname" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="filename" Member="Filename" Storage="_filename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL1" Member="Col1" Storage="_col1" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL2" Member="Col2" Storage="_col2" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL3" Member="Col3" Storage="_col3" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+    <ElementType Name="GetChartInfoResult2">
+      <Column Name="CHARTNAME" Member="Chartname" Storage="_chartname" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="filename" Member="Filename" Storage="_filename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL1" Member="Col1" Storage="_col1" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL2" Member="Col2" Storage="_col2" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+    <ElementType Name="GetChartInfoResult3">
+      <Column Name="CHARTNAME" Member="Chartname" Storage="_chartname" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="filename" Member="Filename" Storage="_filename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL1" Member="Col1" Storage="_col1" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL2" Member="Col2" Storage="_col2" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+    <ElementType Name="GetChartInfoResult4">
+      <Column Name="CHARTNAME" Member="Chartname" Storage="_chartname" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="filename" Member="Filename" Storage="_filename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL1" Member="Col1" Storage="_col1" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL2" Member="Col2" Storage="_col2" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL3" Member="Col3" Storage="_col3" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+    <ElementType Name="GetChartInfoResult5">
+      <Column Name="CHARTNAME" Member="Chartname" Storage="_chartname" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="filename" Member="Filename" Storage="_filename" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL1" Member="Col1" Storage="_col1" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="COL2" Member="Col2" Storage="_col2" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_AudienceStream" Method="SpGetChartDataAudienceStream">
+    <Parameter Name="@Param1IdSmartChart" Parameter="param1IdSmartChart" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataAudienceStreamResult">
+      <Column Name="SocialNetwork" Storage="_socialNetwork" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="UserName" Storage="_userName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="FullName" Storage="_fullName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Bio" Storage="_bio" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ProfileUrl" Storage="_profileUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Statuses" Storage="_statuses" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Reach" Storage="_reach" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Followers" Storage="_followers" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Following" Storage="_following" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ProfileImageUrl" Storage="_profileImageUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_ParentTopicXTopicXWeight" Method="SpGetChartDataParentTopicXTopicXWeight">
+    <Parameter Name="@Param1IdSmartChart" Parameter="param1IdSmartChart" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataParentTopicXTopicXWeightResult">
+      <Column Name="ParentTopic" Storage="_parentTopic" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theParentWeight" Member="TheParentWeight" Storage="_theParentWeight" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theTopic" Member="TheTopic" Storage="_theTopic" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theWeight" Member="TheWeight" Storage="_theWeight" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_SocialPostXID" Method="SpGetChartDataSocialPostXID">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataSocialPostXIDResult">
+      <Column Name="idSocialPost" Member="IdSocialPost" Storage="_idSocialPost" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SocialNetwork" Storage="_socialNetwork" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderScreenName" Storage="_senderScreenName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderProfileImgUrl" Storage="_senderProfileImgUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderFollowersCount" Storage="_senderFollowersCount" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="Message" Storage="_message" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="MessageCreatedDate" Storage="_messageCreatedDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="Permalink" Storage="_permalink" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Storage="_country" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Product" Storage="_product" Type="System.String" DbType="nvarchar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_SocialPostXIdXCol" Method="SpGetChartDataSocialPostXIdXCol">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param2ColName" Parameter="param2ColName" Type="System.String" DbType="varchar(50)" />
+    <Parameter Name="@Param3ColValue" Parameter="param3ColValue" Type="System.String" DbType="varchar(200)" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.spGetChartData_SocialPostXIdXTopNXFilter" Method="SpGetChartDataSocialPostXIdXTopNXFilter">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param2TopN" Parameter="param2TopN" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param3Filter" Parameter="param3Filter" Type="System.String" DbType="nvarchar(200)" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" Method="SpGetChartDataSocialPostXIdXTopNXFilterXSkipRows">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param2TopN" Parameter="param2TopN" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param3Filter" Parameter="param3Filter" Type="System.String" DbType="nvarchar(200)" />
+    <Parameter Name="@Param4SkipRows" Parameter="param4SkipRows" Type="System.Int32" DbType="int" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.spGetChartData_TermXCount" Method="SpGetChartDataTermXCount">
+    <Parameter Name="@Param1IdSmartChart" Parameter="param1IdSmartChart" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataTermXCountResult">
+      <Column Name="Term" Storage="_term" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theCount" Member="TheCount" Storage="_theCount" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_TermXGroupedTermXCount" Method="SpGetChartDataTermXGroupedTermXCount">
+    <Parameter Name="@Param1IdSmartChart" Parameter="param1IdSmartChart" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataTermXGroupedTermXCountResult">
+      <Column Name="Term" Storage="_term" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theGroup" Member="TheGroup" Storage="_theGroup" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theCount" Member="TheCount" Storage="_theCount" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartData_TermXTimeXCount" Method="SpGetChartDataTermXTimeXCount">
+    <Parameter Name="@Param1IdSmartChart" Parameter="param1IdSmartChart" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartDataTermXTimeXCountResult">
+      <Column Name="Term" Storage="_term" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theTime" Member="TheTime" Storage="_theTime" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="theCount" Member="TheCount" Storage="_theCount" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartsByReportXID" Method="SpGetChartsByReportXID">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetChartsByReportXIDResult">
+      <Column Name="IdSmartchart" Storage="_idSmartchart" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="ChartName" Storage="_chartName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ChartOrder" Storage="_chartOrder" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="AxisSeriesTitle" Storage="_axisSeriesTitle" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="AxisValuesTitle" Storage="_axisValuesTitle" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="CssClasses" Storage="_cssClasses" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="HtmlStyles" Storage="_htmlStyles" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="ChartTypeName" Storage="_chartTypeName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetChartsByReportXIdXCol" Method="SpGetChartsByReportXIdXCol">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param2ColName" Parameter="param2ColName" Type="System.String" DbType="varchar(50)" />
+    <Parameter Name="@Param3ColValue" Parameter="param3ColValue" Type="System.String" DbType="varchar(200)" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.spGetDeliveryReports" Method="SpGetDeliveryReports">
+    <Parameter Name="@ParamDeliveryId" Parameter="paramDeliveryId" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetDeliveryReportsResult">
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="idServiceDelivery" Member="IdServiceDelivery" Storage="_idServiceDelivery" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="ReportName" Storage="_reportName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Storage="_dateCreated" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="isTemplate" Member="IsTemplate" Storage="_isTemplate" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetReportDataXID" Method="SpGetReportDataXID">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetReportDataXIDResult">
+      <Column Name="ReportId" Storage="_reportId" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="ReportName" Storage="_reportName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Storage="_dateCreated" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="SubscriptionName" Storage="_subscriptionName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="IdServiceSubscription" Storage="_idServiceSubscription" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetReportDataXIdXCol" Method="SpGetReportDataXIdXCol">
+    <Parameter Name="@Param1IdSmartReport" Parameter="param1IdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@Param2ColName" Parameter="param2ColName" Type="System.String" DbType="varchar(50)" />
+    <Parameter Name="@Param3ColValue" Parameter="param3ColValue" Type="System.String" DbType="varchar(200)" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+  <Function Name="dbo.spGetSocialPosts" Method="SpGetSocialPosts">
+    <Parameter Name="@ParamIdSmartReport" Parameter="paramIdSmartReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@ParamMessage" Parameter="paramMessage" Type="System.String" DbType="nvarchar(MAX)" />
+    <Parameter Name="@ParamMessageCreatedDate" Parameter="paramMessageCreatedDate" Type="System.DateTime" DbType="datetime" />
+    <Parameter Name="@ParamSocialNetwork" Parameter="paramSocialNetwork" Type="System.String" DbType="nvarchar(MAX)" />
+    <Parameter Name="@ParamTopRows" Parameter="paramTopRows" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetSocialPostsResult">
+      <Column Name="idSocialPost" Member="IdSocialPost" Storage="_idSocialPost" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="idSmartReport" Member="IdSmartReport" Storage="_idSmartReport" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="SocialNetwork" Storage="_socialNetwork" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderScreenName" Storage="_senderScreenName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="SenderProfileImgUrl" Storage="_senderProfileImgUrl" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Message" Storage="_message" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="MessageCreatedDate" Storage="_messageCreatedDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="Permalink" Storage="_permalink" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="Country" Storage="_country" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetSubscriptionDeliveries" Method="SpGetSubscriptionDeliveries">
+    <Parameter Name="@ParamSubscriptionId" Parameter="paramSubscriptionId" Type="System.Int32" DbType="int" />
+    <ElementType Name="SpGetSubscriptionDeliveriesResult">
+      <Column Name="idServiceDelivery" Member="IdServiceDelivery" Storage="_idServiceDelivery" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="DateDelivered" Storage="_dateDelivered" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="DeliveryDateTo" Storage="_deliveryDateTo" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="IdServiceSubscription" Storage="_idServiceSubscription" Type="System.Int32" DbType="int" CanBeNull="true" />
+      <Column Name="Insights" Storage="_insights" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetUserSubscriptions" Method="SpGetUserSubscriptions">
+    <Parameter Name="@ParamUserId" Parameter="paramUserId" Type="System.String" DbType="nvarchar(128)" />
+    <ElementType Name="SpGetUserSubscriptionsResult">
+      <Column Name="idServiceSubscription" Member="IdServiceSubscription" Storage="_idServiceSubscription" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+      <Column Name="SubscriptionName" Storage="_subscriptionName" Type="System.String" DbType="nvarchar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Storage="_startDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="EndDate" Storage="_endDate" Type="System.DateTime" DbType="datetime" CanBeNull="true" />
+      <Column Name="IsActive" Storage="_isActive" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateSocialPostFormattedCols" Method="UpdateSocialPostFormattedCols">
+    <Parameter Name="@IdReport" Parameter="idReport" Type="System.Int32" DbType="int" />
+    <Parameter Name="@ProductName" Parameter="productName" Type="System.String" DbType="varchar(100)" />
+    <Return Type="System.Int32" DbType="int" />
+  </Function>
+</Database>

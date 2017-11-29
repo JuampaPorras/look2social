@@ -1,0 +1,9 @@
+2016-01-14 09:37:45.7134 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 09:39:23.3660 SmartSocial.web.V2.Controllers.HomeController ---- Exception Creating PDF: Could not find a part of the path 'D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Web.V2\Reports\Pdf\3\Marketplace Report3.pdf\3'. ----
+2016-01-14 09:42:57.0882 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 09:45:14.3320 SmartSocial.web.V2.Controllers.HomeController ---- Exception Creating PDF: Could not find a part of the path 'D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Web.V2\Reports\Pdf\3\Marketplace Report3.pdf\3'. ----
+2016-01-14 09:47:02.1852 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 09:52:47.9600 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 10:00:52.3597 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 10:02:30.5483 SmartSocial.web.V2.Controllers.HomeController Started
+2016-01-14 10:04:52.4044 SmartSocial.web.V2.Controllers.HomeController Started

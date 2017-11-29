@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartSocial.Data</RootNamespace>
+    <AssemblyName>SmartSocial.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeSmith.Data">
+      <HintPath>..\Templates\LinqToSql\Common\v4.5\CodeSmith.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSmith.Data.LinqToSql">
+      <HintPath>..\Templates\LinqToSql\Common\v4.5\CodeSmith.Data.LinqToSql.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AspNetRoles.cs" />
+    <Compile Include="Entities\AspNetRoles.Generated.cs">
+      <DependentUpon>AspNetRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUserClaims.cs" />
+    <Compile Include="Entities\AspNetUserClaims.Generated.cs">
+      <DependentUpon>AspNetUserClaims.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUserLogins.cs" />
+    <Compile Include="Entities\AspNetUserLogins.Generated.cs">
+      <DependentUpon>AspNetUserLogins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUserRoles.cs" />
+    <Compile Include="Entities\AspNetUserRoles.Generated.cs">
+      <DependentUpon>AspNetUserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUsers.cs" />
+    <Compile Include="Entities\AspNetUsers.Generated.cs">
+      <DependentUpon>AspNetUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ChartComment.cs" />
+    <Compile Include="Entities\ChartComment.Generated.cs">
+      <DependentUpon>ChartComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ChartSeries.cs" />
+    <Compile Include="Entities\ChartSeries.Generated.cs">
+      <DependentUpon>ChartSeries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ChartType.cs" />
+    <Compile Include="Entities\ChartType.Generated.cs">
+      <DependentUpon>ChartType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\Company.Generated.cs">
+      <DependentUpon>Company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\Country.Generated.cs">
+      <DependentUpon>Country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DataProvider.cs" />
+    <Compile Include="Entities\DataProvider.Generated.cs">
+      <DependentUpon>DataProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DataProviderXChartType.cs" />
+    <Compile Include="Entities\DataProviderXChartType.Generated.cs">
+      <DependentUpon>DataProviderXChartType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DataType.cs" />
+    <Compile Include="Entities\DataType.Generated.cs">
+      <DependentUpon>DataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Leads.cs" />
+    <Compile Include="Entities\Leads.Generated.cs">
+      <DependentUpon>Leads.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SeriesValue.cs" />
+    <Compile Include="Entities\SeriesValue.Generated.cs">
+      <DependentUpon>SeriesValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ServiceDelivery.cs" />
+    <Compile Include="Entities\ServiceDelivery.Generated.cs">
+      <DependentUpon>ServiceDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ServiceSubscription.cs" />
+    <Compile Include="Entities\ServiceSubscription.Generated.cs">
+      <DependentUpon>ServiceSubscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SharedReports.cs" />
+    <Compile Include="Entities\SharedReports.Generated.cs">
+      <DependentUpon>SharedReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SmartChart.cs" />
+    <Compile Include="Entities\SmartChart.Generated.cs">
+      <DependentUpon>SmartChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SmartReport.cs" />
+    <Compile Include="Entities\SmartReport.Generated.cs">
+      <DependentUpon>SmartReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SocialPost.cs" />
+    <Compile Include="Entities\SocialPost.Generated.cs">
+      <DependentUpon>SocialPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SocialPostTMP.cs" />
+    <Compile Include="Entities\SocialPostTMP.Generated.cs">
+      <DependentUpon>SocialPostTMP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserProfile.cs" />
+    <Compile Include="Entities\UserProfile.Generated.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UsersXSubscription.cs" />
+    <Compile Include="Entities\UsersXSubscription.Generated.cs">
+      <DependentUpon>UsersXSubscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebpagesMembership.cs" />
+    <Compile Include="Entities\WebpagesMembership.Generated.cs">
+      <DependentUpon>WebpagesMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebpagesOAuthMembership.cs" />
+    <Compile Include="Entities\WebpagesOAuthMembership.Generated.cs">
+      <DependentUpon>WebpagesOAuthMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebpagesRoles.cs" />
+    <Compile Include="Entities\WebpagesRoles.Generated.cs">
+      <DependentUpon>WebpagesRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WebpagesUsersInRoles.cs" />
+    <Compile Include="Entities\WebpagesUsersInRoles.Generated.cs">
+      <DependentUpon>WebpagesUsersInRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinqEntityBase.cs" />
+    <Compile Include="LinqEntityBase.Generated.cs">
+      <DependentUpon>LinqEntityBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult.cs" />
+    <Compile Include="Models\GetChartInfoResult.Generated.cs">
+      <DependentUpon>GetChartInfoResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult1.cs" />
+    <Compile Include="Models\GetChartInfoResult1.Generated.cs">
+      <DependentUpon>GetChartInfoResult1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult2.cs" />
+    <Compile Include="Models\GetChartInfoResult2.Generated.cs">
+      <DependentUpon>GetChartInfoResult2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult3.cs" />
+    <Compile Include="Models\GetChartInfoResult3.Generated.cs">
+      <DependentUpon>GetChartInfoResult3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult4.cs" />
+    <Compile Include="Models\GetChartInfoResult4.Generated.cs">
+      <DependentUpon>GetChartInfoResult4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetChartInfoResult5.cs" />
+    <Compile Include="Models\GetChartInfoResult5.Generated.cs">
+      <DependentUpon>GetChartInfoResult5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataAudienceStreamResult.cs" />
+    <Compile Include="Models\SpGetChartDataAudienceStreamResult.Generated.cs">
+      <DependentUpon>SpGetChartDataAudienceStreamResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataParentTopicXTopicXWeightResult.cs" />
+    <Compile Include="Models\SpGetChartDataParentTopicXTopicXWeightResult.Generated.cs">
+      <DependentUpon>SpGetChartDataParentTopicXTopicXWeightResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataSocialPostXIDResult.cs" />
+    <Compile Include="Models\SpGetChartDataSocialPostXIDResult.Generated.cs">
+      <DependentUpon>SpGetChartDataSocialPostXIDResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataTermXCountResult.cs" />
+    <Compile Include="Models\SpGetChartDataTermXCountResult.Generated.cs">
+      <DependentUpon>SpGetChartDataTermXCountResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataTermXGroupedTermXCountResult.cs" />
+    <Compile Include="Models\SpGetChartDataTermXGroupedTermXCountResult.Generated.cs">
+      <DependentUpon>SpGetChartDataTermXGroupedTermXCountResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartDataTermXTimeXCountResult.cs" />
+    <Compile Include="Models\SpGetChartDataTermXTimeXCountResult.Generated.cs">
+      <DependentUpon>SpGetChartDataTermXTimeXCountResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetChartsByReportXIDResult.cs" />
+    <Compile Include="Models\SpGetChartsByReportXIDResult.Generated.cs">
+      <DependentUpon>SpGetChartsByReportXIDResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetDeliveryReportsResult.cs" />
+    <Compile Include="Models\SpGetDeliveryReportsResult.Generated.cs">
+      <DependentUpon>SpGetDeliveryReportsResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetReportDataXIDResult.cs" />
+    <Compile Include="Models\SpGetReportDataXIDResult.Generated.cs">
+      <DependentUpon>SpGetReportDataXIDResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetSocialPostsResult.cs" />
+    <Compile Include="Models\SpGetSocialPostsResult.Generated.cs">
+      <DependentUpon>SpGetSocialPostsResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetSubscriptionDeliveriesResult.cs" />
+    <Compile Include="Models\SpGetSubscriptionDeliveriesResult.Generated.cs">
+      <DependentUpon>SpGetSubscriptionDeliveriesResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpGetUserSubscriptionsResult.cs" />
+    <Compile Include="Models\SpGetUserSubscriptionsResult.Generated.cs">
+      <DependentUpon>SpGetUserSubscriptionsResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AspNetRolesExtensions.cs" />
+    <Compile Include="Queries\AspNetRolesExtensions.Generated.cs">
+      <DependentUpon>AspNetRolesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AspNetUserClaimsExtensions.cs" />
+    <Compile Include="Queries\AspNetUserClaimsExtensions.Generated.cs">
+      <DependentUpon>AspNetUserClaimsExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AspNetUserLoginsExtensions.cs" />
+    <Compile Include="Queries\AspNetUserLoginsExtensions.Generated.cs">
+      <DependentUpon>AspNetUserLoginsExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AspNetUserRolesExtensions.cs" />
+    <Compile Include="Queries\AspNetUserRolesExtensions.Generated.cs">
+      <DependentUpon>AspNetUserRolesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\AspNetUsersExtensions.cs" />
+    <Compile Include="Queries\AspNetUsersExtensions.Generated.cs">
+      <DependentUpon>AspNetUsersExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ChartCommentExtensions.cs" />
+    <Compile Include="Queries\ChartCommentExtensions.Generated.cs">
+      <DependentUpon>ChartCommentExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ChartSeriesExtensions.cs" />
+    <Compile Include="Queries\ChartSeriesExtensions.Generated.cs">
+      <DependentUpon>ChartSeriesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ChartTypeExtensions.cs" />
+    <Compile Include="Queries\ChartTypeExtensions.Generated.cs">
+      <DependentUpon>ChartTypeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CompanyExtensions.cs" />
+    <Compile Include="Queries\CompanyExtensions.Generated.cs">
+      <DependentUpon>CompanyExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CountryExtensions.cs" />
+    <Compile Include="Queries\CountryExtensions.Generated.cs">
+      <DependentUpon>CountryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DataProviderExtensions.cs" />
+    <Compile Include="Queries\DataProviderExtensions.Generated.cs">
+      <DependentUpon>DataProviderExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DataProviderXChartTypeExtensions.cs" />
+    <Compile Include="Queries\DataProviderXChartTypeExtensions.Generated.cs">
+      <DependentUpon>DataProviderXChartTypeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\DataTypeExtensions.cs" />
+    <Compile Include="Queries\DataTypeExtensions.Generated.cs">
+      <DependentUpon>DataTypeExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\LeadsExtensions.cs" />
+    <Compile Include="Queries\LeadsExtensions.Generated.cs">
+      <DependentUpon>LeadsExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SeriesValueExtensions.cs" />
+    <Compile Include="Queries\SeriesValueExtensions.Generated.cs">
+      <DependentUpon>SeriesValueExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ServiceDeliveryExtensions.cs" />
+    <Compile Include="Queries\ServiceDeliveryExtensions.Generated.cs">
+      <DependentUpon>ServiceDeliveryExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\ServiceSubscriptionExtensions.cs" />
+    <Compile Include="Queries\ServiceSubscriptionExtensions.Generated.cs">
+      <DependentUpon>ServiceSubscriptionExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SharedReportsExtensions.cs" />
+    <Compile Include="Queries\SharedReportsExtensions.Generated.cs">
+      <DependentUpon>SharedReportsExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SmartChartExtensions.cs" />
+    <Compile Include="Queries\SmartChartExtensions.Generated.cs">
+      <DependentUpon>SmartChartExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SmartReportExtensions.cs" />
+    <Compile Include="Queries\SmartReportExtensions.Generated.cs">
+      <DependentUpon>SmartReportExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SocialPostExtensions.cs" />
+    <Compile Include="Queries\SocialPostExtensions.Generated.cs">
+      <DependentUpon>SocialPostExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\SocialPostTMPExtensions.cs" />
+    <Compile Include="Queries\SocialPostTMPExtensions.Generated.cs">
+      <DependentUpon>SocialPostTMPExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\UserProfileExtensions.cs" />
+    <Compile Include="Queries\UserProfileExtensions.Generated.cs">
+      <DependentUpon>UserProfileExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\UsersXSubscriptionExtensions.cs" />
+    <Compile Include="Queries\UsersXSubscriptionExtensions.Generated.cs">
+      <DependentUpon>UsersXSubscriptionExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WebpagesMembershipExtensions.cs" />
+    <Compile Include="Queries\WebpagesMembershipExtensions.Generated.cs">
+      <DependentUpon>WebpagesMembershipExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WebpagesOAuthMembershipExtensions.cs" />
+    <Compile Include="Queries\WebpagesOAuthMembershipExtensions.Generated.cs">
+      <DependentUpon>WebpagesOAuthMembershipExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WebpagesRolesExtensions.cs" />
+    <Compile Include="Queries\WebpagesRolesExtensions.Generated.cs">
+      <DependentUpon>WebpagesRolesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\WebpagesUsersInRolesExtensions.cs" />
+    <Compile Include="Queries\WebpagesUsersInRolesExtensions.Generated.cs">
+      <DependentUpon>WebpagesUsersInRolesExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmartSocialdbDataContext.cs" />
+    <Compile Include="SmartSocialdbDataContext.Generated.cs">
+      <DependentUpon>SmartSocialdbDataContext.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SmartSocial.Data.csp" />
+    <None Include="SmartsocialdbMdf.dbml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SmartsocialdbMdf.dbml.layout">
+      <DependentUpon>SmartsocialdbMdf.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

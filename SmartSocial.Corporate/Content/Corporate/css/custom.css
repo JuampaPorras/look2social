@@ -1,0 +1,6 @@
+/* -----------------------------------------
+   Custom.css - put your own changes here 
+----------------------------------------- */
+.noTabBorder{
+	box-shadow: 0px 0px 0px 0px !important;
+}

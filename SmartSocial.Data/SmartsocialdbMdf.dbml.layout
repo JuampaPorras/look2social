@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.75, 12.875" name="SmartsocialdbMdf">
+  <DataContextMoniker Name="/SmartSocialdbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="56348bec-9a23-4aca-8353-d86d11b12827" absoluteBounds="0.75, 3, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/AspNetRoles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ceae060c-21ce-41a7-ac90-c183818be67c" absoluteBounds="0.765, 3.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9697423-ba67-4b67-9603-bdc7a7400eae" absoluteBounds="3.5, 11, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/AspNetUserClaims" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6ffd8a2f-3354-4dce-9da4-acce6c2b465a" absoluteBounds="3.515, 11.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f94a735a-853c-4588-9401-a0e90cfec402" absoluteBounds="3.5, 6.75, 2, 1.3862939453125014">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/AspNetUserLogins" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4414bdc6-18be-496d-9d01-57cdad8719b2" absoluteBounds="3.515, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5320770d-91ff-4ad2-8d8f-684363a0c30b" absoluteBounds="3.5, 4, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/AspNetUserRoles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9cf49722-3cdb-4694-9d2e-641eb20e6240" absoluteBounds="3.515, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b104b21-0eed-4259-818b-b65b9b2bef59" absoluteBounds="0.75, 5.125, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/AspNetUsers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4188337f-0de1-433a-bbd7-0757cbf78fa4" absoluteBounds="0.765, 5.585, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83ed51af-bed8-458a-b4d5-e326f9a40aff" absoluteBounds="9.25, 3.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/ChartType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad101f44-72e9-4c42-b245-33e79280038b" absoluteBounds="9.265, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbb8c710-a807-4d4a-859d-b1252af1c3d7" absoluteBounds="14.75, 2.875, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/DataType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a661f63a-3e03-4123-a6f3-468b9a64794a" absoluteBounds="14.765, 3.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33161594-7afe-424b-b4f9-bf29879ce2a4" absoluteBounds="17.5, 5.5, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/SeriesValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bbd2199e-9af7-4935-aeb7-71d2a66a6f3f" absoluteBounds="17.515, 5.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55254a02-06e9-4cd4-8487-4f23dc264bb9" absoluteBounds="6.5, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/ServiceDelivery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1da054df-3047-4b49-8593-67e998262d8e" absoluteBounds="6.515, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ffe7bcc4-e32d-4663-85b6-d979315b713a" absoluteBounds="3.75, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/ServiceSubscription" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2bf4c7a-067d-4c88-aa06-8fbd14421a55" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" absoluteBounds="12, 5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/SmartChart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6a71815-0aa9-4c80-bd5b-bc8b8109358f" absoluteBounds="12.015, 5.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2581c35f-4e1e-4cbf-b386-ed214f407252" absoluteBounds="9.25, 6.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/SmartReport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7de43b67-1732-4a4b-ae92-e73dc18da80e" absoluteBounds="9.265, 6.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f375184-1c70-4f97-b320-5ee70dde938c" absoluteBounds="12, 9.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/SocialPost" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7666d2d4-5acb-481b-8345-330678988683" absoluteBounds="12.015, 9.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="85aeead1-6325-42d2-96cb-66809985f2ef" absoluteBounds="6.5, 6, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/UsersXSubscription" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f97162d-ecec-433d-a894-ba9a0bbc4b79" absoluteBounds="6.515, 6.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d6036cb-c08c-41c0-86d0-0b3351f8f5a7" absoluteBounds="14.75, 5.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/ChartSeries" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5900714b-a993-4c55-857a-a93eb4feb160" absoluteBounds="14.765, 6.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 8.2420068359375); (1.75 : 11.7892976888021); (3.5 : 11.7892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetUsers/AspNetUsers_AspNetUserClaims" />
+      <nodes>
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+        <classShapeMoniker Id="b9697423-ba67-4b67-9603-bdc7a7400eae" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.44314697265625); (3.5 : 7.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetUsers/AspNetUsers_AspNetUserLogins" />
+      <nodes>
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+        <classShapeMoniker Id="f94a735a-853c-4588-9401-a0e90cfec402" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 4.19399251302083); (1.75 : 4.59699625651042); (3.19791666666667 : 4.59699625651042 : JumpStart); (3.36458333333333 : 4.59699625651042 : JumpEnd); (3.5 : 4.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetRoles/AspNetRoles_AspNetUserRoles" />
+      <nodes>
+        <classShapeMoniker Id="56348bec-9a23-4aca-8353-d86d11b12827" />
+        <classShapeMoniker Id="5320770d-91ff-4ad2-8d8f-684363a0c30b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.12653746153846); (2.90982693490112 : 4.96671052663734 : JumpStart); (3.02767806509888 : 4.84885939643958 : JumpEnd); (3.125 : 4.75153746153846); (3.125 : 5.56990996880008); (3.22232443490112 : 5.47258553389896 : JumpStart); (3.34017556509888 : 5.3547344037012 : JumpEnd); (3.50091745577925 : 5.19399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetUsers/AspNetUsers_AspNetUserRoles" />
+      <nodes>
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+        <classShapeMoniker Id="5320770d-91ff-4ad2-8d8f-684363a0c30b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 6.44314697265625); (17.5 : 6.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ChartSeries/ChartSeries_SeriesValue" />
+      <nodes>
+        <classShapeMoniker Id="2d6036cb-c08c-41c0-86d0-0b3351f8f5a7" />
+        <classShapeMoniker Id="33161594-7afe-424b-b4f9-bf29879ce2a4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 3.47199625651042); (18.5 : 3.47199625651042); (18.5 : 5.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/DataType/DataType_SeriesValue" />
+      <nodes>
+        <classShapeMoniker Id="cbb8c710-a807-4d4a-859d-b1252af1c3d7" />
+        <classShapeMoniker Id="33161594-7afe-424b-b4f9-bf29879ce2a4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 1.63544840494792); (7.5 : 1.63544840494792); (7.5 : 2.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ServiceSubscription/ServiceSubscription_ServiceDelivery" />
+      <nodes>
+        <classShapeMoniker Id="ffe7bcc4-e32d-4663-85b6-d979315b713a" />
+        <classShapeMoniker Id="55254a02-06e9-4cd4-8487-4f23dc264bb9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 4.4374995); (13 : 4.4374995); (13 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ChartType/ChartType_SmartChart" />
+      <nodes>
+        <classShapeMoniker Id="83ed51af-bed8-458a-b4d5-e326f9a40aff" />
+        <classShapeMoniker Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 7.11620198567708); (12 : 7.11620198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/SmartReport/SmartReport_SmartChart" />
+      <nodes>
+        <classShapeMoniker Id="2581c35f-4e1e-4cbf-b386-ed214f407252" />
+        <classShapeMoniker Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 4.20359537760417); (8.875 : 4.57859537760417); (8.875 : 7.38544840494792); (9.25 : 7.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ServiceDelivery/ServiceDelivery_SmartReport" />
+      <nodes>
+        <classShapeMoniker Id="55254a02-06e9-4cd4-8487-4f23dc264bb9" />
+        <classShapeMoniker Id="2581c35f-4e1e-4cbf-b386-ed214f407252" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 8.27089680989583); (10.25 : 10.8373527018229); (12 : 10.8373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/SmartReport/SmartReport_SocialPost" />
+      <nodes>
+        <classShapeMoniker Id="2581c35f-4e1e-4cbf-b386-ed214f407252" />
+        <classShapeMoniker Id="0f375184-1c70-4f97-b320-5ee70dde938c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.34375); (6.5 : 6.34375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetUsers/AspNetUsers_UsersXSubscription" />
+      <nodes>
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+        <classShapeMoniker Id="85aeead1-6325-42d2-96cb-66809985f2ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.65625 : 2.52089680989583); (5.65625 : 6.1406225); (6.5 : 6.1406225)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ServiceSubscription/ServiceSubscription_UsersXSubscription" />
+      <nodes>
+        <classShapeMoniker Id="ffe7bcc4-e32d-4663-85b6-d979315b713a" />
+        <classShapeMoniker Id="85aeead1-6325-42d2-96cb-66809985f2ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14 : 6.44314697265625); (14.75 : 6.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/SmartChart/SmartChart_ChartSeries" />
+      <nodes>
+        <classShapeMoniker Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" />
+        <classShapeMoniker Id="2d6036cb-c08c-41c0-86d0-0b3351f8f5a7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="084e2a85-2f20-4414-a8ba-a85aeb54c114" absoluteBounds="0.5, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/SocialPostTMP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc729229-525e-451c-8c1b-1989625e5061" absoluteBounds="0.515, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ee85fe06-bd85-4e21-9d64-10a3614de1b5" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a6a88de-896c-4587-8379-0982a3d979c1" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.5 : 1.19314697265625); (0.4525 : 1.19314697265625); (0.4525 : 4.25649251302083); (1.2500005 : 4.25649251302083); (1.2500005 : 5.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/Company/Company_AspNetUsers" />
+      <nodes>
+        <classShapeMoniker Id="ee85fe06-bd85-4e21-9d64-10a3614de1b5" />
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="37f8f3e5-aee7-417c-8481-5ba49b4a9bf5" absoluteBounds="0.5, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/Country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dfdb07e4-b351-4591-a6ac-f2f4413c3fae" absoluteBounds="0.515, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="15d31cd9-1656-4b57-843d-0b2818deec4b" absoluteBounds="0.5, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/DataProvider" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82cc0137-3db0-462a-9c2f-36b9785185d5" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="994de2b7-20fe-489e-bbe7-97156e6ef1d5" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/DataProviderXChartType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be4285b5-26b4-4515-a0cc-79f4f15612d4" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 0.59375); (12.4687475 : 0.59375); (12.4687475 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/DataProvider/DataProvider_SmartChart" />
+      <nodes>
+        <classShapeMoniker Id="15d31cd9-1656-4b57-843d-0b2818deec4b" />
+        <classShapeMoniker Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 3.875); (10.25 : 0.6250025); (2.5 : 0.6250025)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/ChartType/ChartType_DataProviderXChartType" />
+      <nodes>
+        <classShapeMoniker Id="83ed51af-bed8-458a-b4d5-e326f9a40aff" />
+        <classShapeMoniker Id="994de2b7-20fe-489e-bbe7-97156e6ef1d5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 0.5); (1.5 : 0.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/DataProvider/DataProvider_DataProviderXChartType" />
+      <nodes>
+        <classShapeMoniker Id="15d31cd9-1656-4b57-843d-0b2818deec4b" />
+        <classShapeMoniker Id="994de2b7-20fe-489e-bbe7-97156e6ef1d5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ffb1f730-d101-4237-b064-0ed58eeac301" absoluteBounds="2.125, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/SmartSocialdbDataContext/ChartComment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07e679f3-8e3b-42e0-8cbd-025d9c061790" absoluteBounds="2.14, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 5.76886875651042); (3.28125 : 5.76886875651042); (3.28125 : 2.32859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/AspNetUsers/AspNetUsers_ChartComment" />
+      <nodes>
+        <classShapeMoniker Id="4b104b21-0eed-4259-818b-b65b9b2bef59" />
+        <classShapeMoniker Id="ffb1f730-d101-4237-b064-0ed58eeac301" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12 : 6.65465413411458); (11.5 : 6.65465413411458); (11.5 : 5.75); (5.73958333333333 : 5.75 : JumpStart); (5.57291666666667 : 5.75 : JumpEnd); (2.9687525 : 5.75); (2.9687525 : 2.32859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmartSocialdbDataContext/SmartChart/SmartChart_ChartComment" />
+      <nodes>
+        <classShapeMoniker Id="77e1f46f-5242-443c-b25e-cfc92f04cf48" />
+        <classShapeMoniker Id="ffb1f730-d101-4237-b064-0ed58eeac301" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Web.V2", "SmartSocial.web.V2\SmartSocial.Web.V2.csproj", "{D438B8D6-B0EC-46DC-A59C-76FF040EB526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Data.V2", "SmartSocial.Data.V2\SmartSocial.Data.V2.csproj", "{E41024E3-6496-4831-8B48-6040661C2550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Data", "SmartSocial.Data\SmartSocial.Data.csproj", "{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Desktop", "SmartSocial.Desktop\SmartSocial.Desktop.csproj", "{46C4A1C8-560F-4E2D-BC05-47CB6929BB88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Services", "SmartSocialServices\SmartSocial.Services.csproj", "{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartSocial.Corporate", "SmartSocial.Corporate\SmartSocial.Corporate.csproj", "{3D89BE43-94D6-43D0-B68B-12B4FCFF278C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chargify.NET", "Chargify.NET\Chargify.NET.csproj", "{A4E445A8-21C9-445B-A3A0-D18A4CBD0F0B}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://smartsocial.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SmartSocial.web.V2\\SmartSocial.Web.V2.csproj
+		SccProjectName1 = SmartSocial.web.V2
+		SccLocalPath1 = SmartSocial.web.V2
+		SccProjectUniqueName2 = SmartSocial.Data.V2\\SmartSocial.Data.V2.csproj
+		SccProjectName2 = SmartSocial.Data.V2
+		SccLocalPath2 = SmartSocial.Data.V2
+		SccProjectUniqueName3 = SmartSocial.Data\\SmartSocial.Data.csproj
+		SccProjectName3 = SmartSocial.Data
+		SccLocalPath3 = SmartSocial.Data
+		SccProjectUniqueName4 = SmartSocial.Desktop\\SmartSocial.Desktop.csproj
+		SccProjectName4 = SmartSocial.Desktop
+		SccLocalPath4 = SmartSocial.Desktop
+		SccProjectUniqueName5 = SmartSocialServices\\SmartSocial.Services.csproj
+		SccProjectName5 = SmartSocialServices
+		SccLocalPath5 = SmartSocialServices
+		SccProjectUniqueName6 = SmartSocial.Corporate\\SmartSocial.Corporate.csproj
+		SccProjectName6 = SmartSocial.Corporate
+		SccLocalPath6 = SmartSocial.Corporate
+		SccProjectUniqueName7 = Chargify.NET\\Chargify.NET.csproj
+		SccProjectName7 = Chargify.NET
+		SccLocalPath7 = Chargify.NET
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D438B8D6-B0EC-46DC-A59C-76FF040EB526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D438B8D6-B0EC-46DC-A59C-76FF040EB526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D438B8D6-B0EC-46DC-A59C-76FF040EB526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D438B8D6-B0EC-46DC-A59C-76FF040EB526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E41024E3-6496-4831-8B48-6040661C2550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E41024E3-6496-4831-8B48-6040661C2550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E41024E3-6496-4831-8B48-6040661C2550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E41024E3-6496-4831-8B48-6040661C2550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210B90AC-9DC5-4A96-8A0B-5A255B83DE45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C4A1C8-560F-4E2D-BC05-47CB6929BB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C4A1C8-560F-4E2D-BC05-47CB6929BB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C4A1C8-560F-4E2D-BC05-47CB6929BB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C4A1C8-560F-4E2D-BC05-47CB6929BB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D89BE43-94D6-43D0-B68B-12B4FCFF278C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D89BE43-94D6-43D0-B68B-12B4FCFF278C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D89BE43-94D6-43D0-B68B-12B4FCFF278C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D89BE43-94D6-43D0-B68B-12B4FCFF278C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4E445A8-21C9-445B-A3A0-D18A4CBD0F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4E445A8-21C9-445B-A3A0-D18A4CBD0F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4E445A8-21C9-445B-A3A0-D18A4CBD0F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4E445A8-21C9-445B-A3A0-D18A4CBD0F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

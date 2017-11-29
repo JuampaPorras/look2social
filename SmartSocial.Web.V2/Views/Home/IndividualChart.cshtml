@@ -1,0 +1,171 @@
+﻿@model SmartSocial.web.V2.Models.IndividualChartViewModel
+
+@{
+    ViewBag.Title = "IndividualChart";
+    Layout = null;
+}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="page-break-inside: avoid">
+    <h3>@Model.ChartName</h3>
+    @if (Model.WithInsights && Model.Insights != null)
+    {
+        <h4>Description</h4>
+        Html.Raw(Model.Insights);
+    }
+    @if (Model.ChartTypeId == 9 || Model.ChartTypeId == 11 || Model.ChartTypeId == 12 || Model.ChartTypeId == 13 || Model.ChartTypeId == 14 || Model.ChartTypeId == 15)
+    {
+        switch (Model.ChartTypeId)
+        {
+            case 9:
+                <div class="panel panelSmart tile panel-success panelSmart-success">
+                    <div class="panel-heading panelSmart-heading">
+                        <div class="panel-title panelSmart-title">Total Reach </div>
+                    </div>
+                    <div class="panel-body panelSmart-body" id="@Model.ChartId">
+                    </div>
+                </div>
+                break;
+            case 11:
+            <div class="panel panelSmart tile panel-info panelSmart-info">
+                <div class="panel-heading panelSmart-heading">
+                    <div class="panel-title panelSmart-title">Total Mentions </div>
+                </div>
+                <div class="panel-body panelSmart-body" id="@Model.ChartId">
+                </div>
+            </div>
+                break;
+            case 12:
+            <div class="panel panelSmart tile  panel-danger panelSmart-danger">
+                <div class="panel-heading panelSmart-heading">
+                    <div class="panel-title panelSmart-title">Best Day </div>
+                </div>
+                <div class="panel-body panelSmart-body" id="@Model.ChartId">
+                </div>
+            </div>
+                break;
+            case 13:
+            <div class="panel panelSmart tile panel-default panelSmart-default">
+                <div class="panel-heading panelSmart-title">
+                    <div class="panel-title">Top Poster </div>
+                </div>
+                <div class="panel-body panelSmart-body" id="@Model.ChartId">
+                </div>
+            </div>
+                break;
+            case 14:
+            <div class="panel tile panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Top Post </div>
+                </div>
+                <div class="panel-body" id="@Model.ChartId">
+                </div>
+            </div>
+                break;
+                
+                case 15:
+            <div class="panel tile panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Top Posts </div>
+                </div>
+                <div class="panel-body" id="@Model.ChartId">
+                </div>
+            </div>
+                break;
+        }
+
+    }
+    else if (Model.ChartTypeId == 1 || Model.ChartTypeId == 2 || Model.ChartTypeId == 8 || Model.ChartTypeId == 6 || Model.ChartTypeId == 7 || Model.ChartTypeId == 14 || Model.ChartTypeId == 15)
+    {
+        <div class=" panel panel-default toggle">
+            <div class="panel-heading">
+                <h4 class="panel-title">@Model.ChartName</h4>
+            </div>
+            <div class="panel-body p0">
+                <div class="row-fluid">
+                    <div class="canvas-holder" id="@Model.ChartId" style="padding: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.ChartTypeId == 5)
+    {
+        <div class=" panel panel-default toggle">
+            <div class="panel-heading">
+                <h4 class="panel-title">@Model.ChartName</h4>
+            </div>
+            <div class="panel-body p0">
+                <div class="row-fluid">
+                    <table class="table table-striped" id="@Model.ChartId"></table>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.Comments.Comments.Count > 0 && Model.WithComments)
+    {
+        <div style="padding: 2px 15px;background: #e8e8e8;">
+            <h3>Comments</h3>
+            @foreach (var comment in Model.Comments.Comments)
+            {
+            <span>@comment.UserName -</span><span class="timeline-date"> @comment.DatePosted</span>
+            <p>@comment.Message</p>
+            }
+        </div>
+    }
+</div>
+<script>
+    $(function () {
+        switch (parseInt('@Model.ChartTypeId')) {
+            //Column
+            case 1:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawColumnChart, function () { },'@Model.From', '@Model.To');
+                break;
+                //Linear
+            case 2:
+                //charts.push({ chartId: parseInt('@Model.ChartId'), isLoaded: false })
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawLinearChart, function () { }, '@Model.From', '@Model.To');
+                break;
+                //StackedColums
+            case 3:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawStackedColumnChart, function () { }, '@Model.From', '@Model.To');
+                break;
+                //WordCloud
+            case 5:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawWordCloud, function () { }, '@Model.From', '@Model.To');
+                break;
+                //MostProlificUsers
+            case 7:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawProlificUser, function () { }, '@Model.From', '@Model.To');
+                break;
+                //LocationAnalysis
+            case 8:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawLocationAnalysis, function () { }, '@Model.From', '@Model.To');
+                break;
+                //Pie
+            case 6:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawPieChart, function () { }, '@Model.From', '@Model.To');
+                break;
+                //Summary Reach
+            case 9:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawSummaryReach, function () { }, '@Model.From', '@Model.To');
+                break;
+                //Summary Mentions
+            case 11:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawSummaryMentions, function () { }, '@Model.From', '@Model.To');
+                break;
+                //Summary Best Day
+            case 12:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawSummaryDay, function () { }, '@Model.From', '@Model.To');
+                break;
+                //Summary Top User
+            case 13:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawSummaryUser, function () { }, '@Model.From', '@Model.To');
+                break;
+            case 14:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawTopPost, function () { }, '@Model.From', '@Model.To');
+                break;
+            case 15:
+                GetChartData(parseInt('@Model.ChartTypeId'), parseInt('@Model.ChartId'), '@Model.ChartName', DrawTopPosts, function () { }, '@Model.From', '@Model.To');
+                break;
+        };
+    });
+</script>

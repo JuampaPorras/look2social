@@ -1,0 +1,1003 @@
+
+/* -----------------------------------------
+   Panels
+----------------------------------------- */
+.panelSmart {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    border: 0;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+}
+
+    .panelSmart.highlight-panel {
+        box-shadow: 0px 0px 0px 2px #29b6d8;
+        transition: box-shadow;
+        transition-duration: 0.4s;
+    }
+
+    .panelSmart.panelSmart-default > .panelSmart-heading {
+        color: #333333;
+    }
+
+    .panelSmart .panelSmart-controls-right {
+        width: auto;
+        float: right;
+        position: absolute;
+        right: 5px !important;
+        top: 0;
+    }
+
+        .panelSmart .panelSmart-controls-right.panelSmart-controls-hide {
+            display: none;
+        }
+
+        .panelSmart .panelSmart-controls-right a {
+            text-decoration: none;
+            float: left;
+            padding: 11px 5px;
+        }
+
+            .panelSmart .panelSmart-controls-right a i {
+                font-size: 12px;
+                color: #333333;
+            }
+
+            .panelSmart .panelSmart-controls-right a:hover i {
+                color: #262626;
+            }
+
+    .panelSmart .panelSmart-heading.white-bg .panelSmart-controls a i {
+        color: #333333;
+    }
+
+    .panelSmart .panelSmart-heading.white-bg .panelSmart-controls a:hover {
+        color: #404040;
+    }
+
+    .panelSmart.tile {
+        box-shadow: none;
+        border: 1px solid #e0e0e0;
+    }
+
+        .panelSmart.tile .panelSmart-heading {
+            border-bottom: none;
+        }
+
+        .panelSmart.tile.panelSmart-default {
+            background-color: #e3e3e3;
+            border: 1px solid #e0e0e0;
+        }
+
+            .panelSmart.tile.panelSmart-default .panelSmart-heading {
+                background-color: #e3e3e3;
+            }
+
+            .panelSmart.tile.panelSmart-default .panelSmart-body {
+                background-color: #e3e3e3;
+            }
+
+        .panelSmart.tile.panelSmart-primary {
+            background-color: #0a97b9;
+            border: 1px solid #0a97b9;
+        }
+
+            .panelSmart.tile.panelSmart-primary .panelSmart-body {
+                background-color: #0a97b9;
+            }
+
+        .panelSmart.tile.panelSmart-info {
+            background-color: #29b6d8;
+            border: 1px solid #22b7bb;
+        }
+
+            .panelSmart.tile.panelSmart-info .panelSmart-body {
+                background-color: #29b6d8;
+            }
+
+        .panelSmart.tile.panelSmart-success {
+            background-color: #66c796;
+            border: 1px solid #53c077;
+        }
+
+            .panelSmart.tile.panelSmart-success .panelSmart-body {
+                background-color: #66c796;
+            }
+
+        .panelSmart.tile.panelSmart-danger {
+            background-color: #df6a78;
+            border: 1px solid #da557b;
+        }
+
+            .panelSmart.tile.panelSmart-danger .panelSmart-body {
+                background-color: #df6a78;
+            }
+
+        .panelSmart.tile.panelSmart-warning {
+            background-color: #f4ad49;
+            border: 1px solid #f38231;
+        }
+
+            .panelSmart.tile.panelSmart-warning .panelSmart-body {
+                background-color: #f4ad49;
+            }
+
+    .panelSmart.plain.panelSmart-default {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-default .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-default .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-default .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-default .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-default .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain.panelSmart-primary {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #0a97b9;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-primary .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-primary .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-primary .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-primary .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-primary .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain.panelSmart-success {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #53c077;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-success .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-success .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-success .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-success .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-success .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain.panelSmart-warning {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #f38231;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-warning .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-warning .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-warning .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-warning .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-warning .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain.panelSmart-danger {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #da557b;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-danger .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-danger .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-danger .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-danger .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-danger .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain.panelSmart-info {
+        border: 1px solid #e5e5e5;
+        border-top: 1px solid #22b7bb;
+        box-shadow: none;
+    }
+
+        .panelSmart.plain.panelSmart-info .panelSmart-heading {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+            .panelSmart.plain.panelSmart-info .panelSmart-heading > .panelSmart-controls > a i {
+                color: #222222;
+            }
+
+            .panelSmart.plain.panelSmart-info .panelSmart-heading > .panelSmart-controls > a:hover i {
+                color: #090909;
+            }
+
+        .panelSmart.plain.panelSmart-info .panelSmart-body {
+            border-left: none;
+            border-right: none;
+        }
+
+        .panelSmart.plain.panelSmart-info .panelSmart-footer {
+            background-color: #ffffff;
+            color: #333333;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+    .panelSmart.plain .panelSmart-heading {
+        border-bottom: none;
+    }
+
+.panelSmart-heading {
+    text-align: left;
+    padding: 0 15px;
+    min-height: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+    .panelSmart-heading:before,
+    .panelSmart-heading:after {
+        content: " ";
+        display: table;
+    }
+
+    .panelSmart-heading:after {
+        clear: both;
+    }
+
+    .panelSmart-heading:before,
+    .panelSmart-heading:after {
+        content: " ";
+        display: table;
+    }
+
+    .panelSmart-heading:after {
+        clear: both;
+    }
+
+    .panelSmart-heading .panelSmart-title {
+        font-size: 16px;
+        font-weight: normal;
+        margin-right: 10px;
+        padding: 12px 0;
+        min-height: 42px;
+    }
+
+        .panelSmart-heading .panelSmart-title > i {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+            .panelSmart-heading .panelSmart-title > i[class^="glyphicon"] {
+                top: -2px !important;
+                margin-top: -1px;
+            }
+
+    .panelSmart-heading.min {
+        border-bottom: none;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    .panelSmart-heading.white-bg {
+        color: #333333;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+
+    .panelSmart-heading.red-bg {
+        background: #db5565 !important;
+        background-color: #db5565 !important;
+    }
+
+    .panelSmart-heading.blue-bg {
+        background: #0bacd3 !important;
+        background-color: #0bacd3 !important;
+    }
+
+    .panelSmart-heading.green-bg {
+        background: #51bf87 !important;
+        background-color: #51bf87 !important;
+    }
+
+.panelSmart-body:before,
+.panelSmart-body:after {
+    content: " ";
+    display: table;
+}
+
+.panelSmart-body:after {
+    clear: both;
+}
+
+.panelSmart-body:before,
+.panelSmart-body:after {
+    content: " ";
+    display: table;
+}
+
+.panelSmart-body:after {
+    clear: both;
+}
+
+.panelSmart-body.red-bg {
+    color: #ffffff;
+    background: #db5565 !important;
+    background-color: #db5565 !important;
+}
+
+.panelSmart-body.blue-bg {
+    color: #ffffff;
+    background: #0bacd3 !important;
+    background-color: #0bacd3 !important;
+}
+
+.panelSmart-body.green-bg {
+    color: #ffffff;
+    background: #51bf87 !important;
+    background-color: #51bf87 !important;
+}
+
+.panelSmart-body .page-header h1,
+.panelSmart-body .page-header h2,
+.panelSmart-body .page-header h3,
+.panelSmart-body .page-header h4,
+.panelSmart-body .page-header h5,
+.panelSmart-body .page-header h6 {
+    font-weight: normal;
+}
+
+.panelSmart-body .scroll-horizontal {
+    overflow-x: hidden;
+}
+
+.panelSmart-footer {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #ffffff;
+}
+
+    .panelSmart-footer:before,
+    .panelSmart-footer:after {
+        content: " ";
+        display: table;
+    }
+
+    .panelSmart-footer:after {
+        clear: both;
+    }
+
+    .panelSmart-footer:before,
+    .panelSmart-footer:after {
+        content: " ";
+        display: table;
+    }
+
+    .panelSmart-footer:after {
+        clear: both;
+    }
+
+    .panelSmart-footer.white-bg {
+        color: #333333;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+
+    .panelSmart-footer.red-bg {
+        background: #db5565 !important;
+        background-color: #db5565 !important;
+    }
+
+    .panelSmart-footer.blue-bg {
+        background: #0bacd3 !important;
+        background-color: #0bacd3 !important;
+    }
+
+    .panelSmart-footer.green-bg {
+        background: #51bf87 !important;
+        background-color: #51bf87 !important;
+    }
+
+.panelSmart-refresh-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #555555;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    border-radius: 3px;
+}
+
+.progress-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    margin-left: -16px;
+}
+
+    .progress-loader i {
+        font-size: 24px;
+        color: #ffffff;
+        margin-top: 4px;
+        margin-left: 4px;
+    }
+
+.panelSmart-default > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-default > .panelSmart-heading > .panelSmart-controls-right > a i {
+    color: #333333;
+}
+
+.panelSmart-default > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-default > .panelSmart-heading > .panelSmart-controls-right > a:hover i {
+    color: #090909;
+}
+
+.panelSmart-success > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-warning > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-danger > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-info > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-primary > .panelSmart-heading > .panelSmart-controls-left > a i,
+.panelSmart-success > .panelSmart-heading > .panelSmart-controls-right > a i,
+.panelSmart-warning > .panelSmart-heading > .panelSmart-controls-right > a i,
+.panelSmart-danger > .panelSmart-heading > .panelSmart-controls-right > a i,
+.panelSmart-info > .panelSmart-heading > .panelSmart-controls-right > a i,
+.panelSmart-primary > .panelSmart-heading > .panelSmart-controls-right > a i {
+    color: #ffffff;
+}
+
+.panelSmart-success > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-warning > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-danger > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-info > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-primary > .panelSmart-heading > .panelSmart-controls-left > a:hover i,
+.panelSmart-success > .panelSmart-heading > .panelSmart-controls-right > a:hover i,
+.panelSmart-warning > .panelSmart-heading > .panelSmart-controls-right > a:hover i,
+.panelSmart-danger > .panelSmart-heading > .panelSmart-controls-right > a:hover i,
+.panelSmart-info > .panelSmart-heading > .panelSmart-controls-right > a:hover i,
+.panelSmart-primary > .panelSmart-heading > .panelSmart-controls-right > a:hover i {
+    color: #e6e6e6;
+}
+
+.ui-sortable .panelSmart-heading {
+    cursor: move;
+}
+
+.panelSmart-placeholder {
+    border: 1px dashed #e3e3e3;
+    background: #cccccc;
+    margin-bottom: 25px;
+    border-radius: 3px;
+}
+
+.panelSmart.tile.panelSmart-info {
+    background-color: #29b6d8;
+    border: 1px solid #22b7bb;
+}
+
+.panelSmart-info {
+    border-color: #22b7bb;
+}
+
+    .panelSmart-info > .panelSmart-heading {
+        color: #ffffff !important;
+        background-color: #29b6d8 !important;
+        border-color: #22b7bb !important;
+    }
+
+.panelSmart.tile.panelSmart-success {
+    background-color: #66c796 !important;
+    border: 1px solid #53c077 !important;
+}
+
+.panelSmart-success > .panelSmart-heading {
+    color: #ffffff !important;
+    background-color: #66c796 !important;
+    border-color: #53c077 !important;
+}
+
+.panelSmart-success {
+    border-color: #53c077 !important;
+}
+
+.panelSmart.tile.panelSmart-danger {
+    background-color: #df6a78 !important;
+    border: 1px solid #da557b !important;
+}
+
+.panelSmart-danger > .panelSmart-heading {
+    color: #ffffff !important;
+    background-color: #df6a78 !important;
+    border-color: #da557b !important;
+}
+
+.panelSmart-danger {
+    border-color: #da557b !important;
+}
+
+.panelSmart.tile.panelSmart-default {
+    background-color: #e3e3e3;
+    border: 1px solid #e0e0e0;
+}
+
+.panelSmart-default > .panelSmart-heading {
+    color: #333333;
+    background-color: #e8e8e8;
+    border-color: #e5e5e5;
+}
+
+.panelSmart-default {
+    border-color: #e5e5e5 !important;
+    color: #333333 !important;
+}
+
+.progressbar-stats-1.dark {
+    color: #666666;
+}
+
+.progress.flat.progress-bar-xs {
+    height: 4px;
+}
+
+.progress.transparent {
+    background-color: rgba(0, 0, 0, 0.28);
+}
+
+.progress .progress-bar-white {
+    background-color: #ffffff;
+}
+
+.btn-info.btn-alt {
+    box-shadow: none;
+    color: #29b6d8;
+    background-color: transparent;
+    border-color: #29b6d8;
+    border-width: 2px;
+}
+
+.recent-comments li.comment-info {
+    border-left-color: #22b7bb;
+}
+
+recent-comments li {
+    border-radius: 0;
+    border-top-width: 0;
+    border-left-width: 4px;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    margin-bottom: 10px;
+    background-color: #f2f2f2;
+}
+
+.recent-comments {
+    margin-bottom: 0;
+}
+
+.panelSmart-collpase {
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+.commentPopup {
+    padding: 5px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.commentsField {
+    max-height: 215px !important;
+    overflow-y: scroll !important;
+}
+
+    .commentsField .help-block {
+        font-size: 10px !important;
+        margin-top: -7px !important;
+    }
+
+.progressbar-stats-1 .stats-number {
+    font-size: 25px !important;
+    margin-top: -10px;
+}
+
+.progressbar-stats-1 .stats i {
+    font-size: 25px !important;
+    float: left;
+    margin-right: 15px;
+}
+
+.popover {
+    max-width: 340px !important;
+}
+
+.subscriptionsList {
+    padding-left: 0px;
+}
+
+.transparent {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.accordion-toggle {
+    color: white;
+}
+
+.panelSmart-heading > a:focus {
+    color: darkorange !important;
+    text-decoration: none;
+}
+
+.panelSmart-heading > a:hover {
+    color: darkorange !important;
+    text-decoration: none;
+}
+
+.reportName:hover {
+    color: darkorange !important;
+    text-decoration: none;
+}
+
+.reportName:focus {
+    color: darkorange !important;
+    text-decoration: none;
+}
+
+.reportName {
+    color: white !important;
+    text-decoration: none;
+}
+
+.commentPopup {
+    padding: 5px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+.commentsField {
+    max-height: 215px !important;
+    overflow-y: scroll !important;
+}
+
+    .commentsField .help-block {
+        font-size: 10px !important;
+        margin-top: -7px !important;
+    }
+
+.progressbar-stats-1 .stats-number {
+    font-size: 25px !important;
+    margin-top: -10px;
+}
+
+.progressbar-stats-1 .stats i {
+    font-size: 25px !important;
+    float: left;
+    margin-right: 15px;
+}
+
+.popover {
+    max-width: 340px !important;
+}
+
+.reportLabel {
+    background: rgba(0, 0, 0, 0)!important;
+}
+
+.mainMenu .list-group-item {
+    color: #858c94;
+    border: 0px!important;
+}
+
+.reportDelivered{
+    background: #1c2128!important;
+}
+
+.activeReport{
+    color: black!important;
+    background: #ffa915!important;
+}
+
+.mainMenu .list-group-item-sub {
+    color: #858c94!important;
+    background: #303946!important;
+}
+
+.mainMenu .list-group-submenu > .list-group-item {
+    color: #858c94!important;
+    background: #1c2128!important;
+}
+
+/*.mainMenu .list-group-item:hover {
+    color: black!important;
+    background: #ffa915!important;
+}*/
+
+/*.mainMenu .list-group-item:focus {
+    color: black!important;
+    background: #ffa915!important;
+}*/
+
+.mainMenu .fa-caret-down {
+    float: right;
+}
+
+.mainMenu .fa-pie-chart {
+    margin-right: 5px;
+}
+
+.mainMenu .fa-list-ul {
+    margin-right: 10px;
+}
+
+.mainMenu .fa-folder-open {
+    margin-right: 10px;
+}
+
+.mainMenu .fa-folder {
+    margin-right: 10px;
+}
+
+.list-group-item .fa-calendar {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.showMoreLink {
+    color:#0000FF;
+}
+
+.counter .countLabel {
+  position: absolute;
+  right: -7px;
+  top: -3px;
+}
+
+.badge-notify{
+    background-color: #5bc0de;
+  position: relative;
+  top: -10px;
+  right: 10px;
+  font-size: 10px;
+  display: none;
+  visibility: hidden;
+}
+
+.badge-danger{
+    background-color: #d9534f;
+  position: relative;
+  top: -10px;
+  right: 10px;
+  font-size: 10px;
+}
+
+.tabContainerMargin {
+    padding: 10px 5px;
+}
+
+.customSpinner {
+      position: relative;
+  top: -22px;
+  right: -112px;
+}
+
+.customSpinnerLogin {
+      position: relative;
+  top: -22px;
+  right: 90px;
+}
+div.toggle-custom {
+  position: relative;
+  margin: 6px 0 10px;
+}
+div.toggle-custom label.toggle {
+  width: 50px;
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  height: 22px;
+  vertical-align: top;
+  min-height: 22px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+div.toggle-custom label.toggle:before {
+  content: attr(data-on);
+  left: 1px;
+}
+div.toggle-custom label.toggle:after {
+  content: attr(data-off);
+  right: 1px;
+}
+div.toggle-custom label.toggle:after,
+div.toggle-custom label.toggle:before {
+  top: 1px;
+  width: 25px;
+  font-size: 10px;
+  color: #333333;
+  position: absolute;
+  line-height: 22px;
+  text-align: center;
+  z-index: 1;
+}
+div.toggle-custom label.toggle input[type="checkbox"],
+div.toggle-custom label.toggle input[type="radio"] {
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+div.toggle-custom label.toggle input[type="checkbox"]:checked + .button-checkbox,
+div.toggle-custom label.toggle input[type="radio"]:checked + .button-checkbox,
+div.toggle-custom label.toggle input[type="checkbox"]:checked + .button-radio,
+div.toggle-custom label.toggle input[type="radio"]:checked + .button-radio {
+  border-color: #29b6d8;
+}
+div.toggle-custom label.toggle input[type="checkbox"]:checked + .button-checkbox:after,
+div.toggle-custom label.toggle input[type="radio"]:checked + .button-checkbox:after,
+div.toggle-custom label.toggle input[type="checkbox"]:checked + .button-radio:after,
+div.toggle-custom label.toggle input[type="radio"]:checked + .button-radio:after {
+  left: 24px;
+  background: #29b6d8;
+}
+div.toggle-custom label.toggle input[type="checkbox"] + .button-checkbox:after,
+div.toggle-custom label.toggle input[type="radio"] + .button-checkbox:after,
+div.toggle-custom label.toggle input[type="checkbox"] + .button-radio:after,
+div.toggle-custom label.toggle input[type="radio"] + .button-radio:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  display: block;
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+  width: 23px;
+  background: #e3e3e3;
+  transition: all;
+  transition-duration: 0.4s;
+}
+div.toggle-custom label.toggle .button-checkbox,
+div.toggle-custom label.toggle .button-radio {
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 3px;
+}
+div.toggle-custom label.toggle .button-radio {
+  border-radius: 20px;
+}
+div.toggle-custom label.toggle .button-radio:after {
+  border-radius: 20px;
+}
+div.toggle-custom label.toggle + label {
+  font-weight: normal;
+  cursor: pointer;
+  min-height: 22px;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 1px;
+  margin-bottom: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+div.toggle-custom.toggle-inline {
+  float: left;
+  margin-right: 10px;
+}
+#rightSideBar{
+        height:auto;
+        position:relative;
+    }
+@media (min-width: 768px) {
+    #rightSideBar{
+        height:100%;
+        position:fixed;
+    }
+}

@@ -1,0 +1,6 @@
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\bin\Release\ChargifyNET.xml
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\bin\Release\ChargifyNET.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\bin\Release\ChargifyNET.pdb
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Release\Chargify.NET.csprojResolveAssemblyReference.cache
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Release\ChargifyNET.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\Chargify.NET\obj\Release\ChargifyNET.pdb

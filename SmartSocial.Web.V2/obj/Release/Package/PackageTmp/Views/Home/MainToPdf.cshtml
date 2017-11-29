@@ -1,0 +1,80 @@
+﻿@model SmartSocial.web.V2.Models.MainToPDFViewModel
+@{
+    ViewBag.Title = "MainToPdf";
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+}
+<style>
+    .summaryFonts {
+        font-size: 18px !important;
+    }
+</style>
+<div style="height:50px;margin-top: 1px; padding: 0 20px; margin-right: -20px; margin-left: -20px; margin-bottom: 5px; ">
+    <div style="margin-top: 0px; margin-bottom: 15px; border-bottom: none; float: left; margin-right: 20px; margin-left: 15px;">
+        <h2>
+            <span id="ReportName">@Model.Report.SmartReport.ReportName</span>
+        </h2>
+    </div>
+    <div style="margin-top: 0px; margin-bottom: 15px; border-bottom: none; float: right; margin-right: 20px;">
+        <h2>
+            <span style="font-size:30px" id="AnalysisPeriod">Date Range: @Model.DateRange</span>
+        </h2>
+    </div>
+</div>
+<hr />
+
+<div id="MainContainer" style="margin-top: 30px; margin-right: 30px;">
+    <div id="rowChartContainer" class="row-fluid">
+        @if (Model.ChartId != 0)
+        {
+            foreach (var chart in Model.Report.SmartCharts.Where(x => x.idSmartChart == Model.ChartId))
+            {
+                { Html.RenderAction("IndividualChart", new { chartId = Model.ChartId, withInsights = Model.WithChartInsights, withComments = Model.WithComments, insights = Model.Report.SmartCharts.First(x => x.idSmartChart == Model.ChartId).Insights, chartTypeId = Model.Report.SmartCharts.First(x => x.idSmartChart == Model.ChartId).IdChartType, chartName = Model.Report.SmartCharts.First(x => x.idSmartChart == Model.ChartId).ChartName,from=Model.From, to=Model.To }); }
+            }
+        }
+        else
+        {
+            foreach (var chart in Model.Report.SmartCharts)
+            {
+                if (chart.IdChartType == 1 || chart.IdChartType == 2 || chart.IdChartType == 5 || chart.IdChartType == 6 || chart.IdChartType == 7 || chart.IdChartType == 8 || chart.IdChartType == 9 || chart.IdChartType == 11 || chart.IdChartType == 12 || chart.IdChartType == 13)
+                {
+                    { Html.RenderAction("IndividualChart", new { chartId = chart.idSmartChart, withInsights = Model.WithChartInsights, withComments = Model.WithComments, insights = chart.Insights, chartTypeId = chart.IdChartType, chartName = chart.ChartName, from = Model.From, to = Model.To }); }
+                }
+
+            }
+            <br />
+            if (Model.WithInsights && Model.Report.SmartReport.Insights != "")
+            {
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="page-break-inside: avoid">
+
+                    <h3>Insights</h3>
+                    @Html.Raw(Model.Report.SmartReport.Insights)
+                </div>
+            }
+        }
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <p class="text-center">&#169; Created by Smart Social</p>
+        </div>
+    </div>
+</div>
+@*<script>
+    $(function () {
+        waitChartsRender();
+    })
+    var waitChartsRender = function () {
+        setTimeout(function () {
+            var isLoaded = true;
+        for (var e = 0; e < charts.length; e++) {
+            if (!charts[i].isLoaded) {
+                isLoaded = false;
+            } 
+        }
+        if (!isLoaded) {
+            waitChartsRender();
+        }
+    }, 500)
+    }
+</script>*@
+

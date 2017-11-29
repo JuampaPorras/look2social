@@ -1,0 +1,13 @@
+2016-02-03 08:48:44.8547 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 08:49:45.7242 SmartSocial.web.V2.Controllers.HomeController ---- Exception Creating PDF: You must call the "WebSecurity.InitializeDatabaseConnection" method before you call any other method of the "WebSecurity" class. This call should be placed in an _AppStart.cshtml file in the root of your site. ----
+2016-02-03 08:51:33.1874 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 08:58:37.9737 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:03:06.9711 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:12:01.3926 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:12:41.0919 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:13:08.1094 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:20:33.7509 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 09:25:15.7381 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 14:39:49.4536 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 14:43:42.2119 SmartSocial.web.V2.Controllers.HomeController Started
+2016-02-03 14:50:47.2992 SmartSocial.web.V2.Controllers.HomeController Started

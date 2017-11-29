@@ -1,0 +1,2443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartSocialModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChartComment">
+          <Key>
+            <PropertyRef Name="IdComment" />
+          </Key>
+          <Property Name="IdComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IdSmartChart" Type="int" Nullable="false" />
+          <Property Name="DatePosted" Type="datetime" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="ChartSeries">
+          <Key>
+            <PropertyRef Name="idChartSeries" />
+          </Key>
+          <Property Name="idChartSeries" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSmartChart" Type="int" />
+          <Property Name="SeriesName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ChartType">
+          <Key>
+            <PropertyRef Name="idChartType" />
+          </Key>
+          <Property Name="idChartType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChartTypeName" Type="nvarchar(max)" />
+          <Property Name="StoredProcedureName" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Name="IdCompany" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
+          <Property Name="LogoFileName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+          <Property Name="ISO2" Type="char" MaxLength="2" />
+          <Property Name="CountryName" Type="nvarchar(max)" />
+          <Property Name="LongCountryName" Type="nvarchar(max)" />
+          <Property Name="ISO3" Type="char" MaxLength="3" />
+          <Property Name="NumCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="UNMemberState" Type="nvarchar" MaxLength="12" />
+          <Property Name="CallingCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="CCTLD" Type="nvarchar" MaxLength="5" />
+          <Property Name="FlagImageFilename" Type="nvarchar(max)" />
+          <Property Name="CountryCodeTest" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="DataProvider">
+          <Key>
+            <PropertyRef Name="idDataProvider" />
+          </Key>
+          <Property Name="idDataProvider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataProviderName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DataProviderXChartType">
+          <Key>
+            <PropertyRef Name="idDataProvider" />
+            <PropertyRef Name="idChartType" />
+          </Key>
+          <Property Name="idDataProvider" Type="int" Nullable="false" />
+          <Property Name="idChartType" Type="int" Nullable="false" />
+          <Property Name="FileLoadFunctionName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DataType">
+          <Key>
+            <PropertyRef Name="idDataType" />
+          </Key>
+          <Property Name="idDataType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataTypeName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="idLead" />
+          </Key>
+          <Property Name="idLead" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="CountryCode" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="ProductName" Type="nvarchar(max)" />
+          <Property Name="Aliases" Type="nvarchar(max)" />
+          <Property Name="ProductURL" Type="nvarchar(max)" />
+          <Property Name="Keywords" Type="nvarchar(max)" />
+          <Property Name="MarketSegments" Type="nvarchar(max)" />
+          <Property Name="OtherMarketSegments" Type="nvarchar(max)" />
+          <Property Name="Competitors" Type="nvarchar(max)" />
+          <Property Name="PictureFileName" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="IntakeToken" Type="nvarchar(max)" />
+          <Property Name="IntakeUrl" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="IntakeEmailSentDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsIntakeAnswered" Type="bit" Nullable="false" />
+          <Property Name="Company" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="idNotification" />
+          </Key>
+          <Property Name="idNotification" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreateBy" Type="int" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="WasViewed" Type="bit" />
+        </EntityType>
+        <EntityType Name="SeriesValue">
+          <Key>
+            <PropertyRef Name="idSeriesValue" />
+          </Key>
+          <Property Name="idSeriesValue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idChartSeries" Type="int" />
+          <Property Name="idDataType" Type="int" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="RowPosition" Type="int" />
+        </EntityType>
+        <EntityType Name="ServiceDelivery">
+          <Key>
+            <PropertyRef Name="idServiceDelivery" />
+          </Key>
+          <Property Name="idServiceDelivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateDelivered" Type="datetime" />
+          <Property Name="DeliveryDateTo" Type="datetime" />
+          <Property Name="IdServiceSubscription" Type="int" />
+          <Property Name="Insights" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ServiceSubscription">
+          <Key>
+            <PropertyRef Name="idServiceSubscription" />
+          </Key>
+          <Property Name="idServiceSubscription" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriptionName" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="idChargifySuscription" Type="nvarchar(max)" />
+          <Property Name="idChargifyCustomer" Type="nvarchar(max)" />
+          <Property Name="idLead" Type="int" />
+        </EntityType>
+        <EntityType Name="SharedReports">
+          <Key>
+            <PropertyRef Name="IdSharedReports" />
+          </Key>
+          <Property Name="IdSharedReports" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="SmartReportId" Type="int" Nullable="false" />
+          <Property Name="SharedWith" Type="int" />
+          <Property Name="URL" Type="varchar" MaxLength="200" />
+          <Property Name="TinyUrl" Type="varchar" MaxLength="100" />
+          <Property Name="Comments" Type="varchar" MaxLength="250" />
+          <Property Name="Token" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SmartChart">
+          <Key>
+            <PropertyRef Name="idSmartChart" />
+          </Key>
+          <Property Name="idSmartChart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSmartReport" Type="int" />
+          <Property Name="ChartName" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="Insights" Type="nvarchar(max)" />
+          <Property Name="IdChartType" Type="int" />
+          <Property Name="IdDataProvider" Type="int" />
+          <Property Name="AxisSeriesTitle" Type="nvarchar(max)" />
+          <Property Name="AxisValuesTitle" Type="nvarchar(max)" />
+          <Property Name="CssClasses" Type="nvarchar(max)" />
+          <Property Name="HtmlStyles" Type="nvarchar(max)" />
+          <Property Name="ChartOrder" Type="int" />
+          <Property Name="SocialPostFilter" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SmartReport">
+          <Key>
+            <PropertyRef Name="idSmartReport" />
+          </Key>
+          <Property Name="idSmartReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idServiceDelivery" Type="int" />
+          <Property Name="ReportName" Type="nvarchar(max)" />
+          <Property Name="Insights" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="isTemplate" Type="bit" />
+        </EntityType>
+        <EntityType Name="SocialPost">
+          <Key>
+            <PropertyRef Name="idSocialPost" />
+          </Key>
+          <Property Name="idSocialPost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSmartReport" Type="int" />
+          <Property Name="SocialNetwork" Type="nvarchar(max)" />
+          <Property Name="SenderScreenName" Type="nvarchar(max)" />
+          <Property Name="SenderProfileImgUrl" Type="nvarchar(max)" />
+          <Property Name="SenderFollowersCount" Type="int" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="MessageCreatedDate" Type="datetime" />
+          <Property Name="Permalink" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Product" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SocialPostTMP">
+          <Key>
+            <PropertyRef Name="idSocialPost" />
+          </Key>
+          <Property Name="idSocialPost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSmartReport" Type="int" />
+          <Property Name="SocialNetwork" Type="nvarchar(max)" />
+          <Property Name="SenderScreenName" Type="nvarchar(max)" />
+          <Property Name="SenderProfileImgUrl" Type="nvarchar(max)" />
+          <Property Name="SenderFollowersCount" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="MessageCreatedDate" Type="nvarchar(max)" />
+          <Property Name="Permalink" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Completed" Type="bit" />
+          <Property Name="Product" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SubscriptionRoleTypes">
+          <Key>
+            <PropertyRef Name="IdSubscriptionRoleTypes" />
+          </Key>
+          <Property Name="IdSubscriptionRoleTypes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="LastReportId" Type="int" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="CountryCode" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ChargifyCustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="UsersXSubscription">
+          <Key>
+            <PropertyRef Name="idUserXSubscription" />
+          </Key>
+          <Property Name="idUserXSubscription" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSubscription" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="IdSubscriptionRoleTypes" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__SharedRep__Creat__756D6ECB">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="SharedReports" Type="Self.SharedReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SharedReports">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartComment_SmartChart">
+          <End Role="SmartChart" Type="Self.SmartChart" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChartComment" Type="Self.ChartComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartChart">
+              <PropertyRef Name="idSmartChart" />
+            </Principal>
+            <Dependent Role="ChartComment">
+              <PropertyRef Name="IdSmartChart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChartSeries_SmartChart">
+          <End Role="SmartChart" Type="Self.SmartChart" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChartSeries" Type="Self.ChartSeries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartChart">
+              <PropertyRef Name="idSmartChart" />
+            </Principal>
+            <Dependent Role="ChartSeries">
+              <PropertyRef Name="idSmartChart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataProvidersXChartType_ChartType">
+          <End Role="ChartType" Type="Self.ChartType" Multiplicity="1" />
+          <End Role="DataProviderXChartType" Type="Self.DataProviderXChartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartType">
+              <PropertyRef Name="idChartType" />
+            </Principal>
+            <Dependent Role="DataProviderXChartType">
+              <PropertyRef Name="idChartType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataProvidersXChartType_DataProvider">
+          <End Role="DataProvider" Type="Self.DataProvider" Multiplicity="1" />
+          <End Role="DataProviderXChartType" Type="Self.DataProviderXChartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataProvider">
+              <PropertyRef Name="idDataProvider" />
+            </Principal>
+            <Dependent Role="DataProviderXChartType">
+              <PropertyRef Name="idDataProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeriesValue_ChartSeries">
+          <End Role="ChartSeries" Type="Self.ChartSeries" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SeriesValue" Type="Self.SeriesValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartSeries">
+              <PropertyRef Name="idChartSeries" />
+            </Principal>
+            <Dependent Role="SeriesValue">
+              <PropertyRef Name="idChartSeries" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeriesValue_DataType">
+          <End Role="DataType" Type="Self.DataType" Multiplicity="0..1" />
+          <End Role="SeriesValue" Type="Self.SeriesValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataType">
+              <PropertyRef Name="idDataType" />
+            </Principal>
+            <Dependent Role="SeriesValue">
+              <PropertyRef Name="idDataType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceDelivery_ServiceSubscription">
+          <End Role="ServiceSubscription" Type="Self.ServiceSubscription" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ServiceDelivery" Type="Self.ServiceDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubscription">
+              <PropertyRef Name="idServiceSubscription" />
+            </Principal>
+            <Dependent Role="ServiceDelivery">
+              <PropertyRef Name="IdServiceSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceSubscription_Leads">
+          <End Role="Leads" Type="Self.Leads" Multiplicity="0..1" />
+          <End Role="ServiceSubscription" Type="Self.ServiceSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Leads">
+              <PropertyRef Name="idLead" />
+            </Principal>
+            <Dependent Role="ServiceSubscription">
+              <PropertyRef Name="idLead" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceSubscription_ServiceSubscription">
+          <End Role="ServiceSubscription" Type="Self.ServiceSubscription" Multiplicity="1" />
+          <End Role="UsersXSubscription" Type="Self.UsersXSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubscription">
+              <PropertyRef Name="idServiceSubscription" />
+            </Principal>
+            <Dependent Role="UsersXSubscription">
+              <PropertyRef Name="idSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SharedReports_SmartReport">
+          <End Role="SmartReport" Type="Self.SmartReport" Multiplicity="1" />
+          <End Role="SharedReports" Type="Self.SharedReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SharedReports">
+              <PropertyRef Name="SmartReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_ChartType">
+          <End Role="ChartType" Type="Self.ChartType" Multiplicity="0..1" />
+          <End Role="SmartChart" Type="Self.SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartType">
+              <PropertyRef Name="idChartType" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="IdChartType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_DataProvider">
+          <End Role="DataProvider" Type="Self.DataProvider" Multiplicity="0..1" />
+          <End Role="SmartChart" Type="Self.SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataProvider">
+              <PropertyRef Name="idDataProvider" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="IdDataProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_SmartReport">
+          <End Role="SmartReport" Type="Self.SmartReport" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SmartChart" Type="Self.SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="idSmartReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartReport_ServiceDelivery">
+          <End Role="ServiceDelivery" Type="Self.ServiceDelivery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SmartReport" Type="Self.SmartReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceDelivery">
+              <PropertyRef Name="idServiceDelivery" />
+            </Principal>
+            <Dependent Role="SmartReport">
+              <PropertyRef Name="idServiceDelivery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialPost_SmartReport">
+          <End Role="SmartReport" Type="Self.SmartReport" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SocialPost" Type="Self.SocialPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SocialPost">
+              <PropertyRef Name="idSmartReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateChartFromTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdReport" Type="int" Mode="In" />
+          <Parameter Name="NEWIdReport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CreateReportFromTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdReport" Type="int" Mode="In" />
+          <Parameter Name="idServiceDelivery" Type="int" Mode="In" />
+          <Parameter Name="IdReportOut" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetChardIdInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdReport" Type="int" Mode="In" />
+          <Parameter Name="IdFileName" Type="varchar" Mode="In" />
+          <Parameter Name="IdChartOut" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetChartInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filename" Type="varchar(max)" Mode="In" />
+          <Parameter Name="colamount" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGet_SmartReportProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_AudienceStream" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_MessageSocialPosts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+          <Parameter Name="ParamMessage" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_ParentTopicXTopicXWeight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_SocialPostXID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_SocialPostXIdXCol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="Param2ColName" Type="varchar" Mode="In" />
+          <Parameter Name="Param3ColValue" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_SocialPostXIdXTopNXFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="Param2TopN" Type="int" Mode="In" />
+          <Parameter Name="Param3Filter" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="Param2TopN" Type="int" Mode="In" />
+          <Parameter Name="Param3Filter" Type="nvarchar" Mode="In" />
+          <Parameter Name="Param4SkipRows" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_TermXCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_TermXGroupedTermXCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_TermXTimeXCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_TopSocialPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartData_TopSocialPostByProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartChart" Type="int" Mode="In" />
+          <Parameter Name="ParamProduct" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="spGetChartsByReportXID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetChartsByReportXIdXCol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="Param2ColName" Type="varchar" Mode="In" />
+          <Parameter Name="Param3ColValue" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetDeliveryReports" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParamDeliveryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetReportDataXID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetReportDataXIdXCol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Param1IdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="Param2ColName" Type="varchar" Mode="In" />
+          <Parameter Name="Param3ColValue" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetSocialPosts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParamIdSmartReport" Type="int" Mode="In" />
+          <Parameter Name="ParamMessage" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ParamMessageCreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="ParamSocialNetwork" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ParamTopRows" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetSubscriptionDeliveries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParamSubscriptionId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetUserSubscriptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParamUserId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateSocialPostFormattedCols" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdReport" Type="int" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SmartSocialModelStoreContainer">
+          <EntitySet Name="ChartComment" EntityType="Self.ChartComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChartSeries" EntityType="Self.ChartSeries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChartType" EntityType="Self.ChartType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataProvider" EntityType="Self.DataProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataProviderXChartType" EntityType="Self.DataProviderXChartType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataType" EntityType="Self.DataType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leads" EntityType="Self.Leads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeriesValue" EntityType="Self.SeriesValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceDelivery" EntityType="Self.ServiceDelivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceSubscription" EntityType="Self.ServiceSubscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SharedReports" EntityType="Self.SharedReports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmartChart" EntityType="Self.SmartChart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmartReport" EntityType="Self.SmartReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialPost" EntityType="Self.SocialPost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialPostTMP" EntityType="Self.SocialPostTMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionRoleTypes" EntityType="Self.SubscriptionRoleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersXSubscription" EntityType="Self.UsersXSubscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__SharedRep__Creat__756D6ECB" Association="Self.FK__SharedRep__Creat__756D6ECB">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="SharedReports" EntitySet="SharedReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartComment_SmartChart" Association="Self.FK_ChartComment_SmartChart">
+            <End Role="SmartChart" EntitySet="SmartChart" />
+            <End Role="ChartComment" EntitySet="ChartComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChartSeries_SmartChart" Association="Self.FK_ChartSeries_SmartChart">
+            <End Role="SmartChart" EntitySet="SmartChart" />
+            <End Role="ChartSeries" EntitySet="ChartSeries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataProvidersXChartType_ChartType" Association="Self.FK_DataProvidersXChartType_ChartType">
+            <End Role="ChartType" EntitySet="ChartType" />
+            <End Role="DataProviderXChartType" EntitySet="DataProviderXChartType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataProvidersXChartType_DataProvider" Association="Self.FK_DataProvidersXChartType_DataProvider">
+            <End Role="DataProvider" EntitySet="DataProvider" />
+            <End Role="DataProviderXChartType" EntitySet="DataProviderXChartType" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeriesValue_ChartSeries" Association="Self.FK_SeriesValue_ChartSeries">
+            <End Role="ChartSeries" EntitySet="ChartSeries" />
+            <End Role="SeriesValue" EntitySet="SeriesValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeriesValue_DataType" Association="Self.FK_SeriesValue_DataType">
+            <End Role="DataType" EntitySet="DataType" />
+            <End Role="SeriesValue" EntitySet="SeriesValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceDelivery_ServiceSubscription" Association="Self.FK_ServiceDelivery_ServiceSubscription">
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscription" />
+            <End Role="ServiceDelivery" EntitySet="ServiceDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceSubscription_Leads" Association="Self.FK_ServiceSubscription_Leads">
+            <End Role="Leads" EntitySet="Leads" />
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceSubscription_ServiceSubscription" Association="Self.FK_ServiceSubscription_ServiceSubscription">
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscription" />
+            <End Role="UsersXSubscription" EntitySet="UsersXSubscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SharedReports_SmartReport" Association="Self.FK_SharedReports_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReport" />
+            <End Role="SharedReports" EntitySet="SharedReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_ChartType" Association="Self.FK_SmartChart_ChartType">
+            <End Role="ChartType" EntitySet="ChartType" />
+            <End Role="SmartChart" EntitySet="SmartChart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_DataProvider" Association="Self.FK_SmartChart_DataProvider">
+            <End Role="DataProvider" EntitySet="DataProvider" />
+            <End Role="SmartChart" EntitySet="SmartChart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_SmartReport" Association="Self.FK_SmartChart_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReport" />
+            <End Role="SmartChart" EntitySet="SmartChart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartReport_ServiceDelivery" Association="Self.FK_SmartReport_ServiceDelivery">
+            <End Role="ServiceDelivery" EntitySet="ServiceDelivery" />
+            <End Role="SmartReport" EntitySet="SmartReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialPost_SmartReport" Association="Self.FK_SocialPost_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReport" />
+            <End Role="SocialPost" EntitySet="SocialPost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Company" Association="Self.FK_UserProfile_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartSocialModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SmartSocialContext" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CreateChartFromTemplate">
+            <Parameter Name="IdReport" Mode="In" Type="Int32" />
+            <Parameter Name="NEWIdReport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CreateReportFromTemplate">
+            <Parameter Name="IdReport" Mode="In" Type="Int32" />
+            <Parameter Name="idServiceDelivery" Mode="In" Type="Int32" />
+            <Parameter Name="IdReportOut" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetChardIdInfo">
+            <Parameter Name="IdReport" Mode="In" Type="Int32" />
+            <Parameter Name="IdFileName" Mode="In" Type="String" />
+            <Parameter Name="IdChartOut" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetChartInfo" ReturnType="Collection(SmartSocialModel.GetChartInfo_Result1)">
+            <Parameter Name="filename" Mode="In" Type="String" />
+            <Parameter Name="colamount" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_AudienceStream" ReturnType="Collection(SmartSocialModel.spGetChartData_AudienceStream_Result1)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_ParentTopicXTopicXWeight" ReturnType="Collection(SmartSocialModel.spGetChartData_ParentTopicXTopicXWeight_Result1)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_SocialPostXID" ReturnType="Collection(SmartSocialModel.spGetChartData_SocialPostXID_Result1)">
+          <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_SocialPostXIdXCol">
+            <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="Param2ColName" Mode="In" Type="String" />
+            <Parameter Name="Param3ColValue" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_SocialPostXIdXTopNXFilter">
+            <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="Param2TopN" Mode="In" Type="Int32" />
+            <Parameter Name="Param3Filter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_SocialPostXIdXTopNXFilterXSkipRows">
+            <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="Param2TopN" Mode="In" Type="Int32" />
+            <Parameter Name="Param3Filter" Mode="In" Type="String" />
+            <Parameter Name="Param4SkipRows" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_TermXCount" ReturnType="Collection(SmartSocialModel.spGetChartData_TermXCount_Result1)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_TermXGroupedTermXCount" ReturnType="Collection(SmartSocialModel.spGetChartData_TermXGroupedTermXCount_Result1)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_TermXTimeXCount" ReturnType="Collection(SmartSocialModel.spGetChartData_TermXTimeXCount_Result1)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartsByReportXID" ReturnType="Collection(SmartSocialModel.spGetChartsByReportXID_Result1)">
+          <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartsByReportXIdXCol">
+            <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="Param2ColName" Mode="In" Type="String" />
+            <Parameter Name="Param3ColValue" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetDeliveryReports" ReturnType="Collection(SmartSocialModel.spGetDeliveryReports_Result1)">
+          <Parameter Name="ParamDeliveryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetReportDataXID" ReturnType="Collection(SmartSocialModel.spGetReportDataXID_Result1)">
+          <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetReportDataXIdXCol">
+            <Parameter Name="Param1IdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="Param2ColName" Mode="In" Type="String" />
+            <Parameter Name="Param3ColValue" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSocialPosts" ReturnType="Collection(SmartSocialModel.spGetSocialPosts_Result1)">
+            <Parameter Name="ParamIdSmartReport" Mode="In" Type="Int32" />
+            <Parameter Name="ParamMessage" Mode="In" Type="String" />
+            <Parameter Name="ParamMessageCreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ParamSocialNetwork" Mode="In" Type="String" />
+            <Parameter Name="ParamTopRows" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetSubscriptionDeliveries" ReturnType="Collection(SmartSocialModel.spGetSubscriptionDeliveries_Result1)">
+          <Parameter Name="ParamSubscriptionId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserSubscriptions" ReturnType="Collection(SmartSocialModel.spGetUserSubscriptions_Result1)">
+          <Parameter Name="ParamUserId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateSocialPostFormattedCols">
+            <Parameter Name="IdReport" Mode="In" Type="Int32" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ChartSeries" EntityType="SmartSocialModel.ChartSery" />
+          <EntitySet Name="ChartTypes" EntityType="SmartSocialModel.ChartType" />
+          <EntitySet Name="Companies" EntityType="SmartSocialModel.Company" />
+          <EntitySet Name="DataProviders" EntityType="SmartSocialModel.DataProvider" />
+          <EntitySet Name="DataProviderXChartTypes" EntityType="SmartSocialModel.DataProviderXChartType" />
+          <EntitySet Name="DataTypes" EntityType="SmartSocialModel.DataType" />
+          <EntitySet Name="Notifications" EntityType="SmartSocialModel.Notification" />
+          <EntitySet Name="SeriesValues" EntityType="SmartSocialModel.SeriesValue" />
+          <EntitySet Name="ServiceDeliveries" EntityType="SmartSocialModel.ServiceDelivery" />
+          <EntitySet Name="SharedReports" EntityType="SmartSocialModel.SharedReport" />
+          <EntitySet Name="SmartCharts" EntityType="SmartSocialModel.SmartChart" />
+          <EntitySet Name="SmartReports" EntityType="SmartSocialModel.SmartReport" />
+          <EntitySet Name="SocialPosts" EntityType="SmartSocialModel.SocialPost" />
+          <EntitySet Name="SocialPostTMPs" EntityType="SmartSocialModel.SocialPostTMP" />
+          <EntitySet Name="SubscriptionRoleTypes" EntityType="SmartSocialModel.SubscriptionRoleType" />
+          <EntitySet Name="sysdiagrams" EntityType="SmartSocialModel.sysdiagram" />
+          <EntitySet Name="webpages_Membership" EntityType="SmartSocialModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="SmartSocialModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="SmartSocialModel.webpages_Roles" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="SmartSocialModel.webpages_UsersInRoles" />
+          <AssociationSet Name="FK_ChartSeries_SmartChart" Association="SmartSocialModel.FK_ChartSeries_SmartChart">
+            <End Role="SmartChart" EntitySet="SmartCharts" />
+            <End Role="ChartSery" EntitySet="ChartSeries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeriesValue_ChartSeries" Association="SmartSocialModel.FK_SeriesValue_ChartSeries">
+            <End Role="ChartSery" EntitySet="ChartSeries" />
+            <End Role="SeriesValue" EntitySet="SeriesValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataProvidersXChartType_ChartType" Association="SmartSocialModel.FK_DataProvidersXChartType_ChartType">
+            <End Role="ChartType" EntitySet="ChartTypes" />
+            <End Role="DataProviderXChartType" EntitySet="DataProviderXChartTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_ChartType" Association="SmartSocialModel.FK_SmartChart_ChartType">
+            <End Role="ChartType" EntitySet="ChartTypes" />
+            <End Role="SmartChart" EntitySet="SmartCharts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataProvidersXChartType_DataProvider" Association="SmartSocialModel.FK_DataProvidersXChartType_DataProvider">
+            <End Role="DataProvider" EntitySet="DataProviders" />
+            <End Role="DataProviderXChartType" EntitySet="DataProviderXChartTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_DataProvider" Association="SmartSocialModel.FK_SmartChart_DataProvider">
+            <End Role="DataProvider" EntitySet="DataProviders" />
+            <End Role="SmartChart" EntitySet="SmartCharts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeriesValue_DataType" Association="SmartSocialModel.FK_SeriesValue_DataType">
+            <End Role="DataType" EntitySet="DataTypes" />
+            <End Role="SeriesValue" EntitySet="SeriesValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartReport_ServiceDelivery" Association="SmartSocialModel.FK_SmartReport_ServiceDelivery">
+            <End Role="ServiceDelivery" EntitySet="ServiceDeliveries" />
+            <End Role="SmartReport" EntitySet="SmartReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SharedReports_SmartReport" Association="SmartSocialModel.FK_SharedReports_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReports" />
+            <End Role="SharedReport" EntitySet="SharedReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SmartChart_SmartReport" Association="SmartSocialModel.FK_SmartChart_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReports" />
+            <End Role="SmartChart" EntitySet="SmartCharts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialPost_SmartReport" Association="SmartSocialModel.FK_SocialPost_SmartReport">
+            <End Role="SmartReport" EntitySet="SmartReports" />
+            <End Role="SocialPost" EntitySet="SocialPosts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="SmartSocialModel.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="SmartSocialModel.Country" />
+          <EntitySet Name="UsersXSubscriptions" EntityType="SmartSocialModel.UsersXSubscription" />
+          <EntitySet Name="ChartComments" EntityType="SmartSocialModel.ChartComment" />
+          <EntitySet Name="Leads" EntityType="SmartSocialModel.Lead" />
+          <EntitySet Name="ServiceSubscriptions" EntityType="SmartSocialModel.ServiceSubscription" />
+          <AssociationSet Name="FK_ChartComment_SmartChart" Association="SmartSocialModel.FK_ChartComment_SmartChart">
+            <End Role="SmartChart" EntitySet="SmartCharts" />
+            <End Role="ChartComment" EntitySet="ChartComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceSubscription_Leads" Association="SmartSocialModel.FK_ServiceSubscription_Leads">
+            <End Role="Lead" EntitySet="Leads" />
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceDelivery_ServiceSubscription" Association="SmartSocialModel.FK_ServiceDelivery_ServiceSubscription">
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscriptions" />
+            <End Role="ServiceDelivery" EntitySet="ServiceDeliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceSubscription_ServiceSubscription" Association="SmartSocialModel.FK_ServiceSubscription_ServiceSubscription">
+            <End Role="ServiceSubscription" EntitySet="ServiceSubscriptions" />
+            <End Role="UsersXSubscription" EntitySet="UsersXSubscriptions" />
+          </AssociationSet>
+          <EntitySet Name="UserProfiles" EntityType="SmartSocialModel.UserProfile" />
+          <AssociationSet Name="FK_UserProfile_Company" Association="SmartSocialModel.FK_UserProfile_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <FunctionImport Name="spGetChartData_TopSocialPost" ReturnType="Collection(SmartSocialModel.spGetChartData_TopSocialPost_Result)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK__SharedRep__Creat__756D6ECB" Association="SmartSocialModel.FK__SharedRep__Creat__756D6ECB">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="SharedReport" EntitySet="SharedReports" />
+          </AssociationSet>
+          <FunctionImport Name="spGet_SmartReportProduct" ReturnType="Collection(String)">
+          <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_MessageSocialPosts" ReturnType="Collection(SmartSocialModel.spGetChartData_MessageSocialPosts_Result)">
+            <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+            <Parameter Name="ParamMessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetChartData_TopSocialPostByProduct" ReturnType="Collection(SmartSocialModel.spGetChartData_TopSocialPostByProduct_Result)">
+            <Parameter Name="Param1IdSmartChart" Mode="In" Type="Int32" />
+            <Parameter Name="ParamProduct" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetChartInfo_Result">
+          <Property Type="String" Name="CHARTNAME" Nullable="true" />
+          <Property Type="String" Name="filename" Nullable="true" />
+          <Property Type="String" Name="COL1" Nullable="true" />
+          <Property Type="String" Name="COL2" Nullable="true" />
+          <Property Type="String" Name="COL3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_AudienceStream_Result">
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" />
+          <Property Type="String" Name="Bio" Nullable="true" />
+          <Property Type="String" Name="ProfileUrl" Nullable="true" />
+          <Property Type="String" Name="Statuses" Nullable="true" />
+          <Property Type="String" Name="Reach" Nullable="true" />
+          <Property Type="String" Name="Followers" Nullable="true" />
+          <Property Type="String" Name="Following" Nullable="true" />
+          <Property Type="String" Name="ProfileImageUrl" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_ParentTopicXTopicXWeight_Result">
+          <Property Type="String" Name="ParentTopic" Nullable="true" />
+          <Property Type="String" Name="theParentWeight" Nullable="true" />
+          <Property Type="String" Name="theTopic" Nullable="true" />
+          <Property Type="String" Name="theWeight" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_SocialPostXID_Result">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXCount_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXGroupedTermXCount_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theGroup" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXTimeXCount_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theTime" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartsByReportXID_Result">
+          <Property Type="Int32" Name="IdSmartchart" Nullable="false" />
+          <Property Type="String" Name="ChartName" Nullable="true" />
+          <Property Type="Int32" Name="ChartOrder" Nullable="true" />
+          <Property Type="String" Name="AxisSeriesTitle" Nullable="true" />
+          <Property Type="String" Name="AxisValuesTitle" Nullable="true" />
+          <Property Type="String" Name="CssClasses" Nullable="true" />
+          <Property Type="String" Name="HtmlStyles" Nullable="true" />
+          <Property Type="String" Name="ChartTypeName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetDeliveryReports_Result">
+          <Property Type="Int32" Name="idSmartReport" Nullable="false" />
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="true" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isTemplate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetReportDataXID_Result">
+          <Property Type="Int32" Name="ReportId" Nullable="false" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetSocialPosts_Result">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetSubscriptionDeliveries_Result">
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="false" />
+          <Property Type="DateTime" Name="DateDelivered" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetUserSubscriptions_Result">
+          <Property Type="Int32" Name="idServiceSubscription" Nullable="false" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetChartInfo1_Result">
+          <Property Type="String" Name="CHARTNAME" Nullable="true" />
+          <Property Type="String" Name="filename" Nullable="true" />
+          <Property Type="String" Name="COL1" Nullable="true" />
+          <Property Type="String" Name="COL2" Nullable="true" />
+          <Property Type="String" Name="COL3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_AudienceStream1_Result">
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" />
+          <Property Type="String" Name="Bio" Nullable="true" />
+          <Property Type="String" Name="ProfileUrl" Nullable="true" />
+          <Property Type="String" Name="Statuses" Nullable="true" />
+          <Property Type="String" Name="Reach" Nullable="true" />
+          <Property Type="String" Name="Followers" Nullable="true" />
+          <Property Type="String" Name="Following" Nullable="true" />
+          <Property Type="String" Name="ProfileImageUrl" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_ParentTopicXTopicXWeight1_Result">
+          <Property Type="String" Name="ParentTopic" Nullable="true" />
+          <Property Type="String" Name="theParentWeight" Nullable="true" />
+          <Property Type="String" Name="theTopic" Nullable="true" />
+          <Property Type="String" Name="theWeight" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_SocialPostXID1_Result">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="String" Name="Product" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXCount1_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXGroupedTermXCount1_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theGroup" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXTimeXCount1_Result">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theTime" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartsByReportXID1_Result">
+          <Property Type="Int32" Name="IdSmartchart" Nullable="false" />
+          <Property Type="String" Name="ChartName" Nullable="true" />
+          <Property Type="Int32" Name="ChartOrder" Nullable="true" />
+          <Property Type="String" Name="AxisSeriesTitle" Nullable="true" />
+          <Property Type="String" Name="AxisValuesTitle" Nullable="true" />
+          <Property Type="String" Name="CssClasses" Nullable="true" />
+          <Property Type="String" Name="HtmlStyles" Nullable="true" />
+          <Property Type="String" Name="ChartTypeName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetDeliveryReports1_Result">
+          <Property Type="Int32" Name="idSmartReport" Nullable="false" />
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="true" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isTemplate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetReportDataXID1_Result">
+          <Property Type="Int32" Name="ReportId" Nullable="false" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetSocialPosts1_Result">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetSubscriptionDeliveries1_Result">
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="false" />
+          <Property Type="DateTime" Name="DateDelivered" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeliveryDateTo" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetUserSubscriptions1_Result">
+          <Property Type="Int32" Name="idServiceSubscription" Nullable="false" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetChartInfo_Result1">
+          <Property Type="String" Name="CHARTNAME" Nullable="true" />
+          <Property Type="String" Name="filename" Nullable="true" />
+          <Property Type="String" Name="COL1" Nullable="true" />
+          <Property Type="String" Name="COL2" Nullable="true" />
+          <Property Type="String" Name="COL3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_AudienceStream_Result1">
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" />
+          <Property Type="String" Name="FullName" Nullable="true" />
+          <Property Type="String" Name="Bio" Nullable="true" />
+          <Property Type="String" Name="ProfileUrl" Nullable="true" />
+          <Property Type="String" Name="Statuses" Nullable="true" />
+          <Property Type="String" Name="Reach" Nullable="true" />
+          <Property Type="String" Name="Followers" Nullable="true" />
+          <Property Type="String" Name="Following" Nullable="true" />
+          <Property Type="String" Name="ProfileImageUrl" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_ParentTopicXTopicXWeight_Result1">
+          <Property Type="String" Name="ParentTopic" Nullable="true" />
+          <Property Type="String" Name="theParentWeight" Nullable="true" />
+          <Property Type="String" Name="theTopic" Nullable="true" />
+          <Property Type="String" Name="theWeight" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_SocialPostXID_Result1">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="String" Name="Product" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXCount_Result1">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXGroupedTermXCount_Result1">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theGroup" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TermXTimeXCount_Result1">
+          <Property Type="String" Name="Term" Nullable="true" />
+          <Property Type="String" Name="theTime" Nullable="true" />
+          <Property Type="String" Name="theCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetChartsByReportXID_Result1">
+          <Property Type="Int32" Name="IdSmartchart" Nullable="false" />
+          <Property Type="String" Name="ChartName" Nullable="true" />
+          <Property Type="Int32" Name="ChartOrder" Nullable="true" />
+          <Property Type="String" Name="AxisSeriesTitle" Nullable="true" />
+          <Property Type="String" Name="AxisValuesTitle" Nullable="true" />
+          <Property Type="String" Name="CssClasses" Nullable="true" />
+          <Property Type="String" Name="HtmlStyles" Nullable="true" />
+          <Property Type="String" Name="ChartTypeName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetDeliveryReports_Result1">
+          <Property Type="Int32" Name="idSmartReport" Nullable="false" />
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="true" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="isTemplate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetReportDataXID_Result1">
+          <Property Type="Int32" Name="ReportId" Nullable="false" />
+          <Property Type="String" Name="ReportName" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetSocialPosts_Result1">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Permalink" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetSubscriptionDeliveries_Result1">
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="false" />
+          <Property Type="DateTime" Name="DateDelivered" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeliveryDateTo" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdServiceSubscription" Nullable="true" />
+          <Property Type="String" Name="Insights" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetUserSubscriptions_Result1">
+          <Property Type="Int32" Name="idServiceSubscription" Nullable="false" />
+          <Property Type="String" Name="SubscriptionName" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ChartSery">
+          <Key>
+            <PropertyRef Name="idChartSeries" />
+          </Key>
+          <Property Type="Int32" Name="idChartSeries" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idSmartChart" />
+          <Property Type="String" Name="SeriesName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SmartChart" Relationship="SmartSocialModel.FK_ChartSeries_SmartChart" FromRole="ChartSery" ToRole="SmartChart" />
+          <NavigationProperty Name="SeriesValues" Relationship="SmartSocialModel.FK_SeriesValue_ChartSeries" FromRole="ChartSery" ToRole="SeriesValue" />
+        </EntityType>
+        <EntityType Name="ChartType">
+          <Key>
+            <PropertyRef Name="idChartType" />
+          </Key>
+          <Property Type="Int32" Name="idChartType" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ChartTypeName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StoredProcedureName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DataProviderXChartTypes" Relationship="SmartSocialModel.FK_DataProvidersXChartType_ChartType" FromRole="ChartType" ToRole="DataProviderXChartType" />
+          <NavigationProperty Name="SmartCharts" Relationship="SmartSocialModel.FK_SmartChart_ChartType" FromRole="ChartType" ToRole="SmartChart" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Type="Int32" Name="IdCompany" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CompanyName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LogoFileName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserProfiles" Relationship="SmartSocialModel.FK_UserProfile_Company" FromRole="Company" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="DataProvider">
+          <Key>
+            <PropertyRef Name="idDataProvider" />
+          </Key>
+          <Property Type="Int32" Name="idDataProvider" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DataProviderName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DataProviderXChartTypes" Relationship="SmartSocialModel.FK_DataProvidersXChartType_DataProvider" FromRole="DataProvider" ToRole="DataProviderXChartType" />
+          <NavigationProperty Name="SmartCharts" Relationship="SmartSocialModel.FK_SmartChart_DataProvider" FromRole="DataProvider" ToRole="SmartChart" />
+        </EntityType>
+        <EntityType Name="DataProviderXChartType">
+          <Key>
+            <PropertyRef Name="idDataProvider" />
+            <PropertyRef Name="idChartType" />
+          </Key>
+          <Property Type="Int32" Name="idDataProvider" Nullable="false" />
+          <Property Type="Int32" Name="idChartType" Nullable="false" />
+          <Property Type="String" Name="FileLoadFunctionName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChartType" Relationship="SmartSocialModel.FK_DataProvidersXChartType_ChartType" FromRole="DataProviderXChartType" ToRole="ChartType" />
+          <NavigationProperty Name="DataProvider" Relationship="SmartSocialModel.FK_DataProvidersXChartType_DataProvider" FromRole="DataProviderXChartType" ToRole="DataProvider" />
+        </EntityType>
+        <EntityType Name="DataType">
+          <Key>
+            <PropertyRef Name="idDataType" />
+          </Key>
+          <Property Type="Int32" Name="idDataType" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DataTypeName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SeriesValues" Relationship="SmartSocialModel.FK_SeriesValue_DataType" FromRole="DataType" ToRole="SeriesValue" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="idNotification" />
+          </Key>
+          <Property Type="Int32" Name="idNotification" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CreateBy" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="3" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="3" />
+          <Property Type="Boolean" Name="WasViewed" />
+        </EntityType>
+        <EntityType Name="SeriesValue">
+          <Key>
+            <PropertyRef Name="idSeriesValue" />
+          </Key>
+          <Property Type="Int32" Name="idSeriesValue" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idChartSeries" />
+          <Property Type="Int32" Name="idDataType" />
+          <Property Type="String" Name="Value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RowPosition" />
+          <NavigationProperty Name="ChartSery" Relationship="SmartSocialModel.FK_SeriesValue_ChartSeries" FromRole="SeriesValue" ToRole="ChartSery" />
+          <NavigationProperty Name="DataType" Relationship="SmartSocialModel.FK_SeriesValue_DataType" FromRole="SeriesValue" ToRole="DataType" />
+        </EntityType>
+        <EntityType Name="ServiceDelivery">
+          <Key>
+            <PropertyRef Name="idServiceDelivery" />
+          </Key>
+          <Property Type="Int32" Name="idServiceDelivery" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="DateDelivered" Precision="3" />
+          <Property Type="DateTime" Name="DeliveryDateTo" Precision="3" />
+          <Property Type="Int32" Name="IdServiceSubscription" />
+          <Property Type="String" Name="Insights" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SmartReports" Relationship="SmartSocialModel.FK_SmartReport_ServiceDelivery" FromRole="ServiceDelivery" ToRole="SmartReport" />
+          <NavigationProperty Name="ServiceSubscription" Relationship="SmartSocialModel.FK_ServiceDelivery_ServiceSubscription" FromRole="ServiceDelivery" ToRole="ServiceSubscription" />
+        </EntityType>
+        <EntityType Name="SharedReport">
+          <Key>
+            <PropertyRef Name="IdSharedReports" />
+          </Key>
+          <Property Type="Int32" Name="IdSharedReports" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="Int32" Name="SmartReportId" Nullable="false" />
+          <Property Type="Int32" Name="SharedWith" />
+          <Property Type="String" Name="URL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TinyUrl" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comments" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Token" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ExpiredDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="SmartReport" Relationship="SmartSocialModel.FK_SharedReports_SmartReport" FromRole="SharedReport" ToRole="SmartReport" />
+          <NavigationProperty Name="UserProfile" Relationship="SmartSocialModel.FK__SharedRep__Creat__756D6ECB" FromRole="SharedReport" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="SmartChart">
+          <Key>
+            <PropertyRef Name="idSmartChart" />
+          </Key>
+          <Property Type="Int32" Name="idSmartChart" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idSmartReport" />
+          <Property Type="String" Name="ChartName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FileName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Insights" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IdChartType" />
+          <Property Type="Int32" Name="IdDataProvider" />
+          <Property Type="String" Name="AxisSeriesTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AxisValuesTitle" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CssClasses" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlStyles" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ChartOrder" />
+          <Property Type="String" Name="SocialPostFilter" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChartSeries" Relationship="SmartSocialModel.FK_ChartSeries_SmartChart" FromRole="SmartChart" ToRole="ChartSery" />
+          <NavigationProperty Name="ChartType" Relationship="SmartSocialModel.FK_SmartChart_ChartType" FromRole="SmartChart" ToRole="ChartType" />
+          <NavigationProperty Name="DataProvider" Relationship="SmartSocialModel.FK_SmartChart_DataProvider" FromRole="SmartChart" ToRole="DataProvider" />
+          <NavigationProperty Name="SmartReport" Relationship="SmartSocialModel.FK_SmartChart_SmartReport" FromRole="SmartChart" ToRole="SmartReport" />
+          <NavigationProperty Name="ChartComments" Relationship="SmartSocialModel.FK_ChartComment_SmartChart" FromRole="SmartChart" ToRole="ChartComment" />
+        </EntityType>
+        <EntityType Name="SmartReport">
+          <Key>
+            <PropertyRef Name="idSmartReport" />
+          </Key>
+          <Property Type="Int32" Name="idSmartReport" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idServiceDelivery" />
+          <Property Type="String" Name="ReportName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Insights" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="Boolean" Name="isTemplate" />
+          <NavigationProperty Name="ServiceDelivery" Relationship="SmartSocialModel.FK_SmartReport_ServiceDelivery" FromRole="SmartReport" ToRole="ServiceDelivery" />
+          <NavigationProperty Name="SharedReports" Relationship="SmartSocialModel.FK_SharedReports_SmartReport" FromRole="SmartReport" ToRole="SharedReport" />
+          <NavigationProperty Name="SmartCharts" Relationship="SmartSocialModel.FK_SmartChart_SmartReport" FromRole="SmartReport" ToRole="SmartChart" />
+          <NavigationProperty Name="SocialPosts" Relationship="SmartSocialModel.FK_SocialPost_SmartReport" FromRole="SmartReport" ToRole="SocialPost" />
+        </EntityType>
+        <EntityType Name="SocialPost">
+          <Key>
+            <PropertyRef Name="idSocialPost" />
+          </Key>
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idSmartReport" />
+          <Property Type="String" Name="SocialNetwork" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderScreenName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Precision="3" />
+          <Property Type="String" Name="Permalink" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Product" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SmartReport" Relationship="SmartSocialModel.FK_SocialPost_SmartReport" FromRole="SocialPost" ToRole="SmartReport" />
+        </EntityType>
+        <EntityType Name="SocialPostTMP">
+          <Key>
+            <PropertyRef Name="idSocialPost" />
+          </Key>
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="idSmartReport" />
+          <Property Type="String" Name="SocialNetwork" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderScreenName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderFollowersCount" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MessageCreatedDate" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Permalink" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Completed" />
+          <Property Type="String" Name="Product" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubscriptionRoleType">
+          <Key>
+            <PropertyRef Name="IdSubscriptionRoleTypes" />
+          </Key>
+          <Property Type="Int32" Name="IdSubscriptionRoleTypes" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsConfirmed" />
+          <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+          <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="webpages_UsersInRoles" Relationship="SmartSocialModel.fk_RoleId" FromRole="webpages_Roles" ToRole="webpages_UsersInRoles" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <NavigationProperty Name="webpages_Roles" Relationship="SmartSocialModel.fk_RoleId" FromRole="webpages_UsersInRoles" ToRole="webpages_Roles" />
+        </EntityType>
+        <Association Name="FK_ChartSeries_SmartChart">
+          <End Type="SmartSocialModel.SmartChart" Role="SmartChart" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.ChartSery" Role="ChartSery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartChart">
+              <PropertyRef Name="idSmartChart" />
+            </Principal>
+            <Dependent Role="ChartSery">
+              <PropertyRef Name="idSmartChart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeriesValue_ChartSeries">
+          <End Type="SmartSocialModel.ChartSery" Role="ChartSery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.SeriesValue" Role="SeriesValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartSery">
+              <PropertyRef Name="idChartSeries" />
+            </Principal>
+            <Dependent Role="SeriesValue">
+              <PropertyRef Name="idChartSeries" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataProvidersXChartType_ChartType">
+          <End Type="SmartSocialModel.ChartType" Role="ChartType" Multiplicity="1" />
+          <End Type="SmartSocialModel.DataProviderXChartType" Role="DataProviderXChartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartType">
+              <PropertyRef Name="idChartType" />
+            </Principal>
+            <Dependent Role="DataProviderXChartType">
+              <PropertyRef Name="idChartType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_ChartType">
+          <End Type="SmartSocialModel.ChartType" Role="ChartType" Multiplicity="0..1" />
+          <End Type="SmartSocialModel.SmartChart" Role="SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChartType">
+              <PropertyRef Name="idChartType" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="IdChartType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataProvidersXChartType_DataProvider">
+          <End Type="SmartSocialModel.DataProvider" Role="DataProvider" Multiplicity="1" />
+          <End Type="SmartSocialModel.DataProviderXChartType" Role="DataProviderXChartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataProvider">
+              <PropertyRef Name="idDataProvider" />
+            </Principal>
+            <Dependent Role="DataProviderXChartType">
+              <PropertyRef Name="idDataProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_DataProvider">
+          <End Type="SmartSocialModel.DataProvider" Role="DataProvider" Multiplicity="0..1" />
+          <End Type="SmartSocialModel.SmartChart" Role="SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataProvider">
+              <PropertyRef Name="idDataProvider" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="IdDataProvider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeriesValue_DataType">
+          <End Type="SmartSocialModel.DataType" Role="DataType" Multiplicity="0..1" />
+          <End Type="SmartSocialModel.SeriesValue" Role="SeriesValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataType">
+              <PropertyRef Name="idDataType" />
+            </Principal>
+            <Dependent Role="SeriesValue">
+              <PropertyRef Name="idDataType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartReport_ServiceDelivery">
+          <End Type="SmartSocialModel.ServiceDelivery" Role="ServiceDelivery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.SmartReport" Role="SmartReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceDelivery">
+              <PropertyRef Name="idServiceDelivery" />
+            </Principal>
+            <Dependent Role="SmartReport">
+              <PropertyRef Name="idServiceDelivery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SharedReports_SmartReport">
+          <End Type="SmartSocialModel.SmartReport" Role="SmartReport" Multiplicity="1" />
+          <End Type="SmartSocialModel.SharedReport" Role="SharedReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SharedReport">
+              <PropertyRef Name="SmartReportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SmartChart_SmartReport">
+          <End Type="SmartSocialModel.SmartReport" Role="SmartReport" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.SmartChart" Role="SmartChart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SmartChart">
+              <PropertyRef Name="idSmartReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialPost_SmartReport">
+          <End Type="SmartSocialModel.SmartReport" Role="SmartReport" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.SocialPost" Role="SocialPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartReport">
+              <PropertyRef Name="idSmartReport" />
+            </Principal>
+            <Dependent Role="SocialPost">
+              <PropertyRef Name="idSmartReport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Type="SmartSocialModel.webpages_Roles" Role="webpages_Roles" Multiplicity="1" />
+          <End Type="SmartSocialModel.webpages_UsersInRoles" Role="webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="Int32" Nullable="false" />
+          <Property Name="ISO2" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongCountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ISO3" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="NumCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="UNMemberState" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="CallingCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="CCTLD" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FlagImageFilename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCodeTest" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersXSubscription">
+          <Key>
+            <PropertyRef Name="idUserXSubscription" />
+          </Key>
+          <Property Name="idUserXSubscription" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSubscription" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="IdSubscriptionRoleTypes" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ServiceSubscription" Relationship="SmartSocialModel.FK_ServiceSubscription_ServiceSubscription" FromRole="UsersXSubscription" ToRole="ServiceSubscription" />
+        </EntityType>
+        <EntityType Name="ChartComment">
+          <Key>
+            <PropertyRef Name="IdComment" />
+          </Key>
+          <Property Name="IdComment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IdSmartChart" Type="Int32" Nullable="false" />
+          <Property Name="DatePosted" Type="DateTime" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SmartChart" Relationship="SmartSocialModel.FK_ChartComment_SmartChart" FromRole="ChartComment" ToRole="SmartChart" />
+        </EntityType>
+        <EntityType Name="Lead">
+          <Key>
+            <PropertyRef Name="idLead" />
+          </Key>
+          <Property Name="idLead" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aliases" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarketSegments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherMarketSegments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Competitors" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PictureFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IntakeToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IntakeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IntakeEmailSentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsIntakeAnswered" Type="Boolean" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceSubscriptions" Relationship="SmartSocialModel.FK_ServiceSubscription_Leads" FromRole="Lead" ToRole="ServiceSubscription" />
+        </EntityType>
+        <EntityType Name="ServiceSubscription">
+          <Key>
+            <PropertyRef Name="idServiceSubscription" />
+          </Key>
+          <Property Name="idServiceSubscription" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriptionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="idChargifySuscription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idChargifyCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idLead" Type="Int32" />
+          <NavigationProperty Name="Lead" Relationship="SmartSocialModel.FK_ServiceSubscription_Leads" FromRole="ServiceSubscription" ToRole="Lead" />
+          <NavigationProperty Name="ServiceDeliveries" Relationship="SmartSocialModel.FK_ServiceDelivery_ServiceSubscription" FromRole="ServiceSubscription" ToRole="ServiceDelivery" />
+          <NavigationProperty Name="UsersXSubscriptions" Relationship="SmartSocialModel.FK_ServiceSubscription_ServiceSubscription" FromRole="ServiceSubscription" ToRole="UsersXSubscription" />
+        </EntityType>
+        <Association Name="FK_ChartComment_SmartChart">
+          <End Type="SmartSocialModel.SmartChart" Role="SmartChart" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.ChartComment" Role="ChartComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmartChart">
+              <PropertyRef Name="idSmartChart" />
+            </Principal>
+            <Dependent Role="ChartComment">
+              <PropertyRef Name="IdSmartChart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceSubscription_Leads">
+          <End Type="SmartSocialModel.Lead" Role="Lead" Multiplicity="0..1" />
+          <End Type="SmartSocialModel.ServiceSubscription" Role="ServiceSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lead">
+              <PropertyRef Name="idLead" />
+            </Principal>
+            <Dependent Role="ServiceSubscription">
+              <PropertyRef Name="idLead" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceDelivery_ServiceSubscription">
+          <End Type="SmartSocialModel.ServiceSubscription" Role="ServiceSubscription" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SmartSocialModel.ServiceDelivery" Role="ServiceDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubscription">
+              <PropertyRef Name="idServiceSubscription" />
+            </Principal>
+            <Dependent Role="ServiceDelivery">
+              <PropertyRef Name="IdServiceSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceSubscription_ServiceSubscription">
+          <End Type="SmartSocialModel.ServiceSubscription" Role="ServiceSubscription" Multiplicity="1" />
+          <End Type="SmartSocialModel.UsersXSubscription" Role="UsersXSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceSubscription">
+              <PropertyRef Name="idServiceSubscription" />
+            </Principal>
+            <Dependent Role="UsersXSubscription">
+              <PropertyRef Name="idSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="LastReportId" Type="Int32" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ChargifyCustomerId" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="SmartSocialModel.FK_UserProfile_Company" FromRole="UserProfile" ToRole="Company" />
+          <NavigationProperty Name="SharedReports" Relationship="SmartSocialModel.FK__SharedRep__Creat__756D6ECB" FromRole="UserProfile" ToRole="SharedReport" />
+        </EntityType>
+        <Association Name="FK_UserProfile_Company">
+          <End Type="SmartSocialModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="SmartSocialModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spGetChartData_TopSocialPost_Result">
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="Int32" Name="dMessage" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="String" Name="Product" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <Association Name="FK__SharedRep__Creat__756D6ECB">
+          <End Type="SmartSocialModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="SmartSocialModel.SharedReport" Role="SharedReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SharedReport">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spGetChartData_MessageSocialPosts_Result">
+          <Property Type="Int32" Name="idSocialPost" Nullable="false" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="DateTime" Name="MessageCreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PermaLink" Nullable="true" />
+          <Property Type="String" Name="SocialNetwork" Nullable="true" />
+          <Property Type="String" Name="SenderScreenName" Nullable="true" />
+          <Property Type="String" Name="SenderProfileImgUrl" Nullable="true" />
+          <Property Type="Int32" Name="SenderFollowersCount" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" />
+          <Property Type="String" Name="Product" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spGetChartData_TopSocialPostByProduct_Result">
+          <Property Type="Int32" Name="dMessage" Nullable="true" />
+          <Property Type="String" Name="Product" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Message" Nullable="true" />
+          <Property Type="Int32" Name="idSmartReport" Nullable="true" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartSocialModelStoreContainer" CdmEntityContainer="SmartSocialContext">
+          <FunctionImportMapping FunctionImportName="CreateChartFromTemplate" FunctionName="SmartSocialModel.Store.CreateChartFromTemplate" />
+          <FunctionImportMapping FunctionImportName="CreateReportFromTemplate" FunctionName="SmartSocialModel.Store.CreateReportFromTemplate" />
+          <FunctionImportMapping FunctionImportName="GetChardIdInfo" FunctionName="SmartSocialModel.Store.GetChardIdInfo" />
+          <FunctionImportMapping FunctionImportName="GetChartInfo" FunctionName="SmartSocialModel.Store.GetChartInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.GetChartInfo_Result1">
+                <ScalarProperty Name="CHARTNAME" ColumnName="CHARTNAME" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="COL1" ColumnName="COL1" />
+                <ScalarProperty Name="COL2" ColumnName="COL2" />
+                <ScalarProperty Name="COL3" ColumnName="COL3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_AudienceStream" FunctionName="SmartSocialModel.Store.spGetChartData_AudienceStream">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_AudienceStream_Result1">
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="ProfileUrl" ColumnName="ProfileUrl" />
+                <ScalarProperty Name="Statuses" ColumnName="Statuses" />
+                <ScalarProperty Name="Reach" ColumnName="Reach" />
+                <ScalarProperty Name="Followers" ColumnName="Followers" />
+                <ScalarProperty Name="Following" ColumnName="Following" />
+                <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_ParentTopicXTopicXWeight" FunctionName="SmartSocialModel.Store.spGetChartData_ParentTopicXTopicXWeight">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_ParentTopicXTopicXWeight_Result1">
+                <ScalarProperty Name="ParentTopic" ColumnName="ParentTopic" />
+                <ScalarProperty Name="theParentWeight" ColumnName="theParentWeight" />
+                <ScalarProperty Name="theTopic" ColumnName="theTopic" />
+                <ScalarProperty Name="theWeight" ColumnName="theWeight" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXID" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_SocialPostXID_Result1">
+                <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+                <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXCol" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXCol" />
+          <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXTopNXFilter" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXTopNXFilter" />
+          <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" />
+          <FunctionImportMapping FunctionImportName="spGetChartData_TermXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXCount_Result1">
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="theCount" ColumnName="theCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_TermXGroupedTermXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXGroupedTermXCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXGroupedTermXCount_Result1">
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="theGroup" ColumnName="theGroup" />
+                <ScalarProperty Name="theCount" ColumnName="theCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_TermXTimeXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXTimeXCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXTimeXCount_Result1">
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="theTime" ColumnName="theTime" />
+                <ScalarProperty Name="theCount" ColumnName="theCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartsByReportXID" FunctionName="SmartSocialModel.Store.spGetChartsByReportXID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartsByReportXID_Result1">
+                <ScalarProperty Name="IdSmartchart" ColumnName="IdSmartchart" />
+                <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+                <ScalarProperty Name="ChartOrder" ColumnName="ChartOrder" />
+                <ScalarProperty Name="AxisSeriesTitle" ColumnName="AxisSeriesTitle" />
+                <ScalarProperty Name="AxisValuesTitle" ColumnName="AxisValuesTitle" />
+                <ScalarProperty Name="CssClasses" ColumnName="CssClasses" />
+                <ScalarProperty Name="HtmlStyles" ColumnName="HtmlStyles" />
+                <ScalarProperty Name="ChartTypeName" ColumnName="ChartTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartsByReportXIdXCol" FunctionName="SmartSocialModel.Store.spGetChartsByReportXIdXCol" />
+          <FunctionImportMapping FunctionImportName="spGetDeliveryReports" FunctionName="SmartSocialModel.Store.spGetDeliveryReports">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetDeliveryReports_Result1">
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="isTemplate" ColumnName="isTemplate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetReportDataXID" FunctionName="SmartSocialModel.Store.spGetReportDataXID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetReportDataXID_Result1">
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+                <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetReportDataXIdXCol" FunctionName="SmartSocialModel.Store.spGetReportDataXIdXCol" />
+          <FunctionImportMapping FunctionImportName="spGetSocialPosts" FunctionName="SmartSocialModel.Store.spGetSocialPosts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetSocialPosts_Result1">
+                <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+                <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetSubscriptionDeliveries" FunctionName="SmartSocialModel.Store.spGetSubscriptionDeliveries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetSubscriptionDeliveries_Result1">
+                <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+                <ScalarProperty Name="DeliveryDateTo" ColumnName="DeliveryDateTo" />
+                <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserSubscriptions" FunctionName="SmartSocialModel.Store.spGetUserSubscriptions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetUserSubscriptions_Result1">
+                <ScalarProperty Name="idServiceSubscription" ColumnName="idServiceSubscription" />
+                <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateSocialPostFormattedCols" FunctionName="SmartSocialModel.Store.UpdateSocialPostFormattedCols" />
+          <EntitySetMapping Name="ChartSeries">
+            <EntityTypeMapping TypeName="SmartSocialModel.ChartSery">
+              <MappingFragment StoreEntitySet="ChartSeries">
+                <ScalarProperty Name="SeriesName" ColumnName="SeriesName" />
+                <ScalarProperty Name="idSmartChart" ColumnName="idSmartChart" />
+                <ScalarProperty Name="idChartSeries" ColumnName="idChartSeries" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChartTypes">
+            <EntityTypeMapping TypeName="SmartSocialModel.ChartType">
+              <MappingFragment StoreEntitySet="ChartType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StoredProcedureName" ColumnName="StoredProcedureName" />
+                <ScalarProperty Name="ChartTypeName" ColumnName="ChartTypeName" />
+                <ScalarProperty Name="idChartType" ColumnName="idChartType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="SmartSocialModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataProviders">
+            <EntityTypeMapping TypeName="SmartSocialModel.DataProvider">
+              <MappingFragment StoreEntitySet="DataProvider">
+                <ScalarProperty Name="DataProviderName" ColumnName="DataProviderName" />
+                <ScalarProperty Name="idDataProvider" ColumnName="idDataProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataProviderXChartTypes">
+            <EntityTypeMapping TypeName="SmartSocialModel.DataProviderXChartType">
+              <MappingFragment StoreEntitySet="DataProviderXChartType">
+                <ScalarProperty Name="FileLoadFunctionName" ColumnName="FileLoadFunctionName" />
+                <ScalarProperty Name="idChartType" ColumnName="idChartType" />
+                <ScalarProperty Name="idDataProvider" ColumnName="idDataProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataTypes">
+            <EntityTypeMapping TypeName="SmartSocialModel.DataType">
+              <MappingFragment StoreEntitySet="DataType">
+                <ScalarProperty Name="DataTypeName" ColumnName="DataTypeName" />
+                <ScalarProperty Name="idDataType" ColumnName="idDataType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="SmartSocialModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="WasViewed" ColumnName="WasViewed" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="idNotification" ColumnName="idNotification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeriesValues">
+            <EntityTypeMapping TypeName="SmartSocialModel.SeriesValue">
+              <MappingFragment StoreEntitySet="SeriesValue">
+                <ScalarProperty Name="RowPosition" ColumnName="RowPosition" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="idDataType" ColumnName="idDataType" />
+                <ScalarProperty Name="idChartSeries" ColumnName="idChartSeries" />
+                <ScalarProperty Name="idSeriesValue" ColumnName="idSeriesValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceDeliveries">
+            <EntityTypeMapping TypeName="SmartSocialModel.ServiceDelivery">
+              <MappingFragment StoreEntitySet="ServiceDelivery">
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+                <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+                <ScalarProperty Name="DeliveryDateTo" ColumnName="DeliveryDateTo" />
+                <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+                <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedReports">
+            <EntityTypeMapping TypeName="SmartSocialModel.SharedReport">
+              <MappingFragment StoreEntitySet="SharedReports">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="TinyUrl" ColumnName="TinyUrl" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SharedWith" ColumnName="SharedWith" />
+                <ScalarProperty Name="SmartReportId" ColumnName="SmartReportId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IdSharedReports" ColumnName="IdSharedReports" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmartCharts">
+            <EntityTypeMapping TypeName="SmartSocialModel.SmartChart">
+              <MappingFragment StoreEntitySet="SmartChart">
+                <ScalarProperty Name="SocialPostFilter" ColumnName="SocialPostFilter" />
+                <ScalarProperty Name="ChartOrder" ColumnName="ChartOrder" />
+                <ScalarProperty Name="HtmlStyles" ColumnName="HtmlStyles" />
+                <ScalarProperty Name="CssClasses" ColumnName="CssClasses" />
+                <ScalarProperty Name="AxisValuesTitle" ColumnName="AxisValuesTitle" />
+                <ScalarProperty Name="AxisSeriesTitle" ColumnName="AxisSeriesTitle" />
+                <ScalarProperty Name="IdDataProvider" ColumnName="IdDataProvider" />
+                <ScalarProperty Name="IdChartType" ColumnName="IdChartType" />
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="idSmartChart" ColumnName="idSmartChart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmartReports">
+            <EntityTypeMapping TypeName="SmartSocialModel.SmartReport">
+              <MappingFragment StoreEntitySet="SmartReport">
+                <ScalarProperty Name="isTemplate" ColumnName="isTemplate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Insights" ColumnName="Insights" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialPosts">
+            <EntityTypeMapping TypeName="SmartSocialModel.SocialPost">
+              <MappingFragment StoreEntitySet="SocialPost">
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+                <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialPostTMPs">
+            <EntityTypeMapping TypeName="SmartSocialModel.SocialPostTMP">
+              <MappingFragment StoreEntitySet="SocialPostTMP">
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+                <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SmartSocialModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="SmartSocialModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="SmartSocialModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="SmartSocialModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_UsersInRoles">
+            <EntityTypeMapping TypeName="SmartSocialModel.webpages_UsersInRoles">
+              <MappingFragment StoreEntitySet="webpages_UsersInRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionRoleTypes">
+            <EntityTypeMapping TypeName="IsTypeOf(SmartSocialModel.SubscriptionRoleType)">
+              <MappingFragment StoreEntitySet="SubscriptionRoleTypes">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="IdSubscriptionRoleTypes" ColumnName="IdSubscriptionRoleTypes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="SmartSocialModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryCodeTest" ColumnName="CountryCodeTest" />
+                <ScalarProperty Name="FlagImageFilename" ColumnName="FlagImageFilename" />
+                <ScalarProperty Name="CCTLD" ColumnName="CCTLD" />
+                <ScalarProperty Name="CallingCode" ColumnName="CallingCode" />
+                <ScalarProperty Name="UNMemberState" ColumnName="UNMemberState" />
+                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+                <ScalarProperty Name="ISO3" ColumnName="ISO3" />
+                <ScalarProperty Name="LongCountryName" ColumnName="LongCountryName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="ISO2" ColumnName="ISO2" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersXSubscriptions">
+            <EntityTypeMapping TypeName="SmartSocialModel.UsersXSubscription">
+              <MappingFragment StoreEntitySet="UsersXSubscription">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IdSubscriptionRoleTypes" ColumnName="IdSubscriptionRoleTypes" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idSubscription" ColumnName="idSubscription" />
+                <ScalarProperty Name="idUserXSubscription" ColumnName="idUserXSubscription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChartComments">
+            <EntityTypeMapping TypeName="SmartSocialModel.ChartComment">
+              <MappingFragment StoreEntitySet="ChartComment">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="IdSmartChart" ColumnName="IdSmartChart" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="SmartSocialModel.Lead">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="IsIntakeAnswered" ColumnName="IsIntakeAnswered" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IntakeEmailSentDate" ColumnName="IntakeEmailSentDate" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IntakeUrl" ColumnName="IntakeUrl" />
+                <ScalarProperty Name="IntakeToken" ColumnName="IntakeToken" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PictureFileName" ColumnName="PictureFileName" />
+                <ScalarProperty Name="Competitors" ColumnName="Competitors" />
+                <ScalarProperty Name="OtherMarketSegments" ColumnName="OtherMarketSegments" />
+                <ScalarProperty Name="MarketSegments" ColumnName="MarketSegments" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
+                <ScalarProperty Name="Aliases" ColumnName="Aliases" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="idLead" ColumnName="idLead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceSubscriptions">
+            <EntityTypeMapping TypeName="SmartSocialModel.ServiceSubscription">
+              <MappingFragment StoreEntitySet="ServiceSubscription">
+                <ScalarProperty Name="idLead" ColumnName="idLead" />
+                <ScalarProperty Name="idChargifyCustomer" ColumnName="idChargifyCustomer" />
+                <ScalarProperty Name="idChargifySuscription" ColumnName="idChargifySuscription" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+                <ScalarProperty Name="idServiceSubscription" ColumnName="idServiceSubscription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="SmartSocialModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="ChargifyCustomerId" ColumnName="ChargifyCustomerId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastReportId" ColumnName="LastReportId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_TopSocialPost" FunctionName="SmartSocialModel.Store.spGetChartData_TopSocialPost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TopSocialPost_Result">
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="dMessage" ColumnName="dMessage" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGet_SmartReportProduct" FunctionName="SmartSocialModel.Store.spGet_SmartReportProduct" />
+          <FunctionImportMapping FunctionImportName="spGetChartData_MessageSocialPosts" FunctionName="SmartSocialModel.Store.spGetChartData_MessageSocialPosts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_MessageSocialPosts_Result">
+                <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+                <ScalarProperty Name="PermaLink" ColumnName="PermaLink" />
+                <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+                <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+                <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+                <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetChartData_TopSocialPostByProduct" FunctionName="SmartSocialModel.Store.spGetChartData_TopSocialPostByProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TopSocialPostByProduct_Result">
+                <ScalarProperty Name="dMessage" ColumnName="dMessage" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

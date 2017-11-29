@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SmartSocial.Web.SiteMaster" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Smart Social</title>
+    <!-- Import google fonts - Heading first/ text second -->
+    <!-- Icons -->
+    <link href="Content/icons.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Customized -->
+    <link href="Content/bootstrapCustomized.css" rel="stylesheet" />
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="Content/plugins.css" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="Content/main.css" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="Content/smartsocialstyle.css" rel="stylesheet" />
+
+    <link href="Content/jqcloud.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/libs/jquery-ui-1.10.4.min.js"></script>
+    <script src="/Scripts/Plugins/jquery.slimscroll.min.js"></script>
+    <script src="/Scripts/jqcloud.js"></script>
+    <script src="/Scripts/bootstrap/bootstrap.js"></script>
+    <script src="/Scripts/libs/modernizr.custom.js"></script>
+</head>
+<body>
+
+    <form id="frmMaster" runat="server">
+        <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server"></telerik:RadStyleSheetManager>
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="false" Skin="Bootstrap" />
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" style="height: 50px; border-bottom: solid 1px #d7d7d7; background-color: white; z-index: 9996; position: fixed; margin-left: 15px;">
+                <div id="Toogler" runat="server" class="dropdown hidden-xs" style="float: left; padding: 13px">
+                    <a id="toogleVisibility" role="button" href="#" onclick="ToggleLeftVisibility(); return false;"><i class="fa fa-reorder" style="color: black; font-size: 20px; float: left;"></i></a>
+                </div>
+                <div id="MenuXs" runat="server" class="dropdown hidden-lg hidden-md hidden-sm" style="float: left; padding: 13px">
+                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:void()"><i class="fa fa-reorder" style="color: black; font-size: 20px; float: left;"></i></a>
+                </div>
+                <div id="ChatToogler" runat="server" class="dropdown" style="float: right; padding: 13px">
+                    <a id="ButtonChat" runat="server" role="button" href="#" onclick="return false;"><i class="fa fa-wechat" style="color: black; font-size: 20px; float: left;"></i></a>
+                </div>
+                <telerik:RadToolTip runat="server" ID="RadToolTip1" CssClass="maximumindex" Width="200px" ShowEvent="OnClick"
+                    RelativeTo="Mouse" Animation="Resize" TargetControlID="ButtonChat" IsClientID="true"
+                    HideEvent="LeaveTargetAndToolTip" Position="BottomLeft" Text="The chat goes here">
+                </telerik:RadToolTip>
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                        <div class="dropdown" style="float: right; padding: 13px">
+                            <a href="~/Account/Register" role='button' runat="server" id="Register"><i class="fa fa-pencil-square-o" style="font-size: 20px; float: left; color: black"></i></a>
+                        </div>
+                        <div class="dropdown" style="float: right; padding: 13px">
+                            <a href="~/Account/Login" role='button' runat="server" id="LogIn"><i class="fa fa-user" style="font-size: 20px; float: left; color: black"></i></a>
+                        </div>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <span id="idHiddenUserNameField" style="display: none;"><%: Context.User.Identity.GetUserName() %></span>
+                        <div class="dropdown" style="float: right; padding: 13px">
+                            <a href="#" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: right" aria-expanded="false"><i class="fa fa-cog" style="font-size: 20px; float: left; color: black"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="~/Account/Manage"><i class="fa fa-gears"></i>&nbsp;&nbsp;Manage Account</a></li>
+                                <li role="presentation"><a id="exportReportBut" style="display: none" role="menuitem" tabindex="-1" href="#" onclick="ExportTotalPDF();"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Export Report to PDF</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown" style="float: right; padding: 13px">
+                            <a href="#" role='button' onserverclick="OnItemClick" runat="server" id="LogOut"><i class="fa fa-power-off" style="font-size: 20px; float: left; color: black"></i></a>
+                        </div>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+        </div>
+        <div class="row" style="height: 100%">
+            <div id="SuscriptionsContainer" class="col-lg-2 col-md-3 col-sm-1 hidden-xs overflowSm maximumindex" runat="server" style="background-color: #303946; height: 100%; position: fixed; padding-right: 0px; margin-top: 50px;">
+                <div class="sidebar-panel hidden-sm">
+                    <h5 class="sidebar-panel-title ">Company</h5>
+                </div>
+                <div class="hidden-sm">
+                    <img src="img/avatars/128.jpg" alt="avatar" runat="server" id="CompanyImage" style="float: left; margin: 10px 15px; width: 64px;" />
+                    <div style="float: left; width: calc(94px-100%)">
+                        <div style="width: 100%;">
+                            <a href="#" id="CompanyHomeLink" runat="server" style="color: #ffffff; float: left; width: 80px; padding-top: 20px; padding-bottom: 10px; font-weight: normal;"><span class="name" id="CompanyName" runat="server">SuggeElson</span></a>
+                        </div>
+                        <div style="width: 100%;">
+                            <div class="dropdown" style="float: left;">
+                                <a href="#" class="btn btn-default btn-xs" role="button" data-toggle="dropdown" id="dropdownSettings" data-target="#" style="float: right" aria-expanded="false"><i class="l-basic-gear"></i>&nbsp;Settings</a>
+                                <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownSettings">
+                                    <li role="presentation"><a id="LogOutSetting" role="button" href="javascript:__doPostBack('ctl00$ctl09$LogOut','')"><i class="fa fa-power-off" style="font-size: 20px; float: left; color: black"></i>&nbsp;&nbsp;Log Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="sidebar-panel hidden-sm">
+            <h5 class="sidebar-panel-title">Subscriptions</h5>
+        </div>
+
+        </div>
+        <div id="divRight" class="hidden" style="display: none; float: right; height: calc(100% - 51px); background-color: gray">
+            <div id="ChatList" style="width: 210px; background-color: gray;" class="hidden-sm hidden-xs">CHAT</div>
+        </div>
+        <div id="MainDiv" class="col-lg-offset-2 col-lg-10 col-md-offset-3 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12" runat="server" style="padding-top: 50px;">
+            <asp:ContentPlaceHolder ID="MainContentPlaceholder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        </div>
+    </form>
+    <script>
+        function ToggleLeftVisibility() {
+            if (SuscriptionsContainer.className == "hidden") {
+                SuscriptionsContainer.className = "col-lg-2 col-md-3 col-sm-1 hidden-xs";
+                MainDiv.className = "col-lg-offset-2 col-lg-10 col-md-offset-3 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12";
+            }
+            else {
+                SuscriptionsContainer.className = "hidden";
+                MainDiv.className = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+            }
+        }
+        function PanelParentClicking(sender, args) {
+            if (args.get_item()._children._array.length > 0) {
+                args.set_cancel(true);
+            }
+        }
+        function RedirectTo(sender) {
+            $(location).attr('href', sender);
+        }
+    </script>
+</body>
+
+</html>

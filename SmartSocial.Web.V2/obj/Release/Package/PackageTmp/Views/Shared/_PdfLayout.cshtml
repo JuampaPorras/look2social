@@ -1,0 +1,864 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Smart Social</title>
+    <!-- Import google fonts - Heading first/ text second -->
+    <!-- Icons -->
+    <link href="~/Content/icons.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Customized -->
+    <link href="~/Content/bootstrapCustomized.css" rel="stylesheet" />
+    <!-- jquery UI-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/plugins.css" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="~/Content/smartsocialstyle.css" rel="stylesheet" />
+    <link href="~/Content/flags.css" rel="stylesheet" />
+
+
+
+
+</head>
+<body style="background-color:white">
+    <script src="~/Scripts/JQuery/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/Angular-JS/angular.js"></script>
+    <script src="~/Scripts/Angular-JS/angular-route.js"></script>
+    <script src="~/Scripts/Angular-JS/angular-sanitize.js"></script>
+    <script src="~/Scripts/JQuery/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/JQCloud/jqcloud.js"></script>
+    <script src="~/Scripts/Plugins/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/jRespond.min.js"></script>
+    <script src="~/Scripts/jquery.dynamic.js"></script>
+    <script src="~/Scripts/Plugins/spin.min.js"></script>
+    <script src="~/Scripts/Highcharts/highcharts.js"></script>
+    <script src="~/Scripts/Highcharts/highmaps.js"></script>
+    <script src="~/Scripts/Highcharts/modules/exporting.js"></script>
+    <script src="~/Scripts/Highcharts/world.js"></script>
+    <script src="~/Scripts/JQuery/jquery.validate.js"></script>
+    <script src="~/Scripts/Plugins/sweet-alert.js"></script>
+    <script>
+        //var charts = [];
+        var normalizeDate = function (jsonDate) {
+            if (jsonDate != undefined) {
+                var date = new Date(parseInt(jsonDate.substr(6)));
+                var month = new Array();
+                month[0] = "Jan";
+                month[1] = "Feb";
+                month[2] = "Mar";
+                month[3] = "Apr";
+                month[4] = "May";
+                month[5] = "Jun";
+                month[6] = "Jul";
+                month[7] = "Aug";
+                month[8] = "Sep";
+                month[9] = "Oct";
+                month[10] = "Nov";
+                month[11] = "Dec";
+                var stringResult = month[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+                return stringResult
+            }
+            else {
+                return jsonDate
+            }
+        }
+
+        var ProcessMessagePreview = function (message) {
+            var messageProcessed = $("<div>" + message + "</div>").text();
+            return messageProcessed
+        }
+
+        var ProcessMessage = function (message) {
+            return "<div>" + message + "</div>"
+        }
+
+        var AppendFlag = function (country) {
+            if (isoCountries.hasOwnProperty(country)) {
+                return isoCountries[country];
+            } else {
+                return country;
+            }
+        };
+        //Functions not stored
+        var GetChartData = function (chartTypeId, smartChartId, chartName, successCallback, errorCallBack, from, to) {
+            $.ajax({
+                url: "../Data/GetChartDataByChartTypeId?chartTypeId=" + chartTypeId + "&smartChartId=" + smartChartId + "&from=" + from + "&to=" + to,
+                type: "GET",
+                dataType: "Json",
+                async: false,
+                success: function (data) {
+                    if (data.Acknowledgment) {
+                        successCallback(data, smartChartId, chartName);
+                        $(window).trigger("resize")
+                    } else {
+                        errorCallBack();
+                    }
+
+                },
+                error: function (error) {
+                    errorCallBack();
+                }
+            })
+        }
+
+
+        var DrawLinearChart = function (data, smartChartId, chartName) {
+            var isLoaded = false;
+            $('#' + smartChartId).highcharts({
+                title: {
+                    text: ''
+                },
+                chart: {
+                },
+                exporting: {
+                    enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<b>Date:{point.x}</b><br>',
+                    pointFormat: 'Count: {point.y}'
+                },
+                series: data.Series.series,
+                xAxis: {
+                    type: "datetime",
+                    categories: data.Series.groupNames,
+                    minPadding: 0.05,
+                    maxPadding: 0.05,
+                    tickInterval: 5
+
+                },
+                plotOptions: {
+                    series: {
+                        connectNulls: true,
+                        animation: false
+                    }
+                },
+
+            });
+        }
+
+
+        var DrawColumnChart = function (data, smartChartId, chartName) {
+
+            var columnSeries = [];
+            angular.forEach(data.ChartData, function (chartData) {
+                var especificData = { name: chartData.Term, data: [parseInt(chartData.theCount)] }
+                columnSeries.push(especificData)
+            })
+            $('#' + smartChartId).highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                exporting: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        animation: false
+                    }
+                },
+                tooltip: {
+                    formatter: function () {
+                        return this.series.name + " " + this.y;
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                series: columnSeries
+            });
+
+        }
+
+        var DrawPieChart = function (data, smartChartId, chartName) {
+            var pieSeries = [];
+            angular.forEach(data.ChartData, function (chartData) {
+                pieSeries.push([chartData.Term, parseInt(chartData.theCount)]);
+            })
+            $('#' + smartChartId).highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    },
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Count',
+                    data: pieSeries,
+                    animation: false
+                }]
+            });
+        }
+
+        var DrawProlificUser = function (data, smartChartId, chartname) {
+            var costumersContainer = "<ul class='list-group recent-comments'>";
+            var counter = 0
+            angular.forEach(data.ChartData, function (chartData) {
+                if (counter < 10) {
+                    costumersContainer += "<li class='list-group-item clearfix comment-info'>" +
+                                                "<div class='avatar pull-left mr15'>" +
+                                                    "<img src='" + ProcessImage(chartData.ProfileImageUrl) + "' alt='avatar' style='width:48px;height:48px'>" +
+                                                "</div>" +
+                                                "<p ><span class='name strong'>" + ProcessScreenName(chartData.UserName) + ": </span>" + chartData.Bio + " </p>" +
+                                                "<span class='date text-muted small pull-left'><img style='width:16px;height:16px' src='" +
+                    ProcessSocialNetwork(chartData.SocialNetwork) + "'/> " + chartData.Followers + " Followers | " + chartData.Statuses + " Total Posts</span>" +
+                                            "</li>";
+                    counter = counter + 1;
+                }
+            })
+            costumersContainer += "</ul>";
+
+            $("#" + smartChartId).html(costumersContainer).height("840px").width("78%");
+        }
+
+        var DrawSummaryReach = function (data, smartChartId, chartName) {
+            var comparison = "";
+            if (data.PastDelivery == null) {
+                comparison = "No previous data"
+            }
+            else {
+                if (parseInt(data.ChartData.theCount) > parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-angle-double-up'></i> " + (parseInt(data.ChartData.theCount) - parseInt(data.PastDelivery.theCount)).toString() + " people from last delivery</span>"
+                }
+                else if (parseInt(data.ChartData.theCount) == parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-long-arrow-right'></i> The reach is the same from last delivery</span>"
+                }
+                else {
+                    comparison = "<span><i class='fa fa-angle-double-down'></i> " + (parseInt(data.PastDelivery.theCount) - parseInt(data.ChartData.theCount)).toString() + " people from last delivery</span>"
+                }
+            }
+            var summaryTemplate = "<div class='row progressbar-stats-1'>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='row-fluid stats'>" +
+                        "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                            "<a href='javascript:void(0)' class='summaryFonts' style='color:white'>" +
+                                "<i class=' l-ecommerce-graph3'></i>" +
+                                "<div data-from='0' data-to='0'>" +
+                                    data.ChartData.theCount + " People" +
+                                "</div>" +
+                            "</a>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='progress animated-bar flat transparent progress-bar-xs mb10 mt0'>" +
+                        "<div class='progress-bar progress-bar-white' role='progressbar' data-transitiongoal='100' aria-valuenow='100' style='width: 100%;'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='comparison'>" +
+                        "<p class='mb0'>" + comparison + "</p>" +
+                    "</div>" +
+                "</div>" +
+      "</div>";
+            $("#" + smartChartId).html(summaryTemplate);
+            //$("#rowChartContainer").prepend(summaryTemplate)
+        }
+
+        var DrawSummaryMentions = function (data, smartChartId, chartName) {
+            var comparison = "";
+            if (data.PastDelivery == null) {
+                comparison = "No previous data"
+            }
+            else {
+                if (parseInt(data.ChartData.theCount) > parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-angle-double-up'></i> " + (parseInt(data.ChartData.theCount) - parseInt(data.PastDelivery.theCount)).toString() + " Posts from last delivery</span>"
+                }
+                else if (parseInt(data.ChartData.theCount) == parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-long-arrow-right'></i> The mentions are the same from last delivery</span>"
+                }
+                else {
+                    comparison = "<span><i class='fa fa-angle-double-down'></i> " + (parseInt(data.PastDelivery.theCount) - parseInt(data.ChartData.theCount)).toString() + " Posts from last delivery</span>"
+                }
+            }
+            var summaryTemplate = "<div class='row progressbar-stats-1'>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='row-fluid stats'>" +
+                        "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                        "<a href='javascript:void(0)' class='summaryFonts'  style='color:white' >" +
+                            "<i class=' l-ecommerce-megaphone'></i>" +
+                            "<div data-from='0' data-to='0'>" +
+                                data.ChartData.theCount + " Posts" +
+                            "</div>" +
+                        "</a>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='progress animated-bar flat transparent progress-bar-xs mb10 mt0'>" +
+                        "<div class='progress-bar progress-bar-white' role='progressbar' data-transitiongoal='100' aria-valuenow='100' style='width: 100%;'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='comparison'>" +
+                        "<p class='mb0'>" + comparison + "</p>" +
+                    "</div>" +
+                "</div>" +
+        "</div>";
+            $("#" + smartChartId).html(summaryTemplate);
+            //$("#rowChartContainer").prepend(summaryTemplate)
+        }
+
+        var DrawSummaryDay = function (data, smartChartId, chartName) {
+            var comparison = "";
+            if (data.PastDelivery == null) {
+                comparison = "No previous data"
+            }
+            else {
+                if (parseInt(data.ChartData.theCount) > parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-angle-double-up'></i> " + (parseInt(data.ChartData.theCount) - parseInt(data.PastDelivery.theCount)).toString() + " Posts from last delivery</span>"
+                }
+                else if (parseInt(data.ChartData.theCount) == parseInt(data.PastDelivery.theCount)) {
+                    comparison = "<span><i class='fa fa-long-arrow-right'></i> same from last delivery</span>"
+                }
+                else {
+                    comparison = "<span><i class='fa fa-angle-double-down'></i> " + (parseInt(data.PastDelivery.theCount) - parseInt(data.ChartData.theCount)).toString() + " Posts from last delivery</span>"
+                }
+            }
+            var dateFromServer = new Date(data.ChartData.Term);
+            var month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+            dateFromServer = month[dateFromServer.getMonth()] + " " + dateFromServer.getDate() + " (" + data.ChartData.theCount + " Mentions)";
+            var summaryTemplate = "<div class='row progressbar-stats-1'>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='row-fluid stats'>" +
+                        "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 summaryFonts'>" +
+                            "<i class=' l-basic-calendar'></i>" +
+                            "<div data-from='0' data-to='0'>" +
+                                dateFromServer +
+                            "</div>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='progress animated-bar flat transparent progress-bar-xs mb10 mt0'>" +
+                        "<div class='progress-bar progress-bar-white' role='progressbar' data-transitiongoal='100' aria-valuenow='100' style='width: 100%;'>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+                "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                    "<div class='comparison'>" +
+                        "<p class='mb0'>" + comparison + "</p>" +
+                    "</div>" +
+                "</div>" +
+        "</div>";
+            $("#" + smartChartId).append(summaryTemplate);
+            //$("#rowChartContainer").prepend(summaryTemplate)
+        }
+
+        var DrawSummaryUser = function (data, smartChartId, chartName) {
+            var comparison = "";
+            if (data.PastDelivery == null) {
+                comparison = "No previous data"
+            }
+            else {
+                comparison = "<span><i class='fa fa-user'></i> " + data.PastDelivery.Term + ": " + data.PastDelivery.theCount + " was previously best</span>"
+            }
+            var summaryTemplate = "<div class='row progressbar-stats-1 dark'>" +
+            "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 summaryFonts' >" +
+                "<div class='row-fluid stats'>" +
+                    "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                        "<div class='row stats'>" +
+                            "<i class=' l-weather-star'></i>" +
+                                "<div data-from='0' data-to='0'>" +
+                                    data.ChartData.Term + ": " + data.ChartData.theCount +
+                                "</div>" +
+                        "</div>" +
+                    "</div>" +
+                    //"<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6'>" +
+                    //    "<div data-from='0' data-to='0'>" + data.ChartData.theCount + "</div>" +
+                    //"</div>" +
+                "</div>" +
+            "</div>" +
+            "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                "<div class='progress animated-bar flat transparent progress-bar-xs mb10 mt0'>" +
+                    "<div class='progress-bar progress-bar-white' role='progressbar' data-transitiongoal='100' aria-valuenow='100' style='width: 100%;'>" +
+                    "</div>" +
+                "</div>" +
+            "</div>" +
+            "<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>" +
+                "<div class='comparison'>" +
+                    "<p class='mb0'>" + comparison + "</p>" +
+                "</div>" +
+            "</div>" +
+        "</div>" +
+    "</div>";
+            $("#" + smartChartId).append(summaryTemplate);
+            //$("#rowChartContainer").prepend(summaryTemplate)
+        }
+
+        var DrawWordCloud = function (data, smartChartId, chartName) {
+            var tableBody = "<thead>" +
+                           "<tr>" +
+                               "<th>Word</th>" +
+                               "<th>Count</th>" +
+                               "<th>Word</th>" +
+                               "<th>Count</th>" +
+                               "<th>Word</th>" +
+                               "<th>Count</th>" +
+                           "</tr>" +
+                       "</thead>" +
+                       "<tbody>";
+            var counter = 1;
+            var columnCounter = 1;
+            angular.forEach(data.ChartData, function (chartData) {
+                if (counter < 51) {
+                    if (columnCounter == 1) {
+                        tableBody += "<tr>" +
+                                           "<td>" + counter + ". " + chartData.Term + "</td>" +
+                                           "<td>" + chartData.theCount + "</td>";
+                        columnCounter = 2;
+                    }
+                    else if (columnCounter == 2) {
+                        tableBody += "<td>" + counter + ". " + chartData.Term + "</td>" +
+                                           "<td>" + chartData.theCount + "</td>";
+                        columnCounter = 3;
+                    }
+                    else {
+                        tableBody += "<td>" + counter + ". " + chartData.Term + "</td>" +
+                                           "<td>" + chartData.theCount + "</td>";
+                        "</tr>";
+                        columnCounter = 1;
+                    }
+                    counter = counter + 1;
+                }
+            })
+            tableBody += "</tbody>"
+            $('#' + smartChartId).html(tableBody);
+        }
+
+        var DrawLocationAnalysis = function (data, smartChartId, chartName) {
+            //var locations = [];
+            var worldData = [];
+            angular.forEach(data.ChartData, function (chartData) {
+                var countryData = {
+                    "hc-key": isoCountries[chartData.Term],
+                    "value": chartData.theCount
+                };
+                worldData.push(countryData);
+            })
+            $("#" + smartChartId).highcharts('Map', {
+
+                title: {
+                    text: null
+                },
+                exporting: {
+                    enabled: false
+                },
+                mapNavigation: {
+                    enabled: true
+                },
+                colorAxis: {
+                    min: 0
+                },
+                series: [{
+                    data: worldData,
+                    mapData: Highcharts.maps['custom/world'],
+                    joinBy: 'hc-key',
+                    name: 'Mentions',
+                    states: {
+                        hover: {
+                            color: Highcharts.getOptions().colors[2]
+                        }
+                    },
+                    cursor: 'pointer',
+                }]
+            }).height("400px");
+
+
+        }
+        var DrawTopPost = function (data, smartChartId, chartName) {
+            var costumersContainer = "<ul id='smartUl"+smartChartId+"' class='list-group recent-comments'>";
+            angular.forEach(data.ChartData, function (chartData) {
+
+                costumersContainer += "<li class='list-group-item clearfix comment-info'>" +
+                                                "<div class='panel-body panelSmart-body'> <div class='socialPostItem'><div class='SocialPostMessage' > <div>" + chartData.Message + "</div>  </div>  </div> </div>" +
+                                                "<span class='date text-muted small pull-left'><img style='width:16px;height:16px' src='" +
+                        ProcessSocialNetwork(chartData.SocialNetwork) + "'/> " + chartData.dMessage + " Total Posts </span>" +
+                       "<a href='javascript:void(0)' class='see-more small pull-right' ng-click=\"conversationStreamWordCloudPerMessage('" + chartData.idSmartReport + "','" + chartData.Message.substring(0, 10) + "')\"> View all posts </a> " +
+                  "</li>";
+            })
+            costumersContainer += "</ul>";
+            $("#" + smartChartId).html(costumersContainer);
+        }
+
+        var DrawTopPosts = function (data, smartChartId, chartName) {
+           
+            var costumersContainer = "<ul id='smartUl" + smartChartId + "' class='list-group recent-comments'>";
+
+            angular.forEach(data.ChartData, function (chartData) {
+
+                costumersContainer += "<div>" + chartData.Product + "</div>";
+                costumersContainer += "<li class='list-group-item clearfix comment-info'>" +
+                                                "<div class='panel-body panelSmart-body'> <div class='socialPostItem'><div class='SocialPostMessage' > <div>" + chartData.Message + "</div>  </div>  </div> </div>" +
+                                                "<span class='date text-muted small pull-left'><img style='width:16px;height:16px' src='" +
+                        ProcessSocialNetwork(chartData.SocialNetwork) + "'/> " + chartData.dMessage + " Total Posts </span>" +
+                       "<a href='javascript:void(0)' class='see-more small pull-right' ng-click=\"conversationStreamWordCloudPerMessage('" + chartData.idSmartReport + "','" + chartData.Message.substring(0, 10) + "')\"> View all posts </a> " +
+                  "</li>";
+            })
+            costumersContainer += "</ul>";
+            tableBody += "</tbody>";
+
+            $("#" + smartChartId).html(costumersContainer);
+        }
+
+        var ProcessMessagePreview = function (message) {
+            var messageProcessed = $("<div>" + message + "</div>").text();
+            return messageProcessed
+        }
+
+        var ProcessScreenName = function (name) {
+            if (name == "") {
+                return "User";
+            }
+
+            return name;
+        }
+
+        var ProcessImage = function (imageSrc) {
+            if (imageSrc == "") {
+                return "../images/userPlaceHolder.jpg";
+            }
+
+            return imageSrc;
+        }
+
+        var ProcessSocialNetwork = function (socialNetwork) {
+            switch (socialNetwork) {
+                case "TWITTER":
+                    return "../images/SocialNetworkIcons/twitter-icon.png";
+                case "WORDPRESS":
+                    return "../images/SocialNetworkIcons/wordpress-icon.png";
+                case "WEB":
+                    return "../images/SocialNetworkIcons/blog-icon.jpg";
+                case "FACEBOOK":
+                    return "../images/SocialNetworkIcons/facebook-icon.jpg";
+                case "FORUMS":
+                    return "../images/SocialNetworkIcons/forum-icon.png";
+                case "REDDIT":
+                    return "../images/SocialNetworkIcons/reddit-icon.png";
+                case "GOOGLE_PLUS":
+                    return "../images/SocialNetworkIcons/google-plus-icon.png";
+                case "INSTAGRAM":
+                    return "../images/SocialNetworkIcons/Instagram-icon.png";
+                case "YOUTUBE":
+                    return "../images/SocialNetworkIcons/youtube-icon.png";
+                default:
+                    return "../images/SocialNetworkIcons/blog-icon.jpg";
+            }
+        }
+
+        var ProcessMessage = function (message) {
+            return "<div>" + message + "</div>"
+        }
+
+        var isoCountries = {
+            'Afghanistan': 'af',
+            'Aland Islands': 'ax',
+            'Albania': 'al',
+            'Algeria': 'dz',
+            'American Samoa': 'as',
+            'Andorra': 'ad',
+            'Angola': 'ao',
+            'Anguilla': 'ai',
+            'Antarctica': 'aq',
+            'Antigua And Barbuda': 'ag',
+            'Argentina': 'ar',
+            'Armenia': 'am',
+            'Aruba': 'aw',
+            'Australia': 'au',
+            'Austria': 'at',
+            'Azerbaijan': 'az',
+            'Bahamas': 'bs',
+            'Bahrain': 'bh',
+            'Bangladesh': 'bd',
+            'Barbados': 'bb',
+            'Belarus': 'by',
+            'Belgium': 'be',
+            'Belize': 'bz',
+            'Benin': 'bj',
+            'Bermuda': 'bm',
+            'Bhutan': 'bt',
+            'Bolivia': 'bo',
+            'Bosnia And Herzegovina': 'ba',
+            'Botswana': 'bw',
+            'Bouvet Island': 'bv',
+            'Brazil': 'br',
+            'British Indian Ocean Territory': 'io',
+            'Brunei Darussalam': 'bn',
+            'Bulgaria': 'bg',
+            'Burkina Faso': 'bf',
+            'Burundi': 'bi',
+            'Cambodia': 'kh',
+            'Cameroon': 'cm',
+            'Canada': 'ca',
+            'Cape Verde': 'cv',
+            'Cayman Islands': 'ky',
+            'Central African Republic': 'cf',
+            'Chad': 'td',
+            'Chile': 'cl',
+            'China': 'cn',
+            'Christmas Island': 'cx',
+            'Cocos (Keeling) Islands': 'cc',
+            'Colombia': 'co',
+            'Comoros': 'km',
+            'Congo': 'cg',
+            'Congo Democratic Republic': 'cd',
+            'Cook Islands': 'ck',
+            'Costa Rica': 'cr',
+            'Cote D\'Ivoire': 'ci',
+            'Croatia': 'hr',
+            'Cuba': 'cu',
+            'Cyprus': 'cy',
+            'Czech Republic': 'cz',
+            'Denmark': 'dk',
+            'Djibouti': 'dj',
+            'Dominica': 'dm',
+            'Dominican Republic': 'do',
+            'Ecuador': 'ec',
+            'Egypt': 'eg',
+            'El Salvador': 'sv',
+            'Equatorial Guinea': 'gq',
+            'Eritrea': 'er',
+            'Estonia': 'ee',
+            'Ethiopia': 'et',
+            'Falkland Islands (Malvinas)': 'fk',
+            'Faroe Islands': 'fo',
+            'Fiji': 'fj',
+            'Finland': 'fi',
+            'France': 'fr',
+            'French Guiana': 'gf',
+            'French Polynesia': 'pf',
+            'French Southern Territories': 'tf',
+            'Gabon': 'ga',
+            'Gambia': 'gm',
+            'Georgia': 'ge',
+            'Germany': 'de',
+            'Ghana': 'gh',
+            'Gibraltar': 'gi',
+            'Greece': 'gr',
+            'Greenland': 'gl',
+            'Grenada': 'gd',
+            'Guadeloupe': 'gp',
+            'Guam': 'gu',
+            'Guatemala': 'gt',
+            'Guernsey': 'gg',
+            'Guinea': 'gn',
+            'Guinea-Bissau': 'gw',
+            'Guyana': 'gy',
+            'Haiti': 'ht',
+            'Heard Island & Mcdonald Islands': 'hm',
+            'Holy See (Vatican City State)': 'va',
+            'Honduras': 'hn',
+            'Hong Kong': 'hk',
+            'Hungary': 'hu',
+            'Iceland': 'is',
+            'India': 'in',
+            'Indonesia': 'id',
+            'Iran Islamic Republic Of': 'ir',
+            'Iraq': 'iq',
+            'Ireland': 'ie',
+            'Isle Of Man': 'im',
+            'Israel': 'il',
+            'Italy': 'it',
+            'Jamaica': 'jm',
+            'Japan': 'jp',
+            'Jersey': 'je',
+            'Jordan': 'jo',
+            'Kazakhstan': 'kz',
+            'Kenya': 'ke',
+            'Kiribati': 'ki',
+            'Korea': 'kr',
+            'Kuwait': 'kw',
+            'Kyrgyzstan': 'kg',
+            'Lao People\'s Democratic Republic': 'la',
+            'Latvia': 'lv',
+            'Lebanon': 'lb',
+            'Lesotho': 'ls',
+            'Liberia': 'lr',
+            'Libyan Arab Jamahiriya': 'ly',
+            'Liechtenstein': 'li',
+            'Lithuania': 'lt',
+            'Luxembourg': 'lu',
+            'Macao': 'mo',
+            'Macedonia': 'mk',
+            'Madagascar': 'mg',
+            'Malawi': 'mw',
+            'Malaysia': 'my',
+            'Maldives': 'mv',
+            'Mali': 'ml',
+            'Malta': 'mt',
+            'Marshall Islands': 'mh',
+            'Martinique': 'mq',
+            'Mauritania': 'mr',
+            'Mauritius': 'mu',
+            'Mayotte': 'yt',
+            'Mexico': 'mx',
+            'Micronesia Federated States Of': 'fm',
+            'Moldova': 'md',
+            'Monaco': 'mc',
+            'Mongolia': 'mn',
+            'Montenegro': 'me',
+            'Montserrat': 'ms',
+            'Morocco': 'ma',
+            'Mozambique': 'mz',
+            'Myanmar': 'mm',
+            'Namibia': 'na',
+            'Nauru': 'nr',
+            'Nepal': 'np',
+            'Netherlands': 'nl',
+            'Netherlands Antilles': 'an',
+            'New Caledonia': 'nc',
+            'New Zealand': 'nz',
+            'Nicaragua': 'ni',
+            'Niger': 'ne',
+            'Nigeria': 'ng',
+            'Niue': 'nu',
+            'Norfolk Island': 'nf',
+            'Northern Mariana Islands': 'mp',
+            'Norway': 'no',
+            'Oman': 'om',
+            'Pakistan': 'pk',
+            'Palau': 'pw',
+            'Palestinian Territory Occupied': 'ps',
+            'Panama': 'pa',
+            'Papua New Guinea': 'pg',
+            'Paraguay': 'py',
+            'Peru': 'pe',
+            'Philippines': 'ph',
+            'Pitcairn': 'pn',
+            'Poland': 'pl',
+            'Portugal': 'pt',
+            'Puerto Rico': 'pr',
+            'Qatar': 'qa',
+            'Reunion': 're',
+            'Romania': 'ro',
+            'Russia': 'ru',
+            'Rwanda': 'rw',
+            'Saint Barthelemy': 'bl',
+            'Saint Helena': 'sh',
+            'Saint Kitts And Nevis': 'kn',
+            'Saint Lucia': 'lc',
+            'Saint Martin': 'mf',
+            'Saint Pierre And Miquelon': 'pm',
+            'Saint Vincent and the Grenadines': 'vc',
+            'Samoa': 'ws',
+            'San Marino': 'sm',
+            'Sao Tome And Principe': 'st',
+            'Saudi Arabia': 'sa',
+            'Senegal': 'sn',
+            'Serbia': 'rs',
+            'Seychelles': 'sc',
+            'Sierra Leone': 'sl',
+            'Singapore': 'sg',
+            'Slovakia': 'sk',
+            'Slovenia': 'si',
+            'Solomon Islands': 'sb',
+            'Somalia': 'so',
+            'South Africa': 'za',
+            'South Georgia And Sandwich Isl.': 'gs',
+            'Spain': 'es',
+            'Sri Lanka': 'lk',
+            'Sudan': 'sd',
+            'Suriname': 'sr',
+            'Svalbard And Jan Mayen': 'sj',
+            'Swaziland': 'sz',
+            'Sweden': 'se',
+            'Switzerland': 'ch',
+            'Syrian Arab Republic': 'sy',
+            'Taiwan': 'tw',
+            'Tajikistan': 'tj',
+            'Tanzania': 'tz',
+            'Thailand': 'th',
+            'Timor-Leste': 'tl',
+            'Togo': 'tg',
+            'Tokelau': 'tk',
+            'Tonga': 'to',
+            'Trinidad And Tobago': 'tt',
+            'Tunisia': 'tn',
+            'Turkey': 'tr',
+            'Turkmenistan': 'tm',
+            'Turks And Caicos Islands': 'tc',
+            'Tuvalu': 'tv',
+            'Uganda': 'ug',
+            'Ukraine': 'ua',
+            'United Arab Emirates': 'ae',
+            'United Kingdom': 'gb',
+            'United States': 'us',
+            'United States Outlying Islands': 'um',
+            'Uruguay': 'uy',
+            'Uzbekistan': 'uz',
+            'Vanuatu': 'vu',
+            'Venezuela': 've',
+            'Viet Nam': 'vn',
+            'Virgin Islands British': 'vg',
+            'Virgin Islands U.S.': 'vi',
+            'Wallis And Futuna': 'wf',
+            'Western Sahara': 'eh',
+            'Yemen': 'ye',
+            'Zambia': 'zm',
+            'Zimbabwe': 'zw'
+        };
+
+
+    </script>
+    @*<style type="text/css">
+            .breakhere {
+                page-break-after: always;
+            }
+        </style>*@
+    <div class="row" style="height: 100%">
+        <div id="mainBody" style="background-color:white" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div ng-view></div>
+            @* MainBody *@
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
+

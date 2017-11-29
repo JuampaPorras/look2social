@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD69BE94-AA01-4DE8-8449-9EA63770A3AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartSocialServices</RootNamespace>
+    <AssemblyName>SmartSocialServices</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSmith.Data">
+      <HintPath>..\SmartSocial.Desktop\bin\Debug\CodeSmith.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSmith.Data.LinqToSql">
+      <HintPath>..\SmartSocial.Desktop\bin\Debug\CodeSmith.Data.LinqToSql.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.4.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTransferObjects\ChartCommentDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\ServiceSubscriptionDtoPartial.cs" />
+    <Compile Include="DataTransferObjects\spGetChartData_MessageSocialPosts_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TopSocialPostByProduct_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TopSocialPost_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SharedReportDtoPartial.cs" />
+    <Compile Include="DataTransferObjects\UserProfileDtoPartial.cs" />
+    <Compile Include="DataTransferObjects\ChartCommentDtoPartial.cs" />
+    <Compile Include="DataTransferObjects\ChartSeryDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\ChartTypeDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\CompanyDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\CountryDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\DataMapper\Initialization.cs" />
+    <Compile Include="DataTransferObjects\DataProviderDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\DataProviderXChartTypeDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\DataTypeDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\GetChartInfo1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\GetChartInfo_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\GetChartInfo_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\LeadDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\NotificationDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\RepositoryRequesterInfo.cs" />
+    <Compile Include="DataTransferObjects\SeriesValueDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\ServiceDeliveryDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\ServiceSubscriptionDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SharedReportDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SmartChartDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SmartChartDtoPartial.cs" />
+    <Compile Include="DataTransferObjects\SmartReportDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SmartSocialGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SocialPostDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SocialPostTMPDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_AudienceStream1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_AudienceStream_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_AudienceStream_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_ParentTopicXTopicXWeight1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_ParentTopicXTopicXWeight_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_ParentTopicXTopicXWeight_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_SocialPostXID1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_SocialPostXID_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_SocialPostXID_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXCount1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXCount_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXCount_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXGroupedTermXCount1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXGroupedTermXCount_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXGroupedTermXCount_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXTimeXCount1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXTimeXCount_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartData_TermXTimeXCount_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartsByReportXID1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartsByReportXID_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetChartsByReportXID_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetDeliveryReports1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetDeliveryReports_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetDeliveryReports_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetReportDataXID1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetReportDataXID_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetReportDataXID_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSocialPosts1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSocialPosts_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSocialPosts_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSubscriptionDeliveries1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSubscriptionDeliveries_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetSubscriptionDeliveries_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetUserSubscriptions1_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetUserSubscriptions_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\spGetUserSubscriptions_Result1.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\SubscriptionRoleTypeDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\sysdiagramDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\UserProfileDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\UsersXSubscriptionDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\webpages_MembershipDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\webpages_OAuthMembershipDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\webpages_RolesDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransferObjects\webpages_UsersInRolesDto.cs">
+      <DependentUpon>SmartSocialGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Messaging\Request\BaseRequest.cs" />
+    <Compile Include="Messaging\Request\CommentsRequest.cs" />
+    <Compile Include="Messaging\Response\BaseResponse.cs" />
+    <Compile Include="Messaging\Response\ChartDataReponse.cs" />
+    <Compile Include="Messaging\Response\CommentsResponse.cs" />
+    <Compile Include="Messaging\Response\ConversationStreamResponse.cs" />
+    <Compile Include="Messaging\Response\LeadResponse.cs" />
+    <Compile Include="Messaging\Response\MainPageResponse.cs" />
+    <Compile Include="Messaging\Response\NotificationsResponse.cs" />
+    <Compile Include="Messaging\Response\ServiceDeliveryResponse.cs" />
+    <Compile Include="Messaging\Response\SharedReportsResponse.cs" />
+    <Compile Include="Messaging\Response\SharedReportResponse.cs" />
+    <Compile Include="Messaging\Response\SmartChartResponse.cs" />
+    <Compile Include="Messaging\Response\UserResponse.cs" />
+    <Compile Include="Messaging\Response\ProfileSettingsResponse.cs" />
+    <Compile Include="Messaging\Response\UserSubscriptionsReponse.cs" />
+    <Compile Include="Objects\ConversationStreamObject.cs" />
+    <Compile Include="Objects\LeftNavItemObject.cs" />
+    <Compile Include="Objects\LeftNavReportObject.cs" />
+    <Compile Include="Messaging\Response\RolesInSubscriptionResponse.cs" />
+    <Compile Include="Objects\RoleActive.cs" />
+    <Compile Include="Objects\SeriesObject.cs" />
+    <Compile Include="Objects\ServiceDeliveryObject.cs" />
+    <Compile Include="Objects\TermCountObject.cs" />
+    <Compile Include="Objects\UserSubscriptionsObject.cs" />
+    <Compile Include="Modules\RepositoryModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ChartCommentRepository.cs" />
+    <Compile Include="Repositories\ChartTypeRepository.cs" />
+    <Compile Include="Repositories\CompanyRepository.cs" />
+    <Compile Include="Repositories\Interface\IChartCommentRepository.cs" />
+    <Compile Include="Repositories\Interface\IChartTypeRepository.cs" />
+    <Compile Include="Repositories\Interface\ICompanyRepository.cs" />
+    <Compile Include="Repositories\Interface\ILeadRepository.cs" />
+    <Compile Include="Repositories\Interface\INotificationRepository.cs" />
+    <Compile Include="Repositories\Interface\IRepository.cs" />
+    <Compile Include="Repositories\Interface\IServiceDeliveryRepository.cs" />
+    <Compile Include="Repositories\Interface\IServiceSubscriptionRepository.cs" />
+    <Compile Include="Repositories\Interface\ISmartChartRepository.cs" />
+    <Compile Include="Repositories\Interface\ISmartReportRepository.cs" />
+    <Compile Include="Repositories\Interface\ISocialPostRepository.cs" />
+    <Compile Include="Repositories\Interface\IUserProfileRepository.cs" />
+    <Compile Include="Repositories\Interface\ISubscriptionRoleTypeRepository.cs" />
+    <Compile Include="Repositories\Interface\IUsersXSubscriptionRepository.cs" />
+    <Compile Include="Repositories\Interface\ISharedReportRepository.cs" />
+    <Compile Include="Repositories\Interface\IWebMembershipRepository.cs" />
+    <Compile Include="Repositories\LeadRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\ServiceDeliveryRepository.cs" />
+    <Compile Include="Repositories\ServiceSubscriptionRepository.cs" />
+    <Compile Include="Repositories\SharedReportRepository.cs" />
+    <Compile Include="Repositories\SmartChartRepository.cs" />
+    <Compile Include="Repositories\SmartReportRepository.cs" />
+    <Compile Include="Repositories\SocialPostRepository.cs" />
+    <Compile Include="Repositories\UserProfileRepository.cs" />
+    <Compile Include="Repositories\SubscriptonRoleTypeRepository.cs" />
+    <Compile Include="Repositories\UsersXSubscriptionRepository.cs" />
+    <Compile Include="Repositories\WebMembershipRepository.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceLocator.cs" />
+    <Compile Include="Services\SubscriptionService.cs" />
+    <Compile Include="Services\ChartsService.cs" />
+    <Compile Include="Services\CommentsService.cs" />
+    <Compile Include="Services\LeadService.cs" />
+    <Compile Include="Services\NotificationsService.cs" />
+    <Compile Include="Services\ServiceDeliveryService.cs" />
+    <Compile Include="Services\ShareReportService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Utilities\EmailUtility.cs" />
+    <Compile Include="Utilities\Logger\EventLogger .cs" />
+    <Compile Include="Utilities\Logger\ILogger.cs" />
+    <Compile Include="Utilities\PasswordUtility.cs" />
+    <Compile Include="Utilities\TinyURL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chargify.NET\Chargify.NET.csproj">
+      <Project>{a4e445a8-21c9-445b-a3a0-d18a4cbd0f0b}</Project>
+      <Name>Chargify.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartSocial.Data.V2\SmartSocial.Data.V2.csproj">
+      <Project>{e41024e3-6496-4831-8b48-6040661c2550}</Project>
+      <Name>SmartSocial.Data.V2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartSocial.Data\SmartSocial.Data.csproj">
+      <Project>{210b90ac-9dc5-4a96-8a0b-5a255b83de45}</Project>
+      <Name>SmartSocial.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataTransferObjects\SmartSocialGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SmartSocialGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlEmails\AccountInvitation.html" />
+    <Content Include="HtmlEmails\SubscritionAdded.html" />
+    <Content Include="HtmlEmails\SubscritionInvitation.html" />
+    <Content Include="HtmlEmails\ForgotPassword.html" />
+    <Content Include="HtmlEmails\IntakeConfirmation.html" />
+    <Content Include="HtmlEmails\LeadConfirmation.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

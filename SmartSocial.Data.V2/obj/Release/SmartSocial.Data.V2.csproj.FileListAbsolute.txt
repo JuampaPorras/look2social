@@ -1,0 +1,12 @@
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\SmartSocial.Data.V2.dll.config
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\SmartSocial.Data.V2.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\SmartSocial.Data.V2.pdb
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\EntityFramework.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\EntityFramework.SqlServer.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\Newtonsoft.Json.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\EntityFramework.xml
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\EntityFramework.SqlServer.xml
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\bin\Release\Newtonsoft.Json.xml
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\obj\Release\SmartSocial.Data.V2.csprojResolveAssemblyReference.cache
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\obj\Release\SmartSocial.Data.V2.dll
+D:\Projects\SmartSocial\SmartSocialTeamProject\SmartSocial.Data.V2\obj\Release\SmartSocial.Data.V2.pdb

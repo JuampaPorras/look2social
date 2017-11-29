@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartSocialModelStoreContainer" CdmEntityContainer="SmartSocialContext">
+    <FunctionImportMapping FunctionImportName="CreateChartFromTemplate" FunctionName="SmartSocialModel.Store.CreateChartFromTemplate" />
+    <FunctionImportMapping FunctionImportName="CreateReportFromTemplate" FunctionName="SmartSocialModel.Store.CreateReportFromTemplate" />
+    <FunctionImportMapping FunctionImportName="GetChardIdInfo" FunctionName="SmartSocialModel.Store.GetChardIdInfo" />
+    <FunctionImportMapping FunctionImportName="GetChartInfo" FunctionName="SmartSocialModel.Store.GetChartInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.GetChartInfo_Result1">
+          <ScalarProperty Name="CHARTNAME" ColumnName="CHARTNAME" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="COL1" ColumnName="COL1" />
+          <ScalarProperty Name="COL2" ColumnName="COL2" />
+          <ScalarProperty Name="COL3" ColumnName="COL3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_AudienceStream" FunctionName="SmartSocialModel.Store.spGetChartData_AudienceStream">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_AudienceStream_Result1">
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
+          <ScalarProperty Name="ProfileUrl" ColumnName="ProfileUrl" />
+          <ScalarProperty Name="Statuses" ColumnName="Statuses" />
+          <ScalarProperty Name="Reach" ColumnName="Reach" />
+          <ScalarProperty Name="Followers" ColumnName="Followers" />
+          <ScalarProperty Name="Following" ColumnName="Following" />
+          <ScalarProperty Name="ProfileImageUrl" ColumnName="ProfileImageUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_ParentTopicXTopicXWeight" FunctionName="SmartSocialModel.Store.spGetChartData_ParentTopicXTopicXWeight">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_ParentTopicXTopicXWeight_Result1">
+          <ScalarProperty Name="ParentTopic" ColumnName="ParentTopic" />
+          <ScalarProperty Name="theParentWeight" ColumnName="theParentWeight" />
+          <ScalarProperty Name="theTopic" ColumnName="theTopic" />
+          <ScalarProperty Name="theWeight" ColumnName="theWeight" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXID" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_SocialPostXID_Result1">
+          <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+          <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXCol" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXCol" />
+    <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXTopNXFilter" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXTopNXFilter" />
+    <FunctionImportMapping FunctionImportName="spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" FunctionName="SmartSocialModel.Store.spGetChartData_SocialPostXIdXTopNXFilterXSkipRows" />
+    <FunctionImportMapping FunctionImportName="spGetChartData_TermXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXCount_Result1">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="theCount" ColumnName="theCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_TermXGroupedTermXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXGroupedTermXCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXGroupedTermXCount_Result1">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="theGroup" ColumnName="theGroup" />
+          <ScalarProperty Name="theCount" ColumnName="theCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_TermXTimeXCount" FunctionName="SmartSocialModel.Store.spGetChartData_TermXTimeXCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TermXTimeXCount_Result1">
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="theTime" ColumnName="theTime" />
+          <ScalarProperty Name="theCount" ColumnName="theCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartsByReportXID" FunctionName="SmartSocialModel.Store.spGetChartsByReportXID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartsByReportXID_Result1">
+          <ScalarProperty Name="IdSmartchart" ColumnName="IdSmartchart" />
+          <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+          <ScalarProperty Name="ChartOrder" ColumnName="ChartOrder" />
+          <ScalarProperty Name="AxisSeriesTitle" ColumnName="AxisSeriesTitle" />
+          <ScalarProperty Name="AxisValuesTitle" ColumnName="AxisValuesTitle" />
+          <ScalarProperty Name="CssClasses" ColumnName="CssClasses" />
+          <ScalarProperty Name="HtmlStyles" ColumnName="HtmlStyles" />
+          <ScalarProperty Name="ChartTypeName" ColumnName="ChartTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartsByReportXIdXCol" FunctionName="SmartSocialModel.Store.spGetChartsByReportXIdXCol" />
+    <FunctionImportMapping FunctionImportName="spGetDeliveryReports" FunctionName="SmartSocialModel.Store.spGetDeliveryReports">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetDeliveryReports_Result1">
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="isTemplate" ColumnName="isTemplate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetReportDataXID" FunctionName="SmartSocialModel.Store.spGetReportDataXID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetReportDataXID_Result1">
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+          <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetReportDataXIdXCol" FunctionName="SmartSocialModel.Store.spGetReportDataXIdXCol" />
+    <FunctionImportMapping FunctionImportName="spGetSocialPosts" FunctionName="SmartSocialModel.Store.spGetSocialPosts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetSocialPosts_Result1">
+          <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+          <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetSubscriptionDeliveries" FunctionName="SmartSocialModel.Store.spGetSubscriptionDeliveries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetSubscriptionDeliveries_Result1">
+          <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+          <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+          <ScalarProperty Name="DeliveryDateTo" ColumnName="DeliveryDateTo" />
+          <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetUserSubscriptions" FunctionName="SmartSocialModel.Store.spGetUserSubscriptions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetUserSubscriptions_Result1">
+          <ScalarProperty Name="idServiceSubscription" ColumnName="idServiceSubscription" />
+          <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateSocialPostFormattedCols" FunctionName="SmartSocialModel.Store.UpdateSocialPostFormattedCols" />
+    <EntitySetMapping Name="ChartSeries">
+      <EntityTypeMapping TypeName="SmartSocialModel.ChartSery">
+        <MappingFragment StoreEntitySet="ChartSeries">
+          <ScalarProperty Name="SeriesName" ColumnName="SeriesName" />
+          <ScalarProperty Name="idSmartChart" ColumnName="idSmartChart" />
+          <ScalarProperty Name="idChartSeries" ColumnName="idChartSeries" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChartTypes">
+      <EntityTypeMapping TypeName="SmartSocialModel.ChartType">
+        <MappingFragment StoreEntitySet="ChartType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StoredProcedureName" ColumnName="StoredProcedureName" />
+          <ScalarProperty Name="ChartTypeName" ColumnName="ChartTypeName" />
+          <ScalarProperty Name="idChartType" ColumnName="idChartType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="SmartSocialModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataProviders">
+      <EntityTypeMapping TypeName="SmartSocialModel.DataProvider">
+        <MappingFragment StoreEntitySet="DataProvider">
+          <ScalarProperty Name="DataProviderName" ColumnName="DataProviderName" />
+          <ScalarProperty Name="idDataProvider" ColumnName="idDataProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataProviderXChartTypes">
+      <EntityTypeMapping TypeName="SmartSocialModel.DataProviderXChartType">
+        <MappingFragment StoreEntitySet="DataProviderXChartType">
+          <ScalarProperty Name="FileLoadFunctionName" ColumnName="FileLoadFunctionName" />
+          <ScalarProperty Name="idChartType" ColumnName="idChartType" />
+          <ScalarProperty Name="idDataProvider" ColumnName="idDataProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataTypes">
+      <EntityTypeMapping TypeName="SmartSocialModel.DataType">
+        <MappingFragment StoreEntitySet="DataType">
+          <ScalarProperty Name="DataTypeName" ColumnName="DataTypeName" />
+          <ScalarProperty Name="idDataType" ColumnName="idDataType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="SmartSocialModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="WasViewed" ColumnName="WasViewed" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="idNotification" ColumnName="idNotification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeriesValues">
+      <EntityTypeMapping TypeName="SmartSocialModel.SeriesValue">
+        <MappingFragment StoreEntitySet="SeriesValue">
+          <ScalarProperty Name="RowPosition" ColumnName="RowPosition" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="idDataType" ColumnName="idDataType" />
+          <ScalarProperty Name="idChartSeries" ColumnName="idChartSeries" />
+          <ScalarProperty Name="idSeriesValue" ColumnName="idSeriesValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceDeliveries">
+      <EntityTypeMapping TypeName="SmartSocialModel.ServiceDelivery">
+        <MappingFragment StoreEntitySet="ServiceDelivery">
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+          <ScalarProperty Name="IdServiceSubscription" ColumnName="IdServiceSubscription" />
+          <ScalarProperty Name="DeliveryDateTo" ColumnName="DeliveryDateTo" />
+          <ScalarProperty Name="DateDelivered" ColumnName="DateDelivered" />
+          <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SharedReports">
+      <EntityTypeMapping TypeName="SmartSocialModel.SharedReport">
+        <MappingFragment StoreEntitySet="SharedReports">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TinyUrl" ColumnName="TinyUrl" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="SharedWith" ColumnName="SharedWith" />
+          <ScalarProperty Name="SmartReportId" ColumnName="SmartReportId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IdSharedReports" ColumnName="IdSharedReports" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmartCharts">
+      <EntityTypeMapping TypeName="SmartSocialModel.SmartChart">
+        <MappingFragment StoreEntitySet="SmartChart">
+          <ScalarProperty Name="SocialPostFilter" ColumnName="SocialPostFilter" />
+          <ScalarProperty Name="ChartOrder" ColumnName="ChartOrder" />
+          <ScalarProperty Name="HtmlStyles" ColumnName="HtmlStyles" />
+          <ScalarProperty Name="CssClasses" ColumnName="CssClasses" />
+          <ScalarProperty Name="AxisValuesTitle" ColumnName="AxisValuesTitle" />
+          <ScalarProperty Name="AxisSeriesTitle" ColumnName="AxisSeriesTitle" />
+          <ScalarProperty Name="IdDataProvider" ColumnName="IdDataProvider" />
+          <ScalarProperty Name="IdChartType" ColumnName="IdChartType" />
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="idSmartChart" ColumnName="idSmartChart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SmartReports">
+      <EntityTypeMapping TypeName="SmartSocialModel.SmartReport">
+        <MappingFragment StoreEntitySet="SmartReport">
+          <ScalarProperty Name="isTemplate" ColumnName="isTemplate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Insights" ColumnName="Insights" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="idServiceDelivery" ColumnName="idServiceDelivery" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocialPosts">
+      <EntityTypeMapping TypeName="SmartSocialModel.SocialPost">
+        <MappingFragment StoreEntitySet="SocialPost">
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+          <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocialPostTMPs">
+      <EntityTypeMapping TypeName="SmartSocialModel.SocialPostTMP">
+        <MappingFragment StoreEntitySet="SocialPostTMP">
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+          <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SmartSocialModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="SmartSocialModel.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="SmartSocialModel.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="SmartSocialModel.webpages_Roles">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_UsersInRoles">
+      <EntityTypeMapping TypeName="SmartSocialModel.webpages_UsersInRoles">
+        <MappingFragment StoreEntitySet="webpages_UsersInRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriptionRoleTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartSocialModel.SubscriptionRoleType)">
+        <MappingFragment StoreEntitySet="SubscriptionRoleTypes">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IdSubscriptionRoleTypes" ColumnName="IdSubscriptionRoleTypes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="SmartSocialModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryCodeTest" ColumnName="CountryCodeTest" />
+          <ScalarProperty Name="FlagImageFilename" ColumnName="FlagImageFilename" />
+          <ScalarProperty Name="CCTLD" ColumnName="CCTLD" />
+          <ScalarProperty Name="CallingCode" ColumnName="CallingCode" />
+          <ScalarProperty Name="UNMemberState" ColumnName="UNMemberState" />
+          <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+          <ScalarProperty Name="ISO3" ColumnName="ISO3" />
+          <ScalarProperty Name="LongCountryName" ColumnName="LongCountryName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="ISO2" ColumnName="ISO2" />
+          <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersXSubscriptions">
+      <EntityTypeMapping TypeName="SmartSocialModel.UsersXSubscription">
+        <MappingFragment StoreEntitySet="UsersXSubscription">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IdSubscriptionRoleTypes" ColumnName="IdSubscriptionRoleTypes" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idSubscription" ColumnName="idSubscription" />
+          <ScalarProperty Name="idUserXSubscription" ColumnName="idUserXSubscription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChartComments">
+      <EntityTypeMapping TypeName="SmartSocialModel.ChartComment">
+        <MappingFragment StoreEntitySet="ChartComment">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="IdSmartChart" ColumnName="IdSmartChart" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leads">
+      <EntityTypeMapping TypeName="SmartSocialModel.Lead">
+        <MappingFragment StoreEntitySet="Leads">
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="IsIntakeAnswered" ColumnName="IsIntakeAnswered" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IntakeEmailSentDate" ColumnName="IntakeEmailSentDate" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IntakeUrl" ColumnName="IntakeUrl" />
+          <ScalarProperty Name="IntakeToken" ColumnName="IntakeToken" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="PictureFileName" ColumnName="PictureFileName" />
+          <ScalarProperty Name="Competitors" ColumnName="Competitors" />
+          <ScalarProperty Name="OtherMarketSegments" ColumnName="OtherMarketSegments" />
+          <ScalarProperty Name="MarketSegments" ColumnName="MarketSegments" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
+          <ScalarProperty Name="Aliases" ColumnName="Aliases" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="idLead" ColumnName="idLead" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceSubscriptions">
+      <EntityTypeMapping TypeName="SmartSocialModel.ServiceSubscription">
+        <MappingFragment StoreEntitySet="ServiceSubscription">
+          <ScalarProperty Name="idLead" ColumnName="idLead" />
+          <ScalarProperty Name="idChargifyCustomer" ColumnName="idChargifyCustomer" />
+          <ScalarProperty Name="idChargifySuscription" ColumnName="idChargifySuscription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+          <ScalarProperty Name="idServiceSubscription" ColumnName="idServiceSubscription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="SmartSocialModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="ChargifyCustomerId" ColumnName="ChargifyCustomerId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LastReportId" ColumnName="LastReportId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_TopSocialPost" FunctionName="SmartSocialModel.Store.spGetChartData_TopSocialPost">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TopSocialPost_Result">
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="dMessage" ColumnName="dMessage" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGet_SmartReportProduct" FunctionName="SmartSocialModel.Store.spGet_SmartReportProduct" />
+    <FunctionImportMapping FunctionImportName="spGetChartData_MessageSocialPosts" FunctionName="SmartSocialModel.Store.spGetChartData_MessageSocialPosts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_MessageSocialPosts_Result">
+          <ScalarProperty Name="idSocialPost" ColumnName="idSocialPost" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageCreatedDate" ColumnName="MessageCreatedDate" />
+          <ScalarProperty Name="PermaLink" ColumnName="PermaLink" />
+          <ScalarProperty Name="SocialNetwork" ColumnName="SocialNetwork" />
+          <ScalarProperty Name="SenderScreenName" ColumnName="SenderScreenName" />
+          <ScalarProperty Name="SenderProfileImgUrl" ColumnName="SenderProfileImgUrl" />
+          <ScalarProperty Name="SenderFollowersCount" ColumnName="SenderFollowersCount" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetChartData_TopSocialPostByProduct" FunctionName="SmartSocialModel.Store.spGetChartData_TopSocialPostByProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SmartSocialModel.spGetChartData_TopSocialPostByProduct_Result">
+          <ScalarProperty Name="dMessage" ColumnName="dMessage" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="idSmartReport" ColumnName="idSmartReport" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,678 @@
+﻿html, body, form {
+    margin: 0px;
+    padding: 0px;
+}
+
+.pointerCursor{
+    cursor:pointer
+}
+
+canvas {
+    z-index: 6000 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+@media (min-width: 0px) {
+    .letterCase {
+        font-size: 16px !important;
+    }
+
+    .btn-custom-responsive {
+        font-size: 16px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 800px) {
+    .letterCase {
+        font-size: 20px !important;
+    }
+
+    .btn-custom-responsive {
+        font-size: 18px;
+        padding: 2px;
+    }
+}
+
+@media (min-width: 1017px) {
+    .letterCase {
+        font-size: 26px !important;
+    }
+
+    .btn-custom-responsive {
+        font-size: 20px;
+        padding: 6px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .letterCase {
+        font-size: 30px !important;
+    }
+
+    .btn-custom-responsive {
+        font-size: 22px;
+        padding: 8px;
+    }
+}
+
+#HeadingDiv {
+    background-color: grey;
+    text-align: left;
+    height: 76px;
+    color: #CCC;
+    padding: 10px;
+    background-image: url(../images/header1.png);
+    min-width: 560px;
+}
+
+.SmartChartDivContainer {
+    /*min-width: 475px;*/
+    margin-top: 15px;
+    top: 0px;
+    left: 0px;
+}
+
+ChartOutterDiv {
+    width: 100%;
+    height: 450px;
+    border: solid 1px black;
+}
+
+ChartHeaderDiv {
+    width: 100%;
+    height: 35px;
+    border-bottom: solid 1px black;
+}
+
+HeaderTextDiv {
+    float: left;
+    padding: 7px;
+    font-weight: bold;
+}
+
+HeaderMenuDiv {
+    float: right;
+    height: 35px;
+    width: 35px;
+    border-left: solid 1px black;
+}
+
+ChartInnerDiv {
+    width: 100%;
+    height: 415px;
+    padding: 10px;
+}
+
+.whiteSpace {
+    height: 30px;
+}
+
+.maximazed {
+    display: none;
+}
+
+.socialPostItem {
+    font: normal 11px arial;
+    color: black;
+}
+
+.socialPostUser {
+    float: left;
+    width: 50px;
+    height: auto;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+.socialPostNetwork {
+    width: 50px;
+    height: 18px;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 2px;
+    color: darkblue;
+}
+
+.socialViewBtn {
+    width: 100%;
+    height: 11px;
+    text-align: center;
+    color: darkblue;
+    background-color: #f0f0f0;
+    font: normal 11px arial;
+    position: relative;
+    display: none;
+    cursor: pointer;
+}
+
+.socialPostMessage {
+    width: auto;
+    margin-left: 5px;
+    margin-top: 10px;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: normal 12px arial;
+    color: #444444;
+    display: block;
+}
+
+.imagePanel {
+    width: 50px;
+    height: 50px;
+}
+
+
+
+.socialPostDate {
+    float: right;
+    font: normal 11px arial;
+    color: green;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.socialPostUserName {
+    float: left;
+    font: bold 12px arial;
+    color: black;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.messageContainer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menuContainer {
+    float: right;
+    height: 35px;
+    width: 35px;
+    border-left: solid 1px black;
+}
+
+.mainPanel {
+    width: 100%;
+    height: 450px;
+    border: solid 1px black;
+    background-color: white;
+}
+
+.titleBar {
+    width: 100%;
+    height: 35px;
+    border-bottom: solid 1px black;
+}
+
+.chartPanel {
+    width: 100%;
+    height: 415px;
+    padding: 10px;
+}
+
+.chartNamePanel {
+    float: left;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.clipped {
+    overflow: hidden;
+    height: 40px;
+    width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#treeMap {
+    width: 100%;
+    height: 100%;
+}
+
+/* Social Log In */
+.social-buttons button {
+    width: 47%;
+    margin-bottom: 10px;
+}
+
+.rpRootGroup {
+    height: 100% !important;
+    overflow: auto !important;
+}
+
+.infoDiv {
+    width: 100%;
+}
+
+.rpLink, .rpText {
+    padding: 0px !important;
+}
+
+.alingInMiddle {
+    display: block !important;
+    float: right !important;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .dropdown-submenu:hover > .dropdown-menu, .dropdown-submenu:active > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu > a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
+
+    .dropdown-submenu:hover > a:after, .dropdown-submenu:active > a:after {
+        border-left-color: #fff;
+    }
+
+    .dropdown-submenu.pull-left {
+        float: none;
+    }
+
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+
+@media(max-width: 1248px) and (min-width: 768px) {
+    .overflowSm {
+        overflow-y: visible !Important;
+        overflow-x: visible !Important;
+    }
+}
+
+.margin22 {
+    margin-top: 12px;
+}
+
+.maximumindex {
+    z-index: 9997 !important;
+}
+
+.overflowed {
+    overflow-y: visible !Important;
+    overflow-x: visible !Important;
+}
+
+.costumersContainer {
+    height: 427px;
+    overflow-x: auto;
+}
+
+.margin5 {
+    margin: 5px;
+}
+
+svg > text:last-child {
+    display: none;
+}
+
+.noBorder {
+    border: 0px !important;
+    border-radius: 0px;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+.login-container .login-container form {
+    height: auto !important;
+}
+
+.nonBullets ul {
+    list-style-type: none;
+    background-color: #db5565;
+    color: white;
+    padding: 6px !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    border-radius: 5px;
+}
+
+.mainMenu .list-group-submenu > .activeReport, .mainMenu .list-group-submenu > .activeReport:active, .mainMenu .list-group-submenu > .activeReport:focus, .mainMenu .list-group-submenu > .activeReport:hover {
+    color: black !important;
+    background: #ffa915 !important;
+}
+/*.mainMenu .list-group-submenu > .activeReport:hover {
+    color: black !important;
+    background: #ffa915 !important;
+}
+.mainMenu .list-group-submenu > .activeReport:active {
+    color: black !important;
+    background: #ffa915 !important;
+}*/
+a.dropdown-menu-header {
+    background: #f7f9fe;
+    font-weight: bold;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.page-breaker {
+    display: block;
+    clear: both;
+    page-break-after: always;
+}
+/* -----------------------------------------
+Agregar a nuestros estilos personalizados
+----------------------------------------- */
+/* the norm */
+#gritter-notice-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 301px;
+    z-index: 9999;
+}
+
+    #gritter-notice-wrapper.top-left {
+        left: 20px;
+        right: auto;
+    }
+
+    #gritter-notice-wrapper.bottom-right {
+        top: auto;
+        left: auto;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #gritter-notice-wrapper.bottom-left {
+        top: auto;
+        right: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+
+.gritter-item-wrapper {
+    position: relative;
+    margin: 0 0 10px 0;
+    background: url('../images/ie-spacer.gif'); /* ie7/8 fix */
+}
+
+.gritter-item {
+    display: block;
+    background: url(../images/gritter.png) no-repeat left -40px;
+    color: #eee;
+    padding: 2px 11px 8px 11px;
+    font-size: 11px;
+    font-family: verdana;
+}
+
+.hover .gritter-item {
+    background-position: right -40px;
+}
+
+.gritter-item p {
+    padding: 0;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.gritter-close {
+    display: none;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    background: url(../images/gritter.png) no-repeat left top;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999em;
+}
+
+.gritter-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 7px 0;
+    display: block;
+}
+
+.gritter-image {
+    width: 48px;
+    height: 48px;
+    float: left;
+}
+
+.gritter-with-image,
+.gritter-without-image {
+    padding: 0;
+}
+
+.gritter-with-image {
+    width: 220px;
+    float: right;
+}
+/* for the light (white) version of the gritter notice */
+.gritter-light .gritter-item,
+.gritter-light .gritter-bottom,
+.gritter-light .gritter-top,
+.gritter-light .gritter-close {
+    background-image: url(../images/gritter-light.png);
+    color: #222;
+}
+
+.gritter-light .gritter-title {
+    text-shadow: none;
+}
+
+#gritter-notice-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 301px;
+    z-index: 9999;
+}
+
+    #gritter-notice-wrapper.top-left {
+        left: 20px;
+        right: auto;
+    }
+
+    #gritter-notice-wrapper.bottom-right {
+        top: auto;
+        left: auto;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #gritter-notice-wrapper.bottom-left {
+        top: auto;
+        right: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    #gritter-notice-wrapper .gritter-item-wrapper {
+        position: relative;
+        margin: 0 0 10px 0;
+    }
+
+        #gritter-notice-wrapper .gritter-item-wrapper .gritter-item {
+            display: block;
+            background: #657791;
+            border: 1px solid #455264;
+            color: #ffffff;
+            padding: 10px 11px;
+            font-size: 12px;
+            border-radius: 3px;
+            transition: all;
+            transition: all all ease-out;
+            transition-duration: 0.4s;
+        }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item:hover {
+                background: #72849e;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item p {
+                padding: 0;
+                margin: 0;
+                word-wrap: break-word;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-close {
+                position: absolute;
+                top: 5px;
+                right: 7px;
+                cursor: pointer;
+            }
+
+                #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-close i {
+                    font-size: 16px;
+                    color: #ffffff;
+                    transition: background;
+                    transition: all background ease-out;
+                    transition-duration: 0.4s;
+                }
+
+                #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-close:hover i {
+                    color: #f7f7f7;
+                }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-image {
+                width: 48px;
+                height: 48px;
+                float: left;
+                border-radius: 3px;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-icon {
+                margin-top: 0;
+                margin-right: 15px;
+                float: left;
+                font-size: 32px;
+                padding-bottom: 10px;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-with-image {
+                width: 220px;
+                float: right;
+                padding: 0;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-without-image {
+                padding: 0;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper .gritter-item .gritter-title {
+                font-size: 14px;
+                font-weight: bold;
+                padding: 0;
+                display: block;
+            }
+
+        #gritter-notice-wrapper .gritter-item-wrapper.success-notice .gritter-item {
+            color: #0a776c;
+            background: #b2ede8;
+            border: 1px solid #63c8be;
+        }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.success-notice .gritter-item:hover {
+                background: #c7f2ee;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.success-notice .gritter-item .gritter-close i {
+                color: #0a776c;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.success-notice .gritter-item .gritter-close:hover i {
+                color: #09695f;
+            }
+
+        #gritter-notice-wrapper .gritter-item-wrapper.info-notice .gritter-item {
+            color: #2a6891;
+            background: #cfebff;
+            border: 1px solid #94bedb;
+        }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.info-notice .gritter-item:hover {
+                background: #e9f6ff;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.info-notice .gritter-item .gritter-close i {
+                color: #2a6891;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.info-notice .gritter-item .gritter-close:hover i {
+                color: #275f85;
+            }
+
+        #gritter-notice-wrapper .gritter-item-wrapper.error-notice .gritter-item {
+            color: #933230;
+            background: #fddede;
+            border: 1px solid #cb7c7a;
+        }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.error-notice .gritter-item:hover {
+                background: #fef6f6;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.error-notice .gritter-item .gritter-close i {
+                color: #933230;
+            }
+
+            #gritter-notice-wrapper .gritter-item-wrapper.error-notice .gritter-item .gritter-close:hover i {
+                color: #872e2c;
+            }
+
+a.list-group-item:hover, a.list-group-item:focus {
+    color: white;
+}
+
+.reportHeader {
+    height: 100px;
+    background-color: #fcfcfc;
+    margin-top: 1px;
+    padding: 0 20px;
+    margin-right: -20px;
+    margin-left: -20px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767px) {
+  .showSideBarOverflow {
+        padding-right: 15px!important;
+  }
+}
+
+.trash { color:rgb(209, 91, 71); }
+.panel .glyphicon,.list-group-item .glyphicon { margin-right:5px; }
+.list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
+/*.list-group { margin-bottom:0px; }*/
+.k-grid-header {
+    padding-right:0px!important
+}

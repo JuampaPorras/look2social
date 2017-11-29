@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44c2b731e3c74517b7fbe980b045b97a" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="SmartSocialModel.ChartSery" Width="1.5" PointX="5.2740958562465829" PointY="21.826587314636718" />
+        <EntityTypeShape EntityType="SmartSocialModel.ChartType" Width="1.5" PointX="2.5002991196235174" PointY="21.66303532834306" />
+        <EntityTypeShape EntityType="SmartSocialModel.Company" Width="1.5" PointX="6.7992862028997791" PointY="27.787182120507204" />
+        <EntityTypeShape EntityType="SmartSocialModel.DataProvider" Width="1.5" PointX="10.467542113022665" PointY="9.0796996099314189" />
+        <EntityTypeShape EntityType="SmartSocialModel.DataProviderXChartType" Width="1.5" PointX="7.4395772774888105" PointY="11.682661345080781" />
+        <EntityTypeShape EntityType="SmartSocialModel.DataType" Width="1.5" PointX="4.375" PointY="17.875" />
+        <EntityTypeShape EntityType="SmartSocialModel.Notification" Width="1.5" PointX="9.522890343108628" PointY="14.000557548366746" />
+        <EntityTypeShape EntityType="SmartSocialModel.SeriesValue" Width="1.5" PointX="2.5797909435722004" PointY="15.294307179420398" />
+        <EntityTypeShape EntityType="SmartSocialModel.ServiceDelivery" Width="1.5" PointX="0.5" PointY="21.375" />
+        <EntityTypeShape EntityType="SmartSocialModel.SharedReport" Width="1.5" PointX="4" PointY="10.125" />
+        <EntityTypeShape EntityType="SmartSocialModel.SmartChart" Width="1.5" PointX="7.125" PointY="15.25" />
+        <EntityTypeShape EntityType="SmartSocialModel.SmartReport" Width="1.5" PointX="4.875" PointY="25" />
+        <EntityTypeShape EntityType="SmartSocialModel.SocialPost" Width="1.5" PointX="2.0389351686644064" PointY="24.185232710179516" />
+        <EntityTypeShape EntityType="SmartSocialModel.SocialPostTMP" Width="1.5" PointX="11.130934662712242" PointY="21.502314339160133" />
+        <EntityTypeShape EntityType="SmartSocialModel.SubscriptionRoleType" Width="2.75" PointX="12.75" PointY="27.25" />
+        <EntityTypeShape EntityType="SmartSocialModel.sysdiagram" Width="1.5" PointX="1.5" PointY="18.75" />
+        <EntityTypeShape EntityType="SmartSocialModel.webpages_Membership" Width="1.5" PointX="8.625" PointY="1" />
+        <EntityTypeShape EntityType="SmartSocialModel.webpages_OAuthMembership" Width="1.5" PointX="9.625" PointY="4.5" />
+        <EntityTypeShape EntityType="SmartSocialModel.webpages_Roles" Width="1.5" PointX="9.3503766047537216" PointY="20.111554974742027" />
+        <EntityTypeShape EntityType="SmartSocialModel.webpages_UsersInRoles" Width="2" PointX="5.125" PointY="2.25" />
+        <AssociationConnector Association="SmartSocialModel.FK_ChartSeries_SmartChart" />
+        <AssociationConnector Association="SmartSocialModel.FK_SeriesValue_ChartSeries" />
+        <AssociationConnector Association="SmartSocialModel.FK_DataProvidersXChartType_ChartType" />
+        <AssociationConnector Association="SmartSocialModel.FK_SmartChart_ChartType" />
+        <AssociationConnector Association="SmartSocialModel.FK_DataProvidersXChartType_DataProvider" />
+        <AssociationConnector Association="SmartSocialModel.FK_SmartChart_DataProvider" />
+        <AssociationConnector Association="SmartSocialModel.FK_SeriesValue_DataType" />
+        <AssociationConnector Association="SmartSocialModel.FK_SmartReport_ServiceDelivery" />
+        <AssociationConnector Association="SmartSocialModel.FK_SharedReports_SmartReport" />
+        <AssociationConnector Association="SmartSocialModel.FK_SmartChart_SmartReport" />
+        <AssociationConnector Association="SmartSocialModel.FK_SocialPost_SmartReport" />
+        <AssociationConnector Association="SmartSocialModel.fk_RoleId" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9.375" PointY="21.720683593750003" />
+          <ConnectorPoint PointX="9.212782096033111" PointY="22.230175408126733" />
+          <ConnectorPoint PointX="9.162217903966889" PointY="22.388986743548571" />
+          <ConnectorPoint PointX="8.6034095960331118" PointY="24.14408437294518" />
+          <ConnectorPoint PointX="8.55284540396689" PointY="24.302895708367018" />
+          <ConnectorPoint PointX="8.494032096033111" PointY="24.487615756129408" />
+          <ConnectorPoint PointX="8.443467903966889" PointY="24.646427091551246" />
+          <ConnectorPoint PointX="6.7077309192720715" PointY="30.098006504101622" />
+          <ConnectorPoint PointX="6.7077309192720715" PointY="3.84568359375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SmartSocialModel.Country" Width="1.5" PointX="3.875" PointY="4.5" />
+        <EntityTypeShape EntityType="SmartSocialModel.UsersXSubscription" Width="1.5" PointX="7.75" PointY="5.875" />
+        <EntityTypeShape EntityType="SmartSocialModel.ChartComment" Width="1.5" PointX="11.875" PointY="34.125" />
+        <EntityTypeShape EntityType="SmartSocialModel.Lead" Width="1.5" PointX="1.625" PointY="0.75" />
+        <EntityTypeShape EntityType="SmartSocialModel.ServiceSubscription" Width="1.5" PointX="0.75" PointY="16" />
+        <AssociationConnector Association="SmartSocialModel.FK_ChartComment_SmartChart" />
+        <AssociationConnector Association="SmartSocialModel.FK_ServiceSubscription_Leads" />
+        <AssociationConnector Association="SmartSocialModel.FK_ServiceDelivery_ServiceSubscription" />
+        <AssociationConnector Association="SmartSocialModel.FK_ServiceSubscription_ServiceSubscription" />
+        <EntityTypeShape EntityType="SmartSocialModel.UserProfile" Width="1.5" PointX="9" PointY="27.125" />
+        <AssociationConnector Association="SmartSocialModel.FK_UserProfile_Company" />
+        <AssociationConnector Association="SmartSocialModel.FK__SharedRep__Creat__756D6ECB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

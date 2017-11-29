@@ -1,0 +1,114 @@
+﻿@model SmartSocial.web.V2.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Smart Social</title>
+    <!-- Import google fonts - Heading first/ text second -->
+    <!-- Icons -->
+    <link href="@Url.Content("~/Content/icons.css")" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <!-- Bootstrap Customized -->
+    <link href="@Url.Content("~/Content/bootstrapCustomized.css")" rel="stylesheet" />
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="@Url.Content("~/Content/plugins.css")" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="@Url.Content("~/Content/main.css")" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="@Url.Content("~/Content/smartsocialstyle.css")" rel="stylesheet" />
+
+    @*<link href="Content/jqcloud.css" rel="stylesheet" />*@
+
+    <script src="~/Scripts/JQuery/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/Bootstrap/bootstrap.js"></script>
+    <script src="~/Scripts/Plugins/spin.min.js"></script>
+</head>
+<body>
+    <div class="row" style="height: 100%">
+        <div id="MainDiv" class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="login-page">
+                <!-- Start login container -->
+                <div class="container login-container">
+                    <div class="login-panel panel panel-default plain animated bounceIn">
+                        <!-- Start .panel -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title text-center">
+                                <strong>Register Account</strong>
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal mt0" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="input-group input-icon">
+                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control valid", @placeholder = "Your email" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="input-group input-icon">
+                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control valid", @placeholder = "Your Password" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="input-group input-icon">
+                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control valid", @placeholder = "Confirm your Password" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb0">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb25">
+                                        <div class='customSpinnerLogin' id='spinner'></div>
+                                        <button type="submit" class="btn btn-default pull-right">Register</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12 nonBullets">
+                                        @Html.ValidationSummary(true)
+                                    </div>
+                                </div>
+                                <div class="seperator">
+                                    <strong>or</strong>
+                                    <hr />
+                                </div>
+                            }
+                            <div class="panel-footer gray-lighter-bg bt">
+                                <h4 class="text-center">
+                                    <strong>Already have an account?</strong>
+                                </h4>
+                                <p class="text-center">
+                                    <a href="@Url.Action("Login","Account")" class="btn btn-primary">Login</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- End .panel -->
+                    </div>
+                    <!-- End login container -->
+
+                    <div class="footer">
+                        <p class="text-center">All rights reserved!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".validation-summary-errors").removeClass("validation-summary-errors");
+        $(".input-validation-error").removeClass("input-validation-error").parent().addClass("has-error");
+    </script>
+</body>
+
+</html>
